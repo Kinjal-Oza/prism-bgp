@@ -1,0 +1,189 @@
+          case     label                   t0  hours  test_announcements  rib_entries  rib_prefixes  announcements  runtime_s
+0       PT2008  incident  2008-02-24 16:47:00    4.0              886030     10187125        260324        6650875        237
+1   PT2008_ctl   control  2008-02-17 12:47:00   12.0             2881956     10159256        259717       21807663        406
+2       TM2015  incident  2015-06-12 06:43:00    4.0            35954050     21575584        583380       60498498       1927
+3   TM2015_ctl   control  2015-06-05 02:43:00   12.0            10892635     21497325        581347       58427415       1195
+4       RT2017  incident  2017-04-26 20:36:00    4.0             5768045     30043277        703275       44893551        970
+5   RT2017_ctl   control  2017-04-19 16:36:00   12.0            17455515     29818179        700942       62027168       1219
+6       DV2017  incident  2017-12-12 02:43:00    4.0             4698158     32604665        731182       50008865       1128
+7   DV2017_ctl   control  2017-12-04 22:43:00   12.0            16149480     32552687        730899       42675461       1035
+8       AM2018  incident  2018-04-24 09:05:00    4.0            13514349     30494921        751644      104657487       1968
+9   AM2018_ctl   control  2018-04-17 05:05:00   12.0            33980522     31204054        750338       90424932       1581
+10      MO2018  incident  2018-11-12 19:10:00    4.0             3987630     31417278        777932       28605082        776
+11  MO2018_ctl   control  2018-11-05 15:10:00   12.0            14524009     30797897        778565       47965963       1884
+12      DQ2019  incident  2019-06-24 08:30:00    4.0             8274116     31361266        817137       37144954       1074
+13  DQ2019_ctl   control  2019-06-17 04:30:00   12.0            17391687     31351009        818143       44241584       1190
+14      RT2020  incident  2020-04-01 17:28:00    4.0            10113031     31370355        851298       54241795       1361
+15  RT2020_ctl   control  2020-03-25 13:28:00   12.0            19330058     31299466        851835       62281653       1478
+      case  family  found   culprit  prefixes  peers        score  rank_in_window  units_in_window  first_flag_delay_s  ctl_week_before_max beats_week_before
+0   PT2008  origin   True   17557.0       1.0    1.0      1.00000             6.0             15.0                57.0                  4.0             False
+1   PT2008  export  False       NaN       NaN    NaN          NaN             NaN              NaN                 NaN                  NaN               NaN
+2   TM2015  origin  False       NaN       NaN    NaN          NaN             NaN              NaN                 NaN                  NaN               NaN
+3   TM2015  export   True    4788.0   77738.0   31.0  77738.00000             1.0            890.0                29.0               1980.0              True
+4   RT2017  origin   True   12389.0      55.0    6.0     55.00000             1.0             33.0                39.0                 12.0              True
+5   RT2017  export   True   12389.0      94.0    1.0      0.02727           356.0            742.0               -54.0               1190.0             False
+6   DV2017  origin   True   39523.0      64.0    9.0     64.00000             1.0             29.0                26.0                 31.8              True
+7   DV2017  export  False       NaN       NaN    NaN          NaN             NaN              NaN                 NaN                  NaN               NaN
+8   AM2018  origin   True   10297.0       5.0    1.0      5.00000             1.0             25.0                41.0                 30.0             False
+9   AM2018  export  False       NaN       NaN    NaN          NaN             NaN              NaN                 NaN                  NaN               NaN
+10  MO2018  origin  False       NaN       NaN    NaN          NaN             NaN              NaN                 NaN                  NaN               NaN
+11  MO2018  export   True   37282.0     212.0    1.0    212.00000             1.0            894.0               134.0              22211.0             False
+12  DQ2019  origin  False       NaN       NaN    NaN          NaN             NaN              NaN                 NaN                  NaN               NaN
+13  DQ2019  export   True  396531.0   37306.0   15.0  37306.00000             1.0            720.0               302.0               4076.0              True
+14  RT2020  origin   True   12389.0    6303.0    5.0   6303.00000             1.0             54.0               -56.0                 10.0              True
+15  RT2020  export   True   12389.0      78.0    6.0     15.60000             5.0            620.0               121.0                789.0             False
+      variant    case  detected  delay_s  false_alerts  hours  tau_origin    tau_export
+0       PRISM  PT2008     False      NaN             1    4.0         4.0    236.666667
+1       PRISM  TM2015      True     29.0             1    4.0        16.0   1980.000000
+2       PRISM  RT2017      True     39.0             0    4.0        12.0   1190.000000
+3       PRISM  DV2017      True     26.0             2    4.0        31.8    157.519231
+4       PRISM  AM2018     False      NaN             0    4.0        30.0   1936.000000
+5       PRISM  MO2018     False      NaN             0    4.0        50.0  22211.000000
+6       PRISM  DQ2019      True    261.0             0    4.0        31.0   4076.000000
+7       PRISM  RT2020      True    -56.0             5    4.0        10.0    789.000000
+8    PRISM+VA  PT2008     False      NaN             1    4.0         4.0    236.666667
+9    PRISM+VA  TM2015      True     29.0             1    4.0        16.0   1980.000000
+10   PRISM+VA  RT2017      True     39.0             0    4.0        12.0   1190.000000
+11   PRISM+VA  DV2017      True     26.0             2    4.0        31.8    115.000000
+12   PRISM+VA  AM2018     False      NaN             1    4.0        30.0    347.000000
+13   PRISM+VA  MO2018     False      NaN             0    4.0        50.0  22211.000000
+14   PRISM+VA  DQ2019      True    261.0             0    4.0        31.0   4076.000000
+15   PRISM+VA  RT2020      True    -56.0             5    4.0        10.0    789.000000
+16  PRISM+2VP  PT2008     False      NaN             1    4.0         4.0    236.666667
+17  PRISM+2VP  TM2015      True     29.0             1    4.0        16.0   1980.000000
+18  PRISM+2VP  RT2017      True     39.0             1    4.0        12.0    387.000000
+19  PRISM+2VP  DV2017      True     26.0             2    4.0        31.8    115.000000
+20  PRISM+2VP  AM2018     False      NaN             0    4.0        30.0   1936.000000
+21  PRISM+2VP  MO2018     False      NaN             0    4.0        50.0    655.000000
+22  PRISM+2VP  DQ2019      True    261.0             0    4.0        31.0   4076.000000
+23  PRISM+2VP  RT2020      True    -56.0             5    4.0        10.0    789.000000
+          case     label  family  prefixes  hours  victim_prefixes_flagged  first_victim_flag_s  benign_flagged_prefixes  per_prefix_day_rate
+0       PT2008  incident  origin    260324    4.0                      1.0                 57.0                       25             0.000576
+1       PT2008  incident  export    260324    4.0                      0.0                  NaN                     1292             0.029778
+2   PT2008_ctl   control  origin    259717   12.0                      NaN                  NaN                       14             0.000108
+3   PT2008_ctl   control  export    259717   12.0                      NaN                  NaN                     3317             0.025543
+4       TM2015  incident  origin    583380    4.0                      0.0                  NaN                       73             0.000751
+5       TM2015  incident  export    583380    4.0                 188177.0                 29.0                    53850             0.553841
+6   TM2015_ctl   control  origin    581347   12.0                      NaN                  NaN                      126             0.000433
+7   TM2015_ctl   control  export    581347   12.0                      NaN                  NaN                    23038             0.079257
+8       RT2017  incident  origin    703275    4.0                     55.0                 39.0                       56             0.000478
+9       RT2017  incident  export    703275    4.0                    506.0               -593.0                     6619             0.056470
+10  RT2017_ctl   control  origin    700942   12.0                      NaN                  NaN                      198             0.000565
+11  RT2017_ctl   control  export    700942   12.0                      NaN                  NaN                    18526             0.052860
+12      DV2017  incident  origin    731182    4.0                     64.0                 26.0                       35             0.000287
+13      DV2017  incident  export    731182    4.0                      0.0                  NaN                     8725             0.071596
+14  DV2017_ctl   control  origin    730899   12.0                      NaN                  NaN                      312             0.000854
+15  DV2017_ctl   control  export    730899   12.0                      NaN                  NaN                    61952             0.169523
+16      AM2018  incident  origin    751644    4.0                      5.0                 41.0                       32             0.000255
+17      AM2018  incident  export    751644    4.0                      0.0                  NaN                     6726             0.053690
+18  AM2018_ctl   control  origin    750338   12.0                      NaN                  NaN                      236             0.000629
+19  AM2018_ctl   control  export    750338   12.0                      NaN                  NaN                    23399             0.062369
+20      MO2018  incident  origin    777932    4.0                      0.0                  NaN                       54             0.000416
+21      MO2018  incident  export    777932    4.0                    228.0               -588.0                     7039             0.054290
+22  MO2018_ctl   control  origin    778565   12.0                      NaN                  NaN                      263             0.000676
+23  MO2018_ctl   control  export    778565   12.0                      NaN                  NaN                    56326             0.144692
+24      DQ2019  incident  origin    817137    4.0                      0.0                  NaN                       59             0.000433
+25      DQ2019  incident  export    817137    4.0                  65096.0                261.0                     4169             0.030612
+26  DQ2019_ctl   control  origin    818143   12.0                      NaN                  NaN                      230             0.000562
+27  DQ2019_ctl   control  export    818143   12.0                      NaN                  NaN                    16203             0.039609
+28      RT2020  incident  origin    851298    4.0                   6958.0                -56.0                      144             0.001015
+29      RT2020  incident  export    851298    4.0                     83.0                 48.0                    12296             0.086663
+30  RT2020_ctl   control  origin    851835   12.0                      NaN                  NaN                       96             0.000225
+31  RT2020_ctl   control  export    851835   12.0                      NaN                  NaN                    15230             0.035758
+          case     label  kappa  active_origins  hours  victim_origins_alerted  benign_origins_alerted  per_origin_day_rate
+0       PT2008  incident      1            6470    4.0                     0.0                     359             0.332921
+1       PT2008  incident      2            6470    4.0                     0.0                     160             0.148377
+2       PT2008  incident      3            6470    4.0                     0.0                     107             0.099227
+3       PT2008  incident      5            6470    4.0                     0.0                      55             0.051005
+4       PT2008  incident     10            6470    4.0                     0.0                      22             0.020402
+5       PT2008  incident     20            6470    4.0                     0.0                      10             0.009274
+6   PT2008_ctl   control      1           24301   12.0                     NaN                     751             0.061808
+7   PT2008_ctl   control      2           24301   12.0                     NaN                     329             0.027077
+8   PT2008_ctl   control      3           24301   12.0                     NaN                     221             0.018189
+9   PT2008_ctl   control      5           24301   12.0                     NaN                     122             0.010041
+10  PT2008_ctl   control     10           24301   12.0                     NaN                      50             0.004115
+11  PT2008_ctl   control     20           24301   12.0                     NaN                      22             0.001811
+12      TM2015  incident      1           50769    4.0                 18553.0                    6861             0.810849
+13      TM2015  incident      2           50769    4.0                 10731.0                    3426             0.404893
+14      TM2015  incident      3           50769    4.0                  7843.0                    2407             0.284465
+15      TM2015  incident      5           50769    4.0                  5116.0                    1463             0.172901
+16      TM2015  incident     10           50769    4.0                  2737.0                     716             0.084619
+17      TM2015  incident     20           50769    4.0                  1385.0                     340             0.040182
+18  TM2015_ctl   control      1           50572   12.0                     NaN                    2661             0.105236
+19  TM2015_ctl   control      2           50572   12.0                     NaN                    1364             0.053943
+20  TM2015_ctl   control      3           50572   12.0                     NaN                     928             0.036700
+21  TM2015_ctl   control      5           50572   12.0                     NaN                     556             0.021988
+22  TM2015_ctl   control     10           50572   12.0                     NaN                     254             0.010045
+23  TM2015_ctl   control     20           50572   12.0                     NaN                     111             0.004390
+24      RT2017  incident      1           15116    4.0                   135.0                    1342             0.532681
+25      RT2017  incident      2           15116    4.0                    64.0                     632             0.250860
+26      RT2017  incident      3           15116    4.0                    44.0                     427             0.169489
+27      RT2017  incident      5           15116    4.0                    21.0                     250             0.099233
+28      RT2017  incident     10           15116    4.0                    14.0                     114             0.045250
+29      RT2017  incident     20           15116    4.0                     4.0                      45             0.017862
+30  RT2017_ctl   control      1           45920   12.0                     NaN                    3288             0.143206
+31  RT2017_ctl   control      2           45920   12.0                     NaN                    1544             0.067247
+32  RT2017_ctl   control      3           45920   12.0                     NaN                    1068             0.046516
+33  RT2017_ctl   control      5           45920   12.0                     NaN                     631             0.027483
+34  RT2017_ctl   control     10           45920   12.0                     NaN                     274             0.011934
+35  RT2017_ctl   control     20           45920   12.0                     NaN                     127             0.005531
+36      DV2017  incident      1           22329    4.0                     0.0                    1684             0.452506
+37      DV2017  incident      2           22329    4.0                     0.0                     832             0.223566
+38      DV2017  incident      3           22329    4.0                     0.0                     594             0.159613
+39      DV2017  incident      5           22329    4.0                     0.0                     352             0.094586
+40      DV2017  incident     10           22329    4.0                     0.0                     156             0.041919
+41      DV2017  incident     20           22329    4.0                     0.0                      64             0.017197
+42  DV2017_ctl   control      1           58904   12.0                     NaN                    8229             0.279404
+43  DV2017_ctl   control      2           58904   12.0                     NaN                    4531             0.153844
+44  DV2017_ctl   control      3           58904   12.0                     NaN                    3272             0.111096
+45  DV2017_ctl   control      5           58904   12.0                     NaN                    2001             0.067941
+46  DV2017_ctl   control     10           58904   12.0                     NaN                     949             0.032222
+47  DV2017_ctl   control     20           58904   12.0                     NaN                     431             0.014634
+48      AM2018  incident      1           23598    4.0                     0.0                    1508             0.383422
+49      AM2018  incident      2           23598    4.0                     0.0                     687             0.174676
+50      AM2018  incident      3           23598    4.0                     0.0                     460             0.116959
+51      AM2018  incident      5           23598    4.0                     0.0                     244             0.062039
+52      AM2018  incident     10           23598    4.0                     0.0                     116             0.029494
+53      AM2018  incident     20           23598    4.0                     0.0                      50             0.012713
+54  AM2018_ctl   control      1           60563   12.0                     NaN                    3620             0.119545
+55  AM2018_ctl   control      2           60563   12.0                     NaN                    1776             0.058650
+56  AM2018_ctl   control      3           60563   12.0                     NaN                    1248             0.041213
+57  AM2018_ctl   control      5           60563   12.0                     NaN                     724             0.023909
+58  AM2018_ctl   control     10           60563   12.0                     NaN                     299             0.009874
+59  AM2018_ctl   control     20           60563   12.0                     NaN                     145             0.004788
+60      MO2018  incident      1           18578    4.0                    10.0                    1398             0.451502
+61      MO2018  incident      2           18578    4.0                     4.0                     674             0.217677
+62      MO2018  incident      3           18578    4.0                     4.0                     457             0.147594
+63      MO2018  incident      5           18578    4.0                     2.0                     250             0.080741
+64      MO2018  incident     10           18578    4.0                     2.0                     112             0.036172
+65      MO2018  incident     20           18578    4.0                     1.0                      49             0.015825
+66  MO2018_ctl   control      1           62589   12.0                     NaN                    7638             0.244068
+67  MO2018_ctl   control      2           62589   12.0                     NaN                    3921             0.125294
+68  MO2018_ctl   control      3           62589   12.0                     NaN                    2740             0.087555
+69  MO2018_ctl   control      5           62589   12.0                     NaN                    1665             0.053204
+70  MO2018_ctl   control     10           62589   12.0                     NaN                     798             0.025500
+71  MO2018_ctl   control     20           62589   12.0                     NaN                     376             0.012015
+72      DQ2019  incident      1           64105    4.0                  4640.0                     908             0.084986
+73      DQ2019  incident      2           64105    4.0                  2907.0                     401             0.037532
+74      DQ2019  incident      3           64105    4.0                  2131.0                     222             0.020778
+75      DQ2019  incident      5           64105    4.0                  1419.0                     126             0.011793
+76      DQ2019  incident     10           64105    4.0                   791.0                      52             0.004867
+77      DQ2019  incident     20           64105    4.0                   418.0                      22             0.002059
+78  DQ2019_ctl   control      1           61604   12.0                     NaN                    3324             0.107915
+79  DQ2019_ctl   control      2           61604   12.0                     NaN                    1414             0.045906
+80  DQ2019_ctl   control      3           61604   12.0                     NaN                     907             0.029446
+81  DQ2019_ctl   control      5           61604   12.0                     NaN                     523             0.016979
+82  DQ2019_ctl   control     10           61604   12.0                     NaN                     244             0.007922
+83  DQ2019_ctl   control     20           61604   12.0                     NaN                     117             0.003798
+84      RT2020  incident      1           67572    4.0                    14.0                    1409             0.125111
+85      RT2020  incident      2           67572    4.0                     7.0                     626             0.055585
+86      RT2020  incident      3           67572    4.0                     6.0                     417             0.037027
+87      RT2020  incident      5           67572    4.0                     4.0                     233             0.020689
+88      RT2020  incident     10           67572    4.0                     3.0                      88             0.007814
+89      RT2020  incident     20           67572    4.0                     1.0                      37             0.003285
+90  RT2020_ctl   control      1           67462   12.0                     NaN                    2698             0.079986
+91  RT2020_ctl   control      2           67462   12.0                     NaN                    1243             0.036850
+92  RT2020_ctl   control      3           67462   12.0                     NaN                     799             0.023687
+93  RT2020_ctl   control      5           67462   12.0                     NaN                     423             0.012540
+94  RT2020_ctl   control     10           67462   12.0                     NaN                     183             0.005425
+95  RT2020_ctl   control     20           67462   12.0                     NaN                      80             0.002372

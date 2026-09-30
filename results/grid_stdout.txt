@@ -1,0 +1,11 @@
+exposure hours 128.0
+      variant  tau_o  tau_x  detected                                             which  fa_per_day  median_delay_s
+8       PRISM      5    200         7  AM2018,DQ2019,DV2017,MO2018,RT2017,RT2020,TM2015     15.0000            39.0
+7       PRISM      5    100         7  AM2018,DQ2019,DV2017,MO2018,RT2017,RT2020,TM2015     19.1250            39.0
+2       PRISM      3    200         7  AM2018,DQ2019,DV2017,MO2018,RT2017,RT2020,TM2015     24.5625            39.0
+32      PRISM     50    200         6         DQ2019,DV2017,MO2018,RT2017,RT2020,TM2015      5.4375            34.0
+26      PRISM     30    200         6         DQ2019,DV2017,MO2018,RT2017,RT2020,TM2015      6.0000            34.0
+20      PRISM     20    200         6         DQ2019,DV2017,MO2018,RT2017,RT2020,TM2015      6.5625            34.0
+71  PRISM+2VP     50   2000         5                DQ2019,DV2017,RT2017,RT2020,TM2015      0.3750            29.0
+35      PRISM     50   2000         5                DQ2019,DV2017,RT2017,RT2020,TM2015      0.5625            29.0
+65  PRISM+2VP     30   2000         5                DQ2019,DV2017,RT2017,RT2020,TM2015      0.9375            29.0
