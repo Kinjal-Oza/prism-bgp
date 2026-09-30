@@ -1,6 +1,6 @@
 # PRISM: History-Anchored, Relationship-Aware BGP Hijack & Route-Leak Detection
 
-This is the code, results and paper for the IEEE TNSM submission *"PRISM: History-Anchored, Relationship-Aware Detection and Attribution of BGP Hijacks and Route Leaks from Public Collector Data"* by Kinjal Vaishnav.
+This is the code and results for the IEEE TNSM submission *"PRISM: History-Anchored, Relationship-Aware Detection and Attribution of BGP Hijacks and Route Leaks from Public Collector Data"* by Kinjal Vaishnav.
 
 Everything here runs on **public data only**:
 
@@ -47,7 +47,7 @@ Engine flag files (`out/*.flags.parquet`, ~440 MB) are not included because they
 ## Headline results (from `results/`)
 
 - **Culprit ranking.** In 7 of 8 incidents, the documented culprit is the top-scoring AS in its 4-hour window.
-- **Quiet operating point.** τ_o = 50, τ_x = 2000 detects 5/8 incidents with attribution at **0.56 false alerts/day**, with a median delay of 29 s.
+- **Quiet operating point.** τ_o = 50, τ_x = 2000 detects 5/8 incidents with attribution at **0.56 false alerts/day**, with a median first-flag delay of 29 s (when the first offending route becomes visible; this is not thresholded alert latency).
 - **Week-before calibration.** Thresholds are set from last week's control only, never from the incidents. This detects 5/8 incidents with 9 false alerts in 32 incident-window hours.
 - **Owner mode.** Origin alerts: 0.054% false alerts per prefix-day. Leak alerts: 0.65% per origin-AS-day at κ = 20. Owner mode catches YouTube 2008, Route 53 2018 and MainOne 2018.
 
