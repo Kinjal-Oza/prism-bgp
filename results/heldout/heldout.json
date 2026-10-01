@@ -1,0 +1,796 @@
+{
+ "cases": [
+  "ID2011",
+  "ID2011_ctl",
+  "ID2014",
+  "ID2014_ctl",
+  "GO2017",
+  "GO2017_ctl",
+  "SH2019",
+  "SH2019_ctl",
+  "VI2021",
+  "VI2021_ctl",
+  "KS2022",
+  "KS2022_ctl",
+  "TW2022",
+  "TW2022_ctl",
+  "CF2024",
+  "CF2024_ctl"
+ ],
+ "exposure_hours": 128.0,
+ "dataset": [
+  {
+   "case": "ID2011",
+   "label": "incident",
+   "hours": 4.0,
+   "test_announcements": 2651367,
+   "rib_entries": 10874728,
+   "rib_prefixes": 352758,
+   "announcements": 17276101,
+   "runtime_s": 474
+  },
+  {
+   "case": "ID2011_ctl",
+   "label": "control",
+   "hours": 12.0,
+   "test_announcements": 5751627,
+   "rib_entries": 10855650,
+   "rib_prefixes": 351990,
+   "announcements": 14695837,
+   "runtime_s": 208
+  },
+  {
+   "case": "ID2014",
+   "label": "incident",
+   "hours": 4.0,
+   "test_announcements": 4164194,
+   "rib_entries": 14976520,
+   "rib_prefixes": 506850,
+   "announcements": 19407291,
+   "runtime_s": 291
+  },
+  {
+   "case": "ID2014_ctl",
+   "label": "control",
+   "hours": 12.0,
+   "test_announcements": 5771514,
+   "rib_entries": 15112714,
+   "rib_prefixes": 505776,
+   "announcements": 17455915,
+   "runtime_s": 289
+  },
+  {
+   "case": "GO2017",
+   "label": "incident",
+   "hours": 4.0,
+   "test_announcements": 7415099,
+   "rib_entries": 29977935,
+   "rib_prefixes": 716829,
+   "announcements": 36731660,
+   "runtime_s": 621
+  },
+  {
+   "case": "GO2017_ctl",
+   "label": "control",
+   "hours": 12.0,
+   "test_announcements": 19365883,
+   "rib_entries": 30578232,
+   "rib_prefixes": 715959,
+   "announcements": 53314455,
+   "runtime_s": 748
+  },
+  {
+   "case": "SH2019",
+   "label": "incident",
+   "hours": 4.0,
+   "test_announcements": 7528602,
+   "rib_entries": 31295825,
+   "rib_prefixes": 817808,
+   "announcements": 39782685,
+   "runtime_s": 656
+  },
+  {
+   "case": "SH2019_ctl",
+   "label": "control",
+   "hours": 12.0,
+   "test_announcements": 19462637,
+   "rib_entries": 31267518,
+   "rib_prefixes": 817350,
+   "announcements": 54964620,
+   "runtime_s": 819
+  },
+  {
+   "case": "VI2021",
+   "label": "incident",
+   "hours": 4.0,
+   "test_announcements": 7434248,
+   "rib_entries": 30719892,
+   "rib_prefixes": 914078,
+   "announcements": 40752147,
+   "runtime_s": 886
+  },
+  {
+   "case": "VI2021_ctl",
+   "label": "control",
+   "hours": 12.0,
+   "test_announcements": 14527113,
+   "rib_entries": 30658872,
+   "rib_prefixes": 912531,
+   "announcements": 57569336,
+   "runtime_s": 1096
+  },
+  {
+   "case": "KS2022",
+   "label": "incident",
+   "hours": 4.0,
+   "test_announcements": 4022701,
+   "rib_entries": 28401469,
+   "rib_prefixes": 929770,
+   "announcements": 28946519,
+   "runtime_s": 544
+  },
+  {
+   "case": "KS2022_ctl",
+   "label": "control",
+   "hours": 12.0,
+   "test_announcements": 13793398,
+   "rib_entries": 27508382,
+   "rib_prefixes": 929447,
+   "announcements": 41559589,
+   "runtime_s": 686
+  },
+  {
+   "case": "TW2022",
+   "label": "incident",
+   "hours": 4.0,
+   "test_announcements": 5742214,
+   "rib_entries": 28615900,
+   "rib_prefixes": 936472,
+   "announcements": 22788349,
+   "runtime_s": 498
+  },
+  {
+   "case": "TW2022_ctl",
+   "label": "control",
+   "hours": 12.0,
+   "test_announcements": 9896119,
+   "rib_entries": 28612039,
+   "rib_prefixes": 936508,
+   "announcements": 26569741,
+   "runtime_s": 537
+  },
+  {
+   "case": "CF2024",
+   "label": "incident",
+   "hours": 4.0,
+   "test_announcements": 7434179,
+   "rib_entries": 24348713,
+   "rib_prefixes": 1001639,
+   "announcements": 46367556,
+   "runtime_s": 659
+  },
+  {
+   "case": "CF2024_ctl",
+   "label": "control",
+   "hours": 12.0,
+   "test_announcements": 14324770,
+   "rib_entries": 24327492,
+   "rib_prefixes": 1000964,
+   "announcements": 46575955,
+   "runtime_s": 638
+  }
+ ],
+ "culprits": [
+  {
+   "case": "ID2011",
+   "family": "origin",
+   "found": true,
+   "culprit": 4761,
+   "prefixes": 3056,
+   "peers": 16,
+   "score": 3056.0,
+   "rank_in_window": 1,
+   "units_in_window": 22,
+   "first_flag_delay_s": 9.0,
+   "ctl_week_before_max": 28.0
+  },
+  {
+   "case": "ID2011",
+   "family": "export",
+   "found": false,
+   "units_in_window": 452
+  },
+  {
+   "case": "ID2014",
+   "family": "origin",
+   "found": true,
+   "culprit": 4761,
+   "prefixes": 2990,
+   "peers": 12,
+   "score": 2990.0,
+   "rank_in_window": 1,
+   "units_in_window": 49,
+   "first_flag_delay_s": 1247.0,
+   "ctl_week_before_max": 9.0
+  },
+  {
+   "case": "ID2014",
+   "family": "export",
+   "found": false,
+   "units_in_window": 458
+  },
+  {
+   "case": "GO2017",
+   "family": "origin",
+   "found": true,
+   "culprit": 15169,
+   "prefixes": 30,
+   "peers": 3,
+   "score": 30.0,
+   "rank_in_window": 5,
+   "units_in_window": 107,
+   "first_flag_delay_s": -249.0,
+   "ctl_week_before_max": 22.0
+  },
+  {
+   "case": "GO2017",
+   "family": "export",
+   "found": true,
+   "culprit": 15169,
+   "prefixes": 156045,
+   "peers": 4,
+   "score": 156045.0,
+   "rank_in_window": 1,
+   "units_in_window": 1015,
+   "first_flag_delay_s": -263.0,
+   "ctl_week_before_max": 66.0
+  },
+  {
+   "case": "SH2019",
+   "family": "origin",
+   "found": false,
+   "units_in_window": 22
+  },
+  {
+   "case": "SH2019",
+   "family": "export",
+   "found": true,
+   "culprit": 21217,
+   "prefixes": 3191,
+   "peers": 14,
+   "score": 3191.0,
+   "rank_in_window": 1,
+   "units_in_window": 713,
+   "first_flag_delay_s": 1570.0,
+   "ctl_week_before_max": 259.0
+  },
+  {
+   "case": "VI2021",
+   "family": "origin",
+   "found": true,
+   "culprit": 55410,
+   "prefixes": 17071,
+   "peers": 30,
+   "score": 17071.0,
+   "rank_in_window": 1,
+   "units_in_window": 39,
+   "first_flag_delay_s": 120.07596492767334,
+   "ctl_week_before_max": 10.0
+  },
+  {
+   "case": "VI2021",
+   "family": "export",
+   "found": true,
+   "culprit": 55410,
+   "prefixes": 2,
+   "peers": 1,
+   "score": 1.0,
+   "rank_in_window": 71,
+   "units_in_window": 651,
+   "first_flag_delay_s": 1736.1672279834747,
+   "ctl_week_before_max": 75.0
+  },
+  {
+   "case": "KS2022",
+   "family": "origin",
+   "found": true,
+   "culprit": 9457,
+   "prefixes": 1,
+   "peers": 1,
+   "score": 1.0,
+   "rank_in_window": 3,
+   "units_in_window": 18,
+   "first_flag_delay_s": 17.67434310913086,
+   "ctl_week_before_max": 16.0
+  },
+  {
+   "case": "KS2022",
+   "family": "export",
+   "found": false,
+   "units_in_window": 331
+  },
+  {
+   "case": "TW2022",
+   "family": "origin",
+   "found": true,
+   "culprit": 8342,
+   "prefixes": 1,
+   "peers": 1,
+   "score": 1.0,
+   "rank_in_window": 4,
+   "units_in_window": 39,
+   "first_flag_delay_s": 24.467364072799683,
+   "ctl_week_before_max": 16.0
+  },
+  {
+   "case": "TW2022",
+   "family": "export",
+   "found": false,
+   "units_in_window": 561
+  },
+  {
+   "case": "CF2024",
+   "family": "origin",
+   "found": false,
+   "units_in_window": 33
+  },
+  {
+   "case": "CF2024",
+   "family": "export",
+   "found": true,
+   "culprit": 262504,
+   "prefixes": 12,
+   "peers": 4,
+   "score": 12.0,
+   "rank_in_window": 3,
+   "units_in_window": 557,
+   "first_flag_delay_s": 2428.048098087311,
+   "ctl_week_before_max": 1079.0
+  }
+ ],
+ "ops": [
+  {
+   "point": "Quiet",
+   "tau_o": 50,
+   "tau_x": 2000,
+   "detected": 5,
+   "n": 8,
+   "which": "ID2011,ID2014,GO2017,SH2019,VI2021",
+   "false_alerts": 7,
+   "fa_per_day": 1.3125,
+   "median_first_flag_delay_s": 58.8638379573822
+  },
+  {
+   "point": "Quiet +2VP",
+   "tau_o": 50,
+   "tau_x": 2000,
+   "detected": 5,
+   "n": 8,
+   "which": "ID2011,ID2014,GO2017,SH2019,VI2021",
+   "false_alerts": 7,
+   "fa_per_day": 1.3125,
+   "median_first_flag_delay_s": 58.8638379573822
+  },
+  {
+   "point": "Balanced",
+   "tau_o": 50,
+   "tau_x": 200,
+   "detected": 5,
+   "n": 8,
+   "which": "ID2011,ID2014,GO2017,SH2019,VI2021",
+   "false_alerts": 21,
+   "fa_per_day": 3.9375,
+   "median_first_flag_delay_s": 58.8638379573822
+  },
+  {
+   "point": "Sensitive",
+   "tau_o": 5,
+   "tau_x": 200,
+   "detected": 5,
+   "n": 8,
+   "which": "ID2011,ID2014,GO2017,SH2019,VI2021",
+   "false_alerts": 96,
+   "fa_per_day": 18.0,
+   "median_first_flag_delay_s": 9.0
+  }
+ ],
+ "baselines": [
+  {
+   "detector": "base:volume-z",
+   "tau": 30,
+   "detected": 1,
+   "which": "VI2021",
+   "fa_per_day": 1.6875
+  },
+  {
+   "detector": "base:MOAS-snapshot",
+   "tau": 100,
+   "detected": 3,
+   "which": "ID2011,ID2014,VI2021",
+   "fa_per_day": 12.375
+  },
+  {
+   "detector": "base:valley-free",
+   "tau": 1000,
+   "detected": 1,
+   "which": "GO2017",
+   "fa_per_day": 68.0625
+  }
+ ],
+ "weekcal": [
+  {
+   "case": "ID2011",
+   "detected": true,
+   "first_flag_delay_s": 9.0,
+   "false_alerts": 7,
+   "tau_origin": 28.0,
+   "tau_export": 352.0
+  },
+  {
+   "case": "ID2014",
+   "detected": true,
+   "first_flag_delay_s": -33.0,
+   "false_alerts": 0,
+   "tau_origin": 9.0,
+   "tau_export": 7540.0
+  },
+  {
+   "case": "GO2017",
+   "detected": true,
+   "first_flag_delay_s": -263.0,
+   "false_alerts": 12,
+   "tau_origin": 22.0,
+   "tau_export": 66.0
+  },
+  {
+   "case": "SH2019",
+   "detected": true,
+   "first_flag_delay_s": 68.0,
+   "false_alerts": 2,
+   "tau_origin": 21.0,
+   "tau_export": 259.0
+  },
+  {
+   "case": "VI2021",
+   "detected": true,
+   "first_flag_delay_s": 58.8638379573822,
+   "false_alerts": 1,
+   "tau_origin": 10.0,
+   "tau_export": 75.0
+  },
+  {
+   "case": "KS2022",
+   "detected": false,
+   "first_flag_delay_s": null,
+   "false_alerts": 2,
+   "tau_origin": 16.0,
+   "tau_export": 21.0
+  },
+  {
+   "case": "TW2022",
+   "detected": false,
+   "first_flag_delay_s": null,
+   "false_alerts": 1,
+   "tau_origin": 16.0,
+   "tau_export": 182.0
+  },
+  {
+   "case": "CF2024",
+   "detected": false,
+   "first_flag_delay_s": null,
+   "false_alerts": 1,
+   "tau_origin": 16.0,
+   "tau_export": 1079.0
+  }
+ ],
+ "owner": [
+  {
+   "case": "ID2011",
+   "label": "incident",
+   "prefixes": 352758,
+   "hours": 4.0,
+   "victim_prefixes_flagged": 4342,
+   "first_victim_flag_s": 9.0,
+   "benign_flagged_prefixes": 361,
+   "per_prefix_day_rate": 0.006140186756926846
+  },
+  {
+   "case": "ID2011_ctl",
+   "label": "control",
+   "prefixes": 351990,
+   "hours": 12.0,
+   "victim_prefixes_flagged": null,
+   "first_victim_flag_s": null,
+   "benign_flagged_prefixes": 160,
+   "per_prefix_day_rate": 0.0009091167362709168
+  },
+  {
+   "case": "ID2014",
+   "label": "incident",
+   "prefixes": 506850,
+   "hours": 4.0,
+   "victim_prefixes_flagged": 8021,
+   "first_victim_flag_s": -33.0,
+   "benign_flagged_prefixes": 32,
+   "per_prefix_day_rate": 0.0003788102989050015
+  },
+  {
+   "case": "ID2014_ctl",
+   "label": "control",
+   "prefixes": 505776,
+   "hours": 12.0,
+   "victim_prefixes_flagged": null,
+   "first_victim_flag_s": null,
+   "benign_flagged_prefixes": 143,
+   "per_prefix_day_rate": 0.0005654677169339787
+  },
+  {
+   "case": "GO2017",
+   "label": "incident",
+   "prefixes": 716829,
+   "hours": 4.0,
+   "victim_prefixes_flagged": 32,
+   "first_victim_flag_s": -249.0,
+   "benign_flagged_prefixes": 1228,
+   "per_prefix_day_rate": 0.010278602009684319
+  },
+  {
+   "case": "GO2017_ctl",
+   "label": "control",
+   "prefixes": 715959,
+   "hours": 12.0,
+   "victim_prefixes_flagged": null,
+   "first_victim_flag_s": null,
+   "benign_flagged_prefixes": 115,
+   "per_prefix_day_rate": 0.0003212474457336244
+  },
+  {
+   "case": "SH2019",
+   "label": "incident",
+   "prefixes": 817808,
+   "hours": 4.0,
+   "victim_prefixes_flagged": 0,
+   "first_victim_flag_s": null,
+   "benign_flagged_prefixes": 46,
+   "per_prefix_day_rate": 0.00033748752763484833
+  },
+  {
+   "case": "SH2019_ctl",
+   "label": "control",
+   "prefixes": 817350,
+   "hours": 12.0,
+   "victim_prefixes_flagged": null,
+   "first_victim_flag_s": null,
+   "benign_flagged_prefixes": 241,
+   "per_prefix_day_rate": 0.0005897106502722212
+  },
+  {
+   "case": "VI2021",
+   "label": "incident",
+   "prefixes": 914078,
+   "hours": 4.0,
+   "victim_prefixes_flagged": 32076,
+   "first_victim_flag_s": 58.8638379573822,
+   "benign_flagged_prefixes": 44,
+   "per_prefix_day_rate": 0.00028881561529760046
+  },
+  {
+   "case": "VI2021_ctl",
+   "label": "control",
+   "prefixes": 912531,
+   "hours": 12.0,
+   "victim_prefixes_flagged": null,
+   "first_victim_flag_s": null,
+   "benign_flagged_prefixes": 196,
+   "per_prefix_day_rate": 0.000429574447333844
+  },
+  {
+   "case": "KS2022",
+   "label": "incident",
+   "prefixes": 929770,
+   "hours": 4.0,
+   "victim_prefixes_flagged": 1,
+   "first_victim_flag_s": 17.67434310913086,
+   "benign_flagged_prefixes": 21,
+   "per_prefix_day_rate": 0.00013551738602019854
+  },
+  {
+   "case": "KS2022_ctl",
+   "label": "control",
+   "prefixes": 929447,
+   "hours": 12.0,
+   "victim_prefixes_flagged": null,
+   "first_victim_flag_s": null,
+   "benign_flagged_prefixes": 152,
+   "per_prefix_day_rate": 0.000327076207680481
+  },
+  {
+   "case": "TW2022",
+   "label": "incident",
+   "prefixes": 936472,
+   "hours": 4.0,
+   "victim_prefixes_flagged": 1,
+   "first_victim_flag_s": 24.467364072799683,
+   "benign_flagged_prefixes": 60,
+   "per_prefix_day_rate": 0.0003844215310228176
+  },
+  {
+   "case": "TW2022_ctl",
+   "label": "control",
+   "prefixes": 936508,
+   "hours": 12.0,
+   "victim_prefixes_flagged": null,
+   "first_victim_flag_s": null,
+   "benign_flagged_prefixes": 222,
+   "per_prefix_day_rate": 0.0004741016627727686
+  },
+  {
+   "case": "CF2024",
+   "label": "incident",
+   "prefixes": 1001639,
+   "hours": 4.0,
+   "victim_prefixes_flagged": 0,
+   "first_victim_flag_s": null,
+   "benign_flagged_prefixes": 60,
+   "per_prefix_day_rate": 0.00035941092549311677
+  },
+  {
+   "case": "CF2024_ctl",
+   "label": "control",
+   "prefixes": 1000964,
+   "hours": 12.0,
+   "victim_prefixes_flagged": null,
+   "first_victim_flag_s": null,
+   "benign_flagged_prefixes": 288,
+   "per_prefix_day_rate": 0.0005754452707589883
+  }
+ ],
+ "owner_pooled_rate": 0.0004916923600504009,
+ "owner_leak": [
+  {
+   "case": "ID2011",
+   "label": "incident",
+   "active_origins": 21394,
+   "hours": 4.0,
+   "victim_origins_alerted": 0,
+   "benign_origins_alerted": 150,
+   "per_origin_day_rate": 0.04206786949612041
+  },
+  {
+   "case": "ID2011_ctl",
+   "label": "control",
+   "active_origins": 36302,
+   "hours": 12.0,
+   "victim_origins_alerted": null,
+   "benign_origins_alerted": 41,
+   "per_origin_day_rate": 0.002258828714671368
+  },
+  {
+   "case": "ID2014",
+   "label": "incident",
+   "active_origins": 12533,
+   "hours": 4.0,
+   "victim_origins_alerted": 0,
+   "benign_origins_alerted": 12,
+   "per_origin_day_rate": 0.005744833639192532
+  },
+  {
+   "case": "ID2014_ctl",
+   "label": "control",
+   "active_origins": 17853,
+   "hours": 12.0,
+   "victim_origins_alerted": null,
+   "benign_origins_alerted": 115,
+   "per_origin_day_rate": 0.012882988853413992
+  },
+  {
+   "case": "GO2017",
+   "label": "incident",
+   "active_origins": 58294,
+   "hours": 4.0,
+   "victim_origins_alerted": 728,
+   "benign_origins_alerted": 90,
+   "per_origin_day_rate": 0.009263389028030328
+  },
+  {
+   "case": "GO2017_ctl",
+   "label": "control",
+   "active_origins": 58166,
+   "hours": 12.0,
+   "victim_origins_alerted": null,
+   "benign_origins_alerted": 102,
+   "per_origin_day_rate": 0.0035072035209572604
+  },
+  {
+   "case": "SH2019",
+   "label": "incident",
+   "active_origins": 26028,
+   "hours": 4.0,
+   "victim_origins_alerted": 87,
+   "benign_origins_alerted": 101,
+   "per_origin_day_rate": 0.023282618718303366
+  },
+  {
+   "case": "SH2019_ctl",
+   "label": "control",
+   "active_origins": 63962,
+   "hours": 12.0,
+   "victim_origins_alerted": null,
+   "benign_origins_alerted": 223,
+   "per_origin_day_rate": 0.0069728901535286575
+  },
+  {
+   "case": "VI2021",
+   "label": "incident",
+   "active_origins": 66607,
+   "hours": 4.0,
+   "victim_origins_alerted": 0,
+   "benign_origins_alerted": 27,
+   "per_origin_day_rate": 0.00243217679823442
+  },
+  {
+   "case": "VI2021_ctl",
+   "label": "control",
+   "active_origins": 26658,
+   "hours": 12.0,
+   "victim_origins_alerted": null,
+   "benign_origins_alerted": 88,
+   "per_origin_day_rate": 0.006602145697351639
+  },
+  {
+   "case": "KS2022",
+   "label": "incident",
+   "active_origins": 59240,
+   "hours": 4.0,
+   "victim_origins_alerted": 0,
+   "benign_origins_alerted": 12,
+   "per_origin_day_rate": 0.0012153950033760973
+  },
+  {
+   "case": "KS2022_ctl",
+   "label": "control",
+   "active_origins": 72544,
+   "hours": 12.0,
+   "victim_origins_alerted": null,
+   "benign_origins_alerted": 37,
+   "per_origin_day_rate": 0.0010200705778561977
+  },
+  {
+   "case": "TW2022",
+   "label": "incident",
+   "active_origins": 72668,
+   "hours": 4.0,
+   "victim_origins_alerted": 0,
+   "benign_origins_alerted": 23,
+   "per_origin_day_rate": 0.0018990477238949746
+  },
+  {
+   "case": "TW2022_ctl",
+   "label": "control",
+   "active_origins": 27496,
+   "hours": 12.0,
+   "victim_origins_alerted": null,
+   "benign_origins_alerted": 58,
+   "per_origin_day_rate": 0.004218795461157987
+  },
+  {
+   "case": "CF2024",
+   "label": "incident",
+   "active_origins": 75436,
+   "hours": 4.0,
+   "victim_origins_alerted": 0,
+   "benign_origins_alerted": 40,
+   "per_origin_day_rate": 0.003181504851794899
+  },
+  {
+   "case": "CF2024_ctl",
+   "label": "control",
+   "active_origins": 75565,
+   "hours": 12.0,
+   "victim_origins_alerted": null,
+   "benign_origins_alerted": 90,
+   "per_origin_day_rate": 0.002382055184278436
+  }
+ ],
+ "owner_leak_pooled_rate": 0.003983663808361467
+}

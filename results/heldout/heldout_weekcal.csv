@@ -1,0 +1,9 @@
+case,detected,first_flag_delay_s,false_alerts,tau_origin,tau_export
+ID2011,True,9.0,7,28.0,352.0
+ID2014,True,-33.0,0,9.0,7540.0
+GO2017,True,-263.0,12,22.0,66.0
+SH2019,True,68.0,2,21.0,259.0
+VI2021,True,58.8638379573822,1,10.0,75.0
+KS2022,False,,2,16.0,21.0
+TW2022,False,,1,16.0,182.0
+CF2024,False,,1,16.0,1079.0

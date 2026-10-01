@@ -3,7 +3,7 @@ announcements in which the offender sits directly next to the collector peer (pa
 no inferred relationship to that peer. Output: out/<case>.va.parquet"""
 import sys, glob, pandas as pd, numpy as np, bgpkit
 from datetime import datetime, timezone
-from cases import cases
+from cases import all_cases as cases
 from engine import clean_path
 from asrel import ASRel
 from run_case import asrel_for

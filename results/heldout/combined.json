@@ -1,0 +1,37 @@
+{
+ "exposure_hours": 256.0,
+ "ops": [
+  {
+   "point": "Quiet",
+   "detected": 10,
+   "n": 16,
+   "which": "TM2015,RT2017,DV2017,DQ2019,RT2020,ID2011,ID2014,GO2017,SH2019,VI2021",
+   "fa_per_day": 0.9375,
+   "median_first_flag_delay_s": 34.0
+  },
+  {
+   "point": "Quiet +2VP",
+   "detected": 10,
+   "n": 16,
+   "which": "TM2015,RT2017,DV2017,DQ2019,RT2020,ID2011,ID2014,GO2017,SH2019,VI2021",
+   "fa_per_day": 0.84375,
+   "median_first_flag_delay_s": 34.0
+  },
+  {
+   "point": "Balanced",
+   "detected": 11,
+   "n": 16,
+   "which": "TM2015,RT2017,DV2017,MO2018,DQ2019,RT2020,ID2011,ID2014,GO2017,SH2019,VI2021",
+   "fa_per_day": 4.6875,
+   "median_first_flag_delay_s": 39.0
+  },
+  {
+   "point": "Sensitive",
+   "detected": 12,
+   "n": 16,
+   "which": "TM2015,RT2017,DV2017,AM2018,MO2018,DQ2019,RT2020,ID2011,ID2014,GO2017,SH2019,VI2021",
+   "fa_per_day": 16.5,
+   "median_first_flag_delay_s": 34.0
+  }
+ ]
+}

@@ -1,0 +1,4 @@
+detector,tau,detected,which,fa_per_day
+base:volume-z,30,1,VI2021,1.6875
+base:MOAS-snapshot,100,3,"ID2011,ID2014,VI2021",12.375
+base:valley-free,1000,1,GO2017,68.0625

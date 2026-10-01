@@ -14,7 +14,7 @@ No synthetic traffic is used anywhere. Every number in the paper is produced by 
 | Path | What it is |
 |---|---|
 | `paper/` | LaTeX source (`main.tex` + `sec_*.tex`, `refs.bib`), figures, compiled `PRISM_TNSM_Paper.pdf` |
-| `code/cases.py` | The 8 documented incidents (onset, culprit AS) + 8 matched control windows (same hour, 1 week earlier) |
+| `code/cases.py` | The 8 development incidents and the 8 held-out incidents (onset, culprit AS), each with a matched control window (same hour, 1 week earlier) |
 | `code/download.py`, `code/download2008.py` | Fetch RIB + UPDATE files from archive.routeviews.org. 2008 files use irregular timestamps, so a separate script handles them. |
 | `code/asrel.py` | CAIDA relationship loader, relationship queries and customer-cone lookups |
 | `code/engine.py` | **The PRISM replay engine.** Per-prefix history, NO and NX tests, baseline and ablation flags. |
@@ -25,6 +25,10 @@ No synthetic traffic is used anywhere. Every number in the paper is produced by 
 | `code/owner_origin.py` | Owner-mode leak analysis (attaches the origin AS to each NX flag) |
 | `code/adjacency.py` | Vantage-adjacency post-filter (reported as a negative result) |
 | `code/figures.py` | Figures 2 and 3 |
+| `HELDOUT_PREREGISTRATION.md` | The 8 held-out incidents, fixed before any of them was run, and the one disclosed date correction |
+| `code/download_case.py`, `code/run_heldout.sh` | Fetch and replay the held-out cases (same engine, unchanged) |
+| `code/heldout.py`, `code/combined.py` | Held-out evaluation at the frozen operating points; development + held-out together |
+| `results/heldout/` | Held-out tables (`heldout_*.csv`), `heldout.json`, `combined_ops.csv`, unit files, engine logs |
 | `results/` | Result tables (`table_*.csv`), `results.json`, per-case unit files, engine logs |
 
 ## Reproduce
@@ -42,6 +46,16 @@ for c in $(python3 -c "from cases import cases;print(' '.join(x['case'] for x in
 python3 report.py && python3 grid.py && python3 figures.py
 ```
 
+Held-out test (frozen design, no retuning):
+
+```bash
+for m in 20110101 20140401 20170801 20190601 20210401 20220201 20220301 20240601; do
+  curl -sSfo asrel/$m.as-rel.txt.bz2 https://publicdata.caida.org/datasets/as-relationships/serial-1/$m.as-rel.txt.bz2; done
+python3 download_case.py $(python3 -c "from cases import heldout_cases as h;print(' '.join(c['case'] for c in h()))")   # 4.8 GB, 2,134 files
+sh run_heldout.sh
+python3 heldout.py && python3 combined.py ../results/dev_units   # dev units: unzip results/per_case_results_parquet.zip there
+```
+
 Engine flag files (`out/*.flags.parquet`, ~440 MB) are not included because they regenerate deterministically from the archives.
 
 ## Headline results (from `results/`)
@@ -49,11 +63,12 @@ Engine flag files (`out/*.flags.parquet`, ~440 MB) are not included because they
 - **Culprit ranking.** In 7 of 8 incidents, the documented culprit is the top-scoring AS in its 4-hour window.
 - **Quiet operating point.** τ_o = 50, τ_x = 2000 detects 5/8 incidents with attribution at **0.56 false alerts/day**, with a median first-flag delay of 29 s (when the first offending route becomes visible; this is not thresholded alert latency).
 - **Week-before calibration.** Thresholds are set from last week's control only, never from the incidents. This detects 5/8 incidents with 9 false alerts in 32 incident-window hours.
+- **Held-out test.** Eight more incidents (2011-2024), listed before they were run, scored with every threshold frozen: 5/8 detected and attributed at the quiet point at 1.3 false alerts/day, median first-flag delay 59 s. These are all five held-out incidents involving more than a few dozen prefixes. Across all 16: 10/16 at 0.94 false alerts/day.
 - **Owner mode.** Origin alerts: 0.054% false alerts per prefix-day. Leak alerts: 0.65% per origin-AS-day at κ = 20. Owner mode catches YouTube 2008, Route 53 2018 and MainOne 2018.
 
 ## Honest scope notes
 
-- Only 8 incidents and a single collector (route-views2) are used. The results describe these cases; they are not population estimates.
+- 16 incidents (8 development, 8 held out) and a single collector (route-views2) are used. The results describe these cases; they are not population estimates.
 - MO2018 was the development case. The 60-minute guard came from inspecting it, and both post-hoc filters came from inspecting control-window alerts. The paper discloses all of this.
 - Control windows have no *reported* incident. One large control alert (AS49697, 2018-11-05) may be an unreported real leak.
 

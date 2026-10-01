@@ -3,7 +3,7 @@ same UPDATE files, then count, per (origin AS, exporter, 5-min window), how many
 prefixes the exporter newly leaked. Output: out/<case>.nxorigin.parquet"""
 import sys, glob, pandas as pd, bgpkit
 from datetime import timezone
-from cases import cases
+from cases import all_cases as cases
 from engine import clean_path
 import evaluate as E
 def run(case):

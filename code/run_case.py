@@ -1,8 +1,9 @@
 import sys, os
-from cases import cases
+from cases import all_cases as cases
 from engine import run
 ASREL={2008:"20080201",2015:"20150601"}
 def asrel_for(c):
+    if c.get("asrel"): return f"asrel/{c['asrel']}.as-rel.txt.bz2"
     t=c["t0"]
     m={(2008,2):"20080201",(2015,6):"20150601",(2017,4):"20170401",(2017,12):"20171201",
        (2018,4):"20180401",(2018,11):"20181101",(2019,6):"20190601",(2020,4):"20200401",

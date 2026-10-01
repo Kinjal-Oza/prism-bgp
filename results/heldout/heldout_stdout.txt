@@ -1,0 +1,94 @@
+          case     label  hours  test_announcements  rib_entries  rib_prefixes  announcements  runtime_s
+0       ID2011  incident    4.0             2651367     10874728        352758       17276101        474
+1   ID2011_ctl   control   12.0             5751627     10855650        351990       14695837        208
+2       ID2014  incident    4.0             4164194     14976520        506850       19407291        291
+3   ID2014_ctl   control   12.0             5771514     15112714        505776       17455915        289
+4       GO2017  incident    4.0             7415099     29977935        716829       36731660        621
+5   GO2017_ctl   control   12.0            19365883     30578232        715959       53314455        748
+6       SH2019  incident    4.0             7528602     31295825        817808       39782685        656
+7   SH2019_ctl   control   12.0            19462637     31267518        817350       54964620        819
+8       VI2021  incident    4.0             7434248     30719892        914078       40752147        886
+9   VI2021_ctl   control   12.0            14527113     30658872        912531       57569336       1096
+10      KS2022  incident    4.0             4022701     28401469        929770       28946519        544
+11  KS2022_ctl   control   12.0            13793398     27508382        929447       41559589        686
+12      TW2022  incident    4.0             5742214     28615900        936472       22788349        498
+13  TW2022_ctl   control   12.0             9896119     28612039        936508       26569741        537
+14      CF2024  incident    4.0             7434179     24348713       1001639       46367556        659
+15  CF2024_ctl   control   12.0            14324770     24327492       1000964       46575955        638 
+
+      case  family  found   culprit  prefixes  peers     score  rank_in_window  units_in_window  first_flag_delay_s  ctl_week_before_max
+0   ID2011  origin   True    4761.0    3056.0   16.0    3056.0             1.0               22            9.000000                 28.0
+1   ID2011  export  False       NaN       NaN    NaN       NaN             NaN              452                 NaN                  NaN
+2   ID2014  origin   True    4761.0    2990.0   12.0    2990.0             1.0               49         1247.000000                  9.0
+3   ID2014  export  False       NaN       NaN    NaN       NaN             NaN              458                 NaN                  NaN
+4   GO2017  origin   True   15169.0      30.0    3.0      30.0             5.0              107         -249.000000                 22.0
+5   GO2017  export   True   15169.0  156045.0    4.0  156045.0             1.0             1015         -263.000000                 66.0
+6   SH2019  origin  False       NaN       NaN    NaN       NaN             NaN               22                 NaN                  NaN
+7   SH2019  export   True   21217.0    3191.0   14.0    3191.0             1.0              713         1570.000000                259.0
+8   VI2021  origin   True   55410.0   17071.0   30.0   17071.0             1.0               39          120.075965                 10.0
+9   VI2021  export   True   55410.0       2.0    1.0       1.0            71.0              651         1736.167228                 75.0
+10  KS2022  origin   True    9457.0       1.0    1.0       1.0             3.0               18           17.674343                 16.0
+11  KS2022  export  False       NaN       NaN    NaN       NaN             NaN              331                 NaN                  NaN
+12  TW2022  origin   True    8342.0       1.0    1.0       1.0             4.0               39           24.467364                 16.0
+13  TW2022  export  False       NaN       NaN    NaN       NaN             NaN              561                 NaN                  NaN
+14  CF2024  origin  False       NaN       NaN    NaN       NaN             NaN               33                 NaN                  NaN
+15  CF2024  export   True  262504.0      12.0    4.0      12.0             3.0              557         2428.048098               1079.0 
+
+        point  tau_o  tau_x  detected  n                               which  false_alerts  fa_per_day  median_first_flag_delay_s
+0       Quiet     50   2000         5  8  ID2011,ID2014,GO2017,SH2019,VI2021             7      1.3125                  58.863838
+1  Quiet +2VP     50   2000         5  8  ID2011,ID2014,GO2017,SH2019,VI2021             7      1.3125                  58.863838
+2    Balanced     50    200         5  8  ID2011,ID2014,GO2017,SH2019,VI2021            21      3.9375                  58.863838
+3   Sensitive      5    200         5  8  ID2011,ID2014,GO2017,SH2019,VI2021            96     18.0000                   9.000000 
+
+             detector   tau  detected                 which  fa_per_day
+0       base:volume-z    30         1                VI2021      1.6875
+1  base:MOAS-snapshot   100         3  ID2011,ID2014,VI2021     12.3750
+2    base:valley-free  1000         1                GO2017     68.0625 
+
+     case  detected  first_flag_delay_s  false_alerts  tau_origin  tau_export
+0  ID2011      True            9.000000             7        28.0       352.0
+1  ID2014      True          -33.000000             0         9.0      7540.0
+2  GO2017      True         -263.000000            12        22.0        66.0
+3  SH2019      True           68.000000             2        21.0       259.0
+4  VI2021      True           58.863838             1        10.0        75.0
+5  KS2022     False                 NaN             2        16.0        21.0
+6  TW2022     False                 NaN             1        16.0       182.0
+7  CF2024     False                 NaN             1        16.0      1079.0 
+
+          case     label  prefixes  hours  victim_prefixes_flagged  first_victim_flag_s  benign_flagged_prefixes  per_prefix_day_rate
+0       ID2011  incident    352758    4.0                   4342.0             9.000000                      361             0.006140
+1   ID2011_ctl   control    351990   12.0                      NaN                  NaN                      160             0.000909
+2       ID2014  incident    506850    4.0                   8021.0           -33.000000                       32             0.000379
+3   ID2014_ctl   control    505776   12.0                      NaN                  NaN                      143             0.000565
+4       GO2017  incident    716829    4.0                     32.0          -249.000000                     1228             0.010279
+5   GO2017_ctl   control    715959   12.0                      NaN                  NaN                      115             0.000321
+6       SH2019  incident    817808    4.0                      0.0                  NaN                       46             0.000337
+7   SH2019_ctl   control    817350   12.0                      NaN                  NaN                      241             0.000590
+8       VI2021  incident    914078    4.0                  32076.0            58.863838                       44             0.000289
+9   VI2021_ctl   control    912531   12.0                      NaN                  NaN                      196             0.000430
+10      KS2022  incident    929770    4.0                      1.0            17.674343                       21             0.000136
+11  KS2022_ctl   control    929447   12.0                      NaN                  NaN                      152             0.000327
+12      TW2022  incident    936472    4.0                      1.0            24.467364                       60             0.000384
+13  TW2022_ctl   control    936508   12.0                      NaN                  NaN                      222             0.000474
+14      CF2024  incident   1001639    4.0                      0.0                  NaN                       60             0.000359
+15  CF2024_ctl   control   1000964   12.0                      NaN                  NaN                      288             0.000575 
+
+          case     label  active_origins  hours  victim_origins_alerted  benign_origins_alerted  per_origin_day_rate
+0       ID2011  incident           21394    4.0                     0.0                     150             0.042068
+1   ID2011_ctl   control           36302   12.0                     NaN                      41             0.002259
+2       ID2014  incident           12533    4.0                     0.0                      12             0.005745
+3   ID2014_ctl   control           17853   12.0                     NaN                     115             0.012883
+4       GO2017  incident           58294    4.0                   728.0                      90             0.009263
+5   GO2017_ctl   control           58166   12.0                     NaN                     102             0.003507
+6       SH2019  incident           26028    4.0                    87.0                     101             0.023283
+7   SH2019_ctl   control           63962   12.0                     NaN                     223             0.006973
+8       VI2021  incident           66607    4.0                     0.0                      27             0.002432
+9   VI2021_ctl   control           26658   12.0                     NaN                      88             0.006602
+10      KS2022  incident           59240    4.0                     0.0                      12             0.001215
+11  KS2022_ctl   control           72544   12.0                     NaN                      37             0.001020
+12      TW2022  incident           72668    4.0                     0.0                      23             0.001899
+13  TW2022_ctl   control           27496   12.0                     NaN                      58             0.004219
+14      CF2024  incident           75436    4.0                     0.0                      40             0.003182
+15  CF2024_ctl   control           75565   12.0                     NaN                      90             0.002382 
+
+owner pooled 0.0004916923600504009 leak pooled 0.003983663808361467
