@@ -31,7 +31,18 @@ HELDOUT = [
 WARM=timedelta(hours=24)
 def cases(): return _build(INCIDENTS)
 def heldout_cases(): return _build(HELDOUT)
-def all_cases(): return _build(INCIDENTS)+_build(HELDOUT)
+# Week-long controls (fixed 2026-10-02 before being run): the 7 days ending 24 h before the reported onset of four
+# incidents spread over time, two development and two held-out. Same engine and frozen thresholds; no incident inside.
+LONGCTL_IDS=["TM2015","DQ2019","VI2021","CF2024"]
+def longctl_cases():
+    out=[]
+    for inc in INCIDENTS+HELDOUT:
+        if inc["id"] not in LONGCTL_IDS: continue
+        t1=UTC(inc["onset"])-timedelta(days=1); t0=t1-timedelta(days=7)
+        c=dict(case=inc["id"]+"_wk",label="control",culprits=[],kind="none",t0=t0,t1=t1,onset=None,asrel=inc.get("asrel"))
+        w=c["t0"]-WARM; c["rib"]=w.replace(minute=0)-timedelta(hours=w.hour%2); out.append(c)
+    return out
+def all_cases(): return _build(INCIDENTS)+_build(HELDOUT)+longctl_cases()
 def _build(incs):
     out=[]
     for inc in incs:

@@ -1,0 +1,206 @@
+{
+ "per_case": [
+  {
+   "case": "TM2015_wk",
+   "point": "Quiet",
+   "hours": 168.0,
+   "false_alerts": 5,
+   "fa_per_day": 0.7142857142857142
+  },
+  {
+   "case": "TM2015_wk",
+   "point": "Quiet +2VP",
+   "hours": 168.0,
+   "false_alerts": 4,
+   "fa_per_day": 0.5714285714285714
+  },
+  {
+   "case": "TM2015_wk",
+   "point": "Balanced",
+   "hours": 168.0,
+   "false_alerts": 12,
+   "fa_per_day": 1.7142857142857142
+  },
+  {
+   "case": "TM2015_wk",
+   "point": "Sensitive",
+   "hours": 168.0,
+   "false_alerts": 43,
+   "fa_per_day": 6.142857142857142
+  },
+  {
+   "case": "DQ2019_wk",
+   "point": "Quiet",
+   "hours": 168.0,
+   "false_alerts": 6,
+   "fa_per_day": 0.8571428571428571
+  },
+  {
+   "case": "DQ2019_wk",
+   "point": "Quiet +2VP",
+   "hours": 168.0,
+   "false_alerts": 6,
+   "fa_per_day": 0.8571428571428571
+  },
+  {
+   "case": "DQ2019_wk",
+   "point": "Balanced",
+   "hours": 168.0,
+   "false_alerts": 15,
+   "fa_per_day": 2.142857142857143
+  },
+  {
+   "case": "DQ2019_wk",
+   "point": "Sensitive",
+   "hours": 168.0,
+   "false_alerts": 55,
+   "fa_per_day": 7.857142857142858
+  },
+  {
+   "case": "VI2021_wk",
+   "point": "Quiet",
+   "hours": 168.0,
+   "false_alerts": 3,
+   "fa_per_day": 0.42857142857142855
+  },
+  {
+   "case": "VI2021_wk",
+   "point": "Quiet +2VP",
+   "hours": 168.0,
+   "false_alerts": 2,
+   "fa_per_day": 0.2857142857142857
+  },
+  {
+   "case": "VI2021_wk",
+   "point": "Balanced",
+   "hours": 168.0,
+   "false_alerts": 11,
+   "fa_per_day": 1.5714285714285716
+  },
+  {
+   "case": "VI2021_wk",
+   "point": "Sensitive",
+   "hours": 168.0,
+   "false_alerts": 67,
+   "fa_per_day": 9.571428571428573
+  },
+  {
+   "case": "CF2024_wk",
+   "point": "Quiet",
+   "hours": 168.0,
+   "false_alerts": 1,
+   "fa_per_day": 0.14285714285714285
+  },
+  {
+   "case": "CF2024_wk",
+   "point": "Quiet +2VP",
+   "hours": 168.0,
+   "false_alerts": 1,
+   "fa_per_day": 0.14285714285714285
+  },
+  {
+   "case": "CF2024_wk",
+   "point": "Balanced",
+   "hours": 168.0,
+   "false_alerts": 4,
+   "fa_per_day": 0.5714285714285714
+  },
+  {
+   "case": "CF2024_wk",
+   "point": "Sensitive",
+   "hours": 168.0,
+   "false_alerts": 53,
+   "fa_per_day": 7.571428571428571
+  }
+ ],
+ "total": [
+  {
+   "point": "Balanced",
+   "false_alerts": 42,
+   "hours": 672.0,
+   "fa_per_day": 1.5
+  },
+  {
+   "point": "Quiet",
+   "false_alerts": 15,
+   "hours": 672.0,
+   "fa_per_day": 0.5357142857142857
+  },
+  {
+   "point": "Quiet +2VP",
+   "false_alerts": 13,
+   "hours": 672.0,
+   "fa_per_day": 0.4642857142857143
+  },
+  {
+   "point": "Sensitive",
+   "false_alerts": 218,
+   "hours": 672.0,
+   "fa_per_day": 7.7857142857142865
+  }
+ ],
+ "owner": [
+  {
+   "case": "TM2015_wk",
+   "prefixes": 581464,
+   "hours": 168.0,
+   "flagged": 2198,
+   "per_prefix_day": 0.0005400162348829851
+  },
+  {
+   "case": "DQ2019_wk",
+   "prefixes": 818040,
+   "hours": 168.0,
+   "flagged": 2029,
+   "per_prefix_day": 0.0003543312586880139
+  },
+  {
+   "case": "VI2021_wk",
+   "prefixes": 912167,
+   "hours": 168.0,
+   "flagged": 2024,
+   "per_prefix_day": 0.0003169845621940468
+  },
+  {
+   "case": "CF2024_wk",
+   "prefixes": 1000759,
+   "hours": 168.0,
+   "flagged": 2118,
+   "per_prefix_day": 0.00030234195103059637
+  }
+ ],
+ "owner_leak": [
+  {
+   "case": "TM2015_wk",
+   "active_origins": 51187,
+   "hours": 168.0,
+   "origins_alerted": 1105,
+   "per_origin_day": 0.003083930350619158
+  },
+  {
+   "case": "DQ2019_wk",
+   "active_origins": 65467,
+   "hours": 168.0,
+   "origins_alerted": 766,
+   "per_origin_day": 0.0016715073461220375
+  },
+  {
+   "case": "VI2021_wk",
+   "active_origins": 71790,
+   "hours": 168.0,
+   "origins_alerted": 2145,
+   "per_origin_day": 0.004268401886454541
+  },
+  {
+   "case": "CF2024_wk",
+   "active_origins": 76284,
+   "hours": 168.0,
+   "origins_alerted": 2161,
+   "per_origin_day": 0.00404690742114055
+  }
+ ],
+ "pooled": {
+  "owner": 0.00036093485102218874,
+  "leak": 0.003333340528499333
+ }
+}

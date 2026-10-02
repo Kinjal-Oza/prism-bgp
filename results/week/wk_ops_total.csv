@@ -1,0 +1,5 @@
+point,false_alerts,hours,fa_per_day
+Balanced,42,672.0,1.5
+Quiet,15,672.0,0.5357142857142857
+Quiet +2VP,13,672.0,0.4642857142857143
+Sensitive,218,672.0,7.7857142857142865

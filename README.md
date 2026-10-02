@@ -30,6 +30,7 @@ No synthetic traffic is used anywhere. Every number in the paper is produced by 
 | `code/heldout.py`, `code/combined.py` | Held-out evaluation at the frozen operating points; development + held-out together |
 | `code/download_ris.py`, `code/run_ris.sh`, `code/mc.py` | Second collector: replay all 32 cases on RIPE RIS rrc00 (run from a separate `ris/` work dir) and apply the pre-registered combination rules |
 | `results/ris/` | RIS unit files and logs, `mc_ops.csv` (RV2 alone / RIS alone / Either / Corroborated), `mc_visibility.csv` |
+| `code/run_wk.sh`, `code/wk.py`, `results/week/` | Four 7-day control windows and their false-alert rates |
 | `results/heldout/` | Held-out tables (`heldout_*.csv`), `heldout.json`, `combined_ops.csv`, unit files, engine logs |
 | `results/` | Result tables (`table_*.csv`), `results.json`, per-case unit files, engine logs |
 
@@ -67,6 +68,7 @@ Engine flag files (`out/*.flags.parquet`, ~440 MB) are not included because they
 - **Week-before calibration.** Thresholds are set from last week's control only, never from the incidents. This detects 5/8 incidents with 9 false alerts in 32 incident-window hours.
 - **Held-out test.** Eight more incidents (2011-2024), listed before they were run, scored with every threshold frozen: 5/8 detected and attributed at the quiet point at 1.3 false alerts/day, median first-flag delay 59 s. These are all five held-out incidents involving more than a few dozen prefixes. Across all 16: 10/16 at 0.94 false alerts/day.
 - **Second collector.** Run unchanged on RIPE RIS rrc00, PRISM detects 9 of the same 10 incidents (quiet point, 0.94 false alerts/day). Fusing the two collectors (rules fixed before any RIS data was run) did not lower false alerts below the better single collector.
+- **Week-long controls.** Four 7-day quiet windows (672 h): 0.54 false alerts/day at the quiet point (95% 0.30-0.88).
 - **Owner mode.** Origin alerts: 0.054% false alerts per prefix-day. Leak alerts: 0.65% per origin-AS-day at κ = 20. Owner mode catches YouTube 2008, Route 53 2018 and MainOne 2018.
 
 ## Honest scope notes

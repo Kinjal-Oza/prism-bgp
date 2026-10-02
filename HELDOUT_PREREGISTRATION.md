@@ -46,3 +46,12 @@ All four rules are reported for all 16 incidents, including any that get worse.
 All 32 rrc00 cases ran (13,838 MRT files after integrity-checked re-downloads; 11 early cases were re-run because the first
 download pass left truncated files). Quiet point, all 16 incidents: route-views2 10/16 at 0.94 FA/day; rrc00 alone 9/16 at 0.94;
 Either 10/16 at 1.6; Corroborated 10/16 at 1.1. No combination rule beat the better single collector.
+
+# Addendum: week-long controls (fixed 2026-10-02, before being run)
+To measure false alerts over longer quiet periods, four 7-day control windows on route-views2, each ending 24 h before
+the reported onset of TM2015, DQ2019, VI2021 and CF2024 (two development, two held-out incidents). Same engine,
+24 h warm-up, frozen operating points and owner-mode rules. Every alert in these windows counts as a false alert.
+
+## Week-long control outcome
+All four 7-day windows ran (no download failures). Quiet point: 15 alerts in 672 h = 0.54/day (Poisson 95% 0.30-0.88);
+Balanced 1.5/day; Sensitive 7.8/day. Owner mode: 0.036% false origin flags per prefix-day; 0.33% leak alerts per origin-AS-day (kappa 20).
