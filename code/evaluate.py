@@ -51,11 +51,15 @@ def case_units(c):
     path=f"out/{c['case']}.units.parquet"
     if os.path.exists(path): return pd.read_parquet(path)
     t0,t1=TS(c["t0"]),TS(c["t1"]); parts=[]
+    only=os.environ.get("PRISM_DETS")   # optional: restrict to some detectors (second-collector runs use PRISM-origin,PRISM-export)
     for name,(types,col) in DETECTORS.items():
+        if only and name not in only.split(","): continue
         df=pd.read_parquet(f"out/{c['case']}.flags.parquet",columns=["ts","type","off","prefix","peer"],
                            filters=[("type","in",types)])
         g=adaptive(units(df,types)); del df
         g["score"]=g[col]; g=g[(g.w*W>=t0)&(g.w*W<t1)].copy(); g["det"]=name; parts.append(g)
+    if only:
+        out=pd.concat(parts,ignore_index=True); out["case"]=c["case"]; out.to_parquet(path); return out
     vol=pd.read_parquet(f"out/{c['case']}.vol.parquet")
     v=vol.assign(w=vol.minute*60//W).groupby("w").ann.sum().reset_index()
     warm=v[v.w*W<t0].ann; med=warm.median(); mad=(warm-med).abs().median()*1.4826+1e-9

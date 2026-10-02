@@ -27,3 +27,22 @@ wording; the blog's time (13:48 UTC) is correct, but the event happened on 2021-
 lists April 16; BleepingComputer shows AS55410 announcements on 2021-04-16). The first run, on the wrong day, found no
 AS55410 flags in the window; the AS55410 flags in its warm-up started at 2021-04-16 13:48:58. We corrected the date,
 re-ran VI2021 and its control, and report the corrected run. No other onset, culprit, threshold or rule was changed.
+
+# Addendum: second-collector corroboration (fixed 2026-10-01, before any RIPE RIS data was downloaded or run)
+
+Collector 2: RIPE RIS rrc00. The PRISM engine, scoring, guard and thresholds run unchanged and independently on it
+(own prefix history, own offender history), from the latest rrc00 bview at least 24 h before the test window.
+All 32 cases (16 incidents, 16 controls) are run.
+
+Combination rules, at the frozen operating points (tau_o, tau_x) of the paper:
+- RIS alone: PRISM on rrc00 only.
+- Either: a (family, AS, 5-min window) unit alerts if its score reaches tau_f at either collector; counted once.
+- Corroborated: as Either, but an alert is kept only if the other collector also has a unit for the same family
+  and AS in the same window or one window either side (any score).
+Detection and false alerts are counted exactly as in the paper (per unique family, AS, window).
+All four rules are reported for all 16 incidents, including any that get worse.
+
+## Second-collector outcome (reported in the paper, Section "A second collector")
+All 32 rrc00 cases ran (13,838 MRT files after integrity-checked re-downloads; 11 early cases were re-run because the first
+download pass left truncated files). Quiet point, all 16 incidents: route-views2 10/16 at 0.94 FA/day; rrc00 alone 9/16 at 0.94;
+Either 10/16 at 1.6; Corroborated 10/16 at 1.1. No combination rule beat the better single collector.

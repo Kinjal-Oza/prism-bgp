@@ -28,6 +28,8 @@ No synthetic traffic is used anywhere. Every number in the paper is produced by 
 | `HELDOUT_PREREGISTRATION.md` | The 8 held-out incidents, fixed before any of them was run, and the one disclosed date correction |
 | `code/download_case.py`, `code/run_heldout.sh` | Fetch and replay the held-out cases (same engine, unchanged) |
 | `code/heldout.py`, `code/combined.py` | Held-out evaluation at the frozen operating points; development + held-out together |
+| `code/download_ris.py`, `code/run_ris.sh`, `code/mc.py` | Second collector: replay all 32 cases on RIPE RIS rrc00 (run from a separate `ris/` work dir) and apply the pre-registered combination rules |
+| `results/ris/` | RIS unit files and logs, `mc_ops.csv` (RV2 alone / RIS alone / Either / Corroborated), `mc_visibility.csv` |
 | `results/heldout/` | Held-out tables (`heldout_*.csv`), `heldout.json`, `combined_ops.csv`, unit files, engine logs |
 | `results/` | Result tables (`table_*.csv`), `results.json`, per-case unit files, engine logs |
 
@@ -64,11 +66,12 @@ Engine flag files (`out/*.flags.parquet`, ~440 MB) are not included because they
 - **Quiet operating point.** τ_o = 50, τ_x = 2000 detects 5/8 incidents with attribution at **0.56 false alerts/day**, with a median first-flag delay of 29 s (when the first offending route becomes visible; this is not thresholded alert latency).
 - **Week-before calibration.** Thresholds are set from last week's control only, never from the incidents. This detects 5/8 incidents with 9 false alerts in 32 incident-window hours.
 - **Held-out test.** Eight more incidents (2011-2024), listed before they were run, scored with every threshold frozen: 5/8 detected and attributed at the quiet point at 1.3 false alerts/day, median first-flag delay 59 s. These are all five held-out incidents involving more than a few dozen prefixes. Across all 16: 10/16 at 0.94 false alerts/day.
+- **Second collector.** Run unchanged on RIPE RIS rrc00, PRISM detects 9 of the same 10 incidents (quiet point, 0.94 false alerts/day). Fusing the two collectors (rules fixed before any RIS data was run) did not lower false alerts below the better single collector.
 - **Owner mode.** Origin alerts: 0.054% false alerts per prefix-day. Leak alerts: 0.65% per origin-AS-day at κ = 20. Owner mode catches YouTube 2008, Route 53 2018 and MainOne 2018.
 
 ## Honest scope notes
 
-- 16 incidents (8 development, 8 held out) and a single collector (route-views2) are used. The results describe these cases; they are not population estimates.
+- 16 incidents (8 development, 8 held out) and two collectors (route-views2; RIPE RIS rrc00 as a replication) are used. The results describe these cases; they are not population estimates.
 - MO2018 was the development case. The 60-minute guard came from inspecting it, and both post-hoc filters came from inspecting control-window alerts. The paper discloses all of this.
 - Control windows have no *reported* incident. One large control alert (AS49697, 2018-11-05) may be an unreported real leak.
 

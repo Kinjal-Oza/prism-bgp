@@ -100,7 +100,8 @@ class Engine:
 def run(case_dir, asrel_path, t0, t1, out):
     rel=ASRel(asrel_path); E=Engine(rel)
     T=time.time(); n=0
-    for e in bgpkit.Parser(url=f"{case_dir}/rib.bz2"):
+    rib=sorted(glob.glob(f"{case_dir}/rib.*"))[0]   # rib.bz2 (RouteViews) or rib.gz (RIPE RIS bview)
+    for e in bgpkit.Parser(url=rib):
         p=e.prefix
         if ":" in p: continue
         path=clean_path(e.as_path)
@@ -118,7 +119,7 @@ def run(case_dir, asrel_path, t0, t1, out):
                      "prefix":pa.array(pf,pa.string()),"peer":pa.array(pe,pa.int64())})
         if writer is None: writer=pq.ParquetWriter(out+".flags.parquet",tb.schema)
         writer.write_table(tb); nflags+=len(E.flags); E.flags.clear()
-    for f in sorted(glob.glob(f"{case_dir}/upd.*.bz2")):
+    for f in sorted(glob.glob(f"{case_dir}/upd.*.bz2")+glob.glob(f"{case_dir}/upd.*.gz")):
         flush()
         for e in bgpkit.Parser(url=f):
             if e.elem_type!="A": continue
