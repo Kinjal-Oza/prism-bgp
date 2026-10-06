@@ -134,3 +134,10 @@ and 9 controls, with and without the tier; also under the poisoning attacks for 
 ## Guard sensitivity
 G in {0, 5, 15, 30, 60, 120, 240} min, all 16 incidents and 16 controls, at the frozen Quiet point (D0 flags). Every
 value is reported; the paper's G = 60 min is not re-selected.
+
+# Addendum: D1-aware persistent attacker (added 2026-10-06 AFTER seeing the TM2015 and RT2017 attack results)
+Disclosed as post hoc. In TM2015 the pre-registered attackers, which pace against Eq. 2, were caught under D1 because D1
+admits a seed into H_a only after T_adm, one window later than the attacker's model assumed. A white-box attacker would
+know D1. Variant Q: the persistent attacker (P) paces with its own windows entering H only 13 windows later instead of
+12; seeding still ends at onset-75 min. Run under D1 for all 10 attacked incidents; success defined as before. Every
+result is reported next to the pre-registered T and P results, not instead of them.
