@@ -55,3 +55,58 @@ the reported onset of TM2015, DQ2019, VI2021 and CF2024 (two development, two he
 ## Week-long control outcome
 All four 7-day windows ran (no download failures). Quiet point: 15 alerts in 672 h = 0.54/day (Poisson 95% 0.30-0.88);
 Balanced 1.5/day; Sensitive 7.8/day. Owner mode: 0.036% false origin flags per prefix-day; 0.33% leak alerts per origin-AS-day (kappa 20).
+
+# Addendum: history poisoning (fixed 2026-10-06, before any attack or defense run)
+
+Purpose: measure the weakness stated in the Discussion ("an attacker who announced a target prefix with the future
+hijacking origin a day earlier would make the hijack look familiar") and test one defense. Every number is reported,
+including attacks that fail and defense costs that are large.
+
+## Threat model
+White-box attacker in control of the culprit AS(es) of a real incident. It knows the PRISM code, the Quiet operating
+point (tau_o=50, tau_x=2000), the 5-min window and the 60-min guard G, and it can watch public collectors.
+Goal: the incident, exactly as it happened in the archive, raises no observatory-mode alert naming a culprit AS.
+Means (poisoning): before the onset, announce the (prefix, origin) and (prefix, exporter) pairs that the incident will
+later flag, so they are already in PRISM's history when the incident starts; the same announcements also raise the
+culprit's offender history H_a.
+
+## Attacked incidents
+The 10 incidents detected at the Quiet point (TM2015, RT2017, DV2017, DQ2019, RT2020, ID2011, ID2014, GO2017, SH2019,
+VI2021). Undetected incidents cannot be made less detected and are not attacked.
+
+## Seed set and schedule
+- Seed items: every distinct (family, prefix, culprit) of NO/NX flags naming a culprit AS with first-flag time in the
+  detection credit window [onset-10 min, onset+60 min] of the clean run. Each seed announcement reuses the AS path of
+  that item's first flagged announcement in the clean run. One announcement per prefix where one path covers all of
+  the prefix's items; extra announcements otherwise.
+- Pacing: greedy in 5-min windows. In window k the attacker adds announcements while, for every (family, culprit AS)
+  they touch, its own count stays <= floor(0.8 * tau_f * (1 + H_k)), where H_k is the attacker's own maximum count in
+  windows <= k-12 (the attacker's model of Eq. 2). Announcements in a window are spread evenly over it.
+- Injection: seed announcements come from one synthetic collector session (the only synthetic data in the study),
+  merged by timestamp into the otherwise unmodified real stream of the incident case.
+- Two attacker variants:
+  T (transient): each seed is withdrawn 1 s after it is announced. Seeding ends at onset-15 min.
+  P (persistent): seeds stay announced to the end of the run. Seeding ends at onset-75 min, so every seed has been up
+    for 60 min before the credit window opens. This attacker carries the bogus routes live before the incident.
+- If the schedule would start before the first update file of the case (the RIB time), the attack is reported as not
+  representable in the replay rather than shortened.
+
+## Defense D1: persistence-gated learning (T_adm = 60 min, set equal to G a priori; not tuned)
+- A (prefix, origin) or (prefix, non-cone exporter) pair enters history only after at least one collector session has
+  carried it continuously for T_adm. Announcements in the RIB snapshot are admitted at once. Withdrawals and route
+  replacements end a session's carriage. Sessions are identified by peer IP.
+- While a pair is pending, the NO/NX test is applied at the start of each presence episode (the first session to carry
+  it after none did), against admitted history only.
+- Offender history H_a counts, per 5-min window, only flagged pairs that were later admitted, and such a count enters
+  H_a no earlier than max(window + G, admission time). c(a,w) still counts every flag.
+- Ablation (same runs): D1-hist, history gating without the change to H_a.
+
+## Runs and metrics
+1. Clean runs, all 32 cases (16 incidents, 16 controls), D0 (current PRISM) and D1 in one pass. D0 must reproduce the
+   published PRISM-origin and PRISM-export units exactly; any mismatch is reported.
+2. Clean cost of D1 (and D1-hist): detection, false alerts/day and median first-flag delay at the four frozen operating
+   points (Quiet, Quiet+2VP, Balanced, Sensitive), development, held-out and all 16, scored exactly as in the paper.
+3. Attack runs, 10 incidents: D0 under T/P (identical for D0, which ignores withdrawals), D1 under T, D1 under P.
+   Attack succeeds iff no alert at the Quiet point names a culprit AS from seeding start to onset+60 min.
+   Also reported: seeding lead time and number of seed announcements, whether the seeding itself raises an alert, and
+   the time of the first owner-mode origin flag on a seeded prefix (owner mode alerts on every NO flag).
