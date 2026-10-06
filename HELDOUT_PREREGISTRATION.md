@@ -110,3 +110,27 @@ VI2021). Undetected incidents cannot be made less detected and are not attacked.
    Attack succeeds iff no alert at the Quiet point names a culprit AS from seeding start to onset+60 min.
    Also reported: seeding lead time and number of seed announcements, whether the seeding itself raises an alert, and
    the time of the first owner-mode origin flag on a seeded prefix (owner mode alerts on every NO flag).
+
+# Addendum: owner-side baseline, RPKI tier, guard sensitivity (fixed 2026-10-06, before any of them was evaluated)
+
+## ARTEMIS-style baseline (owner mode)
+Re-implementation of ARTEMIS's detection rules (Sermpezis et al., ToN 2018), code/artemis.py. Every prefix owner is
+given the most generous configuration public data allows: all origins and first-hop neighbours seen for the prefix in
+the RIB snapshot and the 24-h warm-up (the same information PRISM has). Alert types E|0, E|1, S|0, S|1, S|-.
+Reported for all 32 cases, in two variants: ARTEMIS-origin (E|0, S|0; comparable to PRISM owner origin mode) and
+ARTEMIS-full (all five types). Metrics exactly as for PRISM owner mode: an incident is detected if an alert naming a
+culprit (hijacker AS, or origin for S|-) falls in [onset-10 min, onset+60 min]; false alerts are distinct prefixes
+alerted with a non-culprit hijacker, per prefix-day of exposure (RIB prefixes x test-window days), pooled over cases.
+BEAM is not re-run (see paper); RADBench data were not found publicly.
+
+## RPKI tier
+For cases whose test window starts on or after 2018-04-05 (all five RIR trust anchors archived by RIPE NCC from then
+on: AM2018, MO2018, DQ2019, RT2020, SH2019, VI2021, KS2022, TW2022, CF2024 and their controls), each PRISM NO flag in the
+test window is validated against the union of the five RIRs' published ROAs for the day the test window starts
+(ftp.ripe.net/rpki). Tier rule, fixed now: a (culprit/offender AS, 5-min window) unit alerts if it reaches the Quiet
+threshold OR contains at least one RPKI-invalid NO flag. Reported: detection and false alerts/day for these 9 incidents
+and 9 controls, with and without the tier; also under the poisoning attacks for the attacked incidents in this range.
+
+## Guard sensitivity
+G in {0, 5, 15, 30, 60, 120, 240} min, all 16 incidents and 16 controls, at the frozen Quiet point (D0 flags). Every
+value is reported; the paper's G = 60 min is not re-selected.
