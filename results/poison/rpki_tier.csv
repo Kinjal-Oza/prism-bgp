@@ -1,0 +1,3 @@
+variant,point,detected,n,which,false_alerts,fa_per_day,median_first_flag_delay_s,hours
+PRISM,Quiet,4,9,"DQ2019,RT2020,SH2019,VI2021",3,0.5,159.9319189786911,144.0
+PRISM + RPKI tier,Quiet,5,9,"DQ2019,RT2020,SH2019,VI2021,TW2022",90,15.0,58.8638379573822,144.0

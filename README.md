@@ -7,7 +7,7 @@ Everything here runs on **public data only**:
 - RouteViews `route-views2` MRT archives.
 - CAIDA serial-1 AS relationships.
 
-No synthetic traffic is used anywhere. Every number in the paper is produced by the scripts below. The results they generated are in `results/`.
+The only synthetic traffic is the attacker's seed announcements in the poisoning study, injected from one labeled synthetic session into otherwise real streams. Every number in the paper is produced by the scripts below. The results they generated are in `results/`.
 
 ## Layout
 
@@ -33,6 +33,12 @@ No synthetic traffic is used anywhere. Every number in the paper is produced by 
 | `code/run_wk.sh`, `code/wk.py`, `results/week/` | Four 7-day control windows and their false-alert rates |
 | `results/heldout/` | Held-out tables (`heldout_*.csv`), `heldout.json`, `combined_ops.csv`, unit files, engine logs |
 | `results/` | Result tables (`table_*.csv`), `results.json`, per-case unit files, engine logs |
+| `code/engine2.py` | Multi-view replay engine for the poisoning study: D0 (the published engine, reproduced exactly on all 32 cases) and D1 (persistence-gated learning), with timestamp-merged injection |
+| `code/run2.py`, `code/resume.sh` | Clean runs (D0+D1), seeding attacks (transient T, persistent P, D1-aware Q), driver |
+| `code/artemis.py` | Re-implementation of ARTEMIS's owner-side detection rules on the same replays |
+| `code/rpki.py` | Route-origin validation against RIPE NCC's archive of published ROAs (all five RIRs) |
+| `code/eval_poison.py`, `code/fig_poison.py` | Verification, clean cost, attack outcomes, cap sweep, RPKI tier, guard sweep, ARTEMIS comparison; Fig. 4 |
+| `results/poison/` | `verify_d0.csv`, `clean_ops.csv`, `attack.csv`, `cap_sweep_*.csv`, `rpki_tier.csv`, `guard_sweep.csv`, `artemis*.csv` |
 
 ## Reproduce
 
@@ -70,6 +76,25 @@ Engine flag files (`out/*.flags.parquet`, ~440 MB) are not included because they
 - **Second collector.** Run unchanged on RIPE RIS rrc00, PRISM detects 9 of the same 10 incidents (quiet point, 0.94 false alerts/day). Fusing the two collectors (rules fixed before any RIS data was run) did not lower false alerts below the better single collector.
 - **Week-long controls.** Four 7-day quiet windows (672 h): 0.54 false alerts/day at the quiet point (95% 0.30-0.88).
 - **Owner mode.** Origin alerts: 0.054% false alerts per prefix-day. Leak alerts: 0.65% per origin-AS-day at κ = 20. Owner mode catches YouTube 2008, Route 53 2018 and MainOne 2018.
+
+## Poisoning study and added comparisons
+
+Pre-registered in `HELDOUT_PREREGISTRATION.md` before any run (one later variant and the cap sweep are marked post hoc).
+
+```bash
+python3 run2.py clean <CASE...>      # D0 + D1, records culprit seed paths
+python3 run2.py attack <CASE...>     # transient and persistent seeding attacks
+python3 run2.py attackq <CASE...>    # D1-aware persistent attacker (post hoc)
+python3 artemis.py <CASE...>
+# ROAs: rpki/<YYYY-MM-DD>_<tal>.csv.xz from https://ftp.ripe.net/rpki/<tal>.tal/<YYYY/MM/DD>/roas.csv.xz
+python3 eval_poison.py verify clean attack rpki guard artemis capsweep && python3 fig_poison.py
+```
+
+- Undefended PRISM: evaded in 10/10 detected incidents after 26-143 min of seeding.
+- D1 (persistence-gated learning, T_adm = 60 min): transient attack detected 10/10, clean detection unchanged (10/16), false alerts 0.94 -> 4.9/day. Capped offender history (exploratory, r = 0.02): 1.3/day, 8/10 transient and 6/10 persistent attacks detected. A D1-aware persistent attacker evades D1 in 10/10 but must carry its routes live for an hour; owner mode flags its first seed 26-213 min before onset.
+- Guard G: any value from 30 to 240 min gives the same 10/16 detections.
+- RPKI tier: +1 detection (TW2022) at 15 false alerts/day; not used.
+- ARTEMIS rules (re-implemented, public-data configuration): origin rules 12/16 at 0.10% false per prefix-day; all rules 15/16 at 3.5%. PRISM owner mode: 11/16 at 0.051% (origin), 15/16 with leak mode.
 
 ## Honest scope notes
 

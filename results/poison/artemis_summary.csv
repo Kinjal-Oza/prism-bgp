@@ -1,0 +1,4 @@
+detector,detected,incidents,fa_per_prefix_day_pct
+ARTEMIS-full,15.0,16.0,4.144093249644387
+ARTEMIS-origin,12.0,16.0,0.18019588912321566
+PRISM owner (origin),11.0,16.0,0.06855404402843332

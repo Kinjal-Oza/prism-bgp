@@ -1,0 +1,22 @@
+{
+ "artemis": [
+  {
+   "detector": "ARTEMIS-full",
+   "detected": 15.0,
+   "incidents": 16.0,
+   "fa_per_prefix_day_pct": 4.144093249644387
+  },
+  {
+   "detector": "ARTEMIS-origin",
+   "detected": 12.0,
+   "incidents": 16.0,
+   "fa_per_prefix_day_pct": 0.18019588912321566
+  },
+  {
+   "detector": "PRISM owner (origin)",
+   "detected": 11.0,
+   "incidents": 16.0,
+   "fa_per_prefix_day_pct": 0.06855404402843332
+  }
+ ]
+}
