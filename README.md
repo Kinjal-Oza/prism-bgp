@@ -96,6 +96,15 @@ python3 eval_poison.py verify clean attack rpki guard artemis capsweep && python
 - RPKI tier: +1 detection (TW2022) at 15 false alerts/day; not used.
 - ARTEMIS rules (re-implemented, public-data configuration): origin rules 12/16 at 0.10% false per prefix-day; all rules 15/16 at 3.5%. PRISM owner mode: 11/16 at 0.051% (origin), 15/16 with leak mode.
 
+## Independent benchmark (RouteLLM, 178 events 2002-2024)
+
+`code/ext_run.py`, `code/ext_driver.sh`, `code/ext_eval.py`; source list `code/ext/routellm_event.csv` (Apache-2.0, github.com/vvcode1/RouteLLM @1781c24); results in `results/external/`.
+Pre-registered before any case was downloaded. Frozen quiet point, route-views2, 12-h window around the listed time.
+
+- Observatory mode detects 11/178 (6.2%, 95% 3.5-10.7%); owner mode 11/178. BEAM, run by the benchmark's authors on all RouteViews collectors, reports 57.7% event-level accuracy (different setup).
+- 121/178 events are not visible at route-views2 (no announcement of a listed prefix carried the attacker); 41 had the attacker already present a day earlier; of the 16 visible and new, owner mode flags 10 and observatory mode 4.
+- False alerts over 2,136 benchmark hours: 1.2/day.
+
 ## Honest scope notes
 
 - 16 incidents (8 development, 8 held out) and two collectors (route-views2; RIPE RIS rrc00 as a replication) are used. The results describe these cases; they are not population estimates.

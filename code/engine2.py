@@ -173,7 +173,8 @@ class View:
         if self.record:
             json.dump([[k[0], k[1], k[2], v[0], v[1]] for k, v in self.recorded.items()], open(f"{out}.{self.name}.seeds.json", "w"))
 
-def run(case_dir, asrel_path, t1, out, views_spec):
+def run(case_dir, asrel_path, t1, out, views_spec, diag=None):
+    """diag: optional object with rib(p, path) and ann(ts, p, path) callbacks (descriptive diagnostics only)."""
     rel = ASRel(asrel_path); S = Shared(rel)
     T = time.time(); n = 0
     rib = sorted(glob.glob(f"{case_dir}/rib.*"))[0]
@@ -183,6 +184,7 @@ def run(case_dir, asrel_path, t1, out, views_spec):
         path = clean_path(e.as_path)
         if not path: continue
         S.learn_rib(p, path); n += 1
+        if diag is not None: diag.rib(p, path)
     print(f"RIB {n} elems {time.time()-T:.0f}s prefixes={len(S.hist)} nxhist={len(S.rib_nx)}", flush=True)
     V = [View(S=S, **v) for v in views_spec]
     nupd = 0; nwd = 0
@@ -199,6 +201,7 @@ def run(case_dir, asrel_path, t1, out, views_spec):
                 if not path: continue
                 nupd += 1
                 for v in V: v.ann(ts, p, path, e.peer_asn, e.peer_ip)
+                if diag is not None: diag.ann(ts, p, path)
             else:
                 nwd += 1
                 for v in V: v.wd(ts, p, e.peer_ip)

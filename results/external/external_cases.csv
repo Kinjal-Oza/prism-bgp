@@ -1,0 +1,179 @@
+id,idx,time,attackers,category,n_prefixes,download_note,listed_ann,att_origin_ann,att_inpath_ann,rib_att_origin,rib_att_inpath,ok,detected,first_alert_s,families,false_alerts,owner_detected,owner_first_s,attacker_flags,hours,vis,pre,cls,overlap
+X003,3,2008-01-25 22:00:00,[5628],prefix hijacking,18,,17,0,0,0,0,True,False,,[],0,False,,0,12.0,False,False,A not visible,False
+X004,4,2008-02-02 12:39:00,[13005],prefix hijacking,1,,0,0,0,0,0,True,False,,[],1,False,,0,12.0,False,False,A not visible,False
+X005,5,2008-02-25 03:14:00,[3180],prefix hijacking,1,,0,0,0,0,0,True,False,,[],0,False,,0,12.0,False,False,A not visible,False
+X006,6,2008-02-26 11:42:00,[2377],prefix hijacking,1,,22,0,0,0,0,True,False,,[],0,False,,0,12.0,False,False,A not visible,False
+X007,7,2008-02-24 20:07:00,[17557],path hijacking,1,,148,83,0,0,0,True,False,,[],0,True,-4743.0,6,12.0,True,False,C visible and new,True
+X008,8,2008-03-15 03:05:00,[6461],path hijacking,1,,110,89,1,0,1,True,False,,[],0,True,28.0,1,12.0,True,True,"B visible, attacker already present",False
+X009,9,2008-03-17 21:03:00,[17557],prefix hijacking,1,,0,0,0,0,0,True,False,,[],0,False,,0,12.0,False,False,A not visible,False
+X010,10,2008-06-20 22:00:00,[7843],prefix hijacking,7,,39,31,5,1247,241,True,False,,[],1,False,,2,12.0,True,True,"B visible, attacker already present",False
+X011,11,2008-08-14 10:56:00,[6762],route leak,1,,233,0,126,0,13,True,False,,[],1,False,,0,12.0,True,True,"B visible, attacker already present",False
+X012,12,2008-09-12 14:18:00,[7421],path hijacking,1,,19,0,0,0,0,True,False,,[],0,False,,0,12.0,False,False,A not visible,False
+X013,13,2008-09-22 18:06:00,[8997],prefix hijacking,1,,5,0,0,0,0,True,False,,[],0,False,,0,12.0,False,False,A not visible,False
+X014,14,2008-09-22 22:13:00,[8997],prefix hijacking,1,,191,0,0,0,0,True,False,,[],0,False,,0,12.0,False,False,A not visible,False
+X015,15,2008-09-22 09:33:00,[8997],prefix hijacking,1,,9,0,0,0,0,True,True,-208.0,['NO'],0,False,,55368,12.0,False,False,A not visible,False
+X016,16,2008-09-26 13:16:00,[1248],route leak,1,,186,0,0,0,0,True,False,,[],0,False,,0,12.0,False,False,A not visible,False
+X017,17,2008-11-11 02:24:00,[16735],prefix hijacking,1,,8,0,0,0,0,True,False,,[],1,False,,0,12.0,False,False,A not visible,False
+X018,18,2008-11-11 02:54:00,[16735],prefix hijacking,1,,13,0,0,0,0,True,False,,[],1,False,,0,12.0,False,False,A not visible,False
+X019,19,2008-11-11 01:56:00,[27664],prefix hijacking,1,,22,0,0,0,0,True,False,,[],1,False,,1,12.0,False,False,A not visible,False
+X020,20,2008-11-11 13:52:00,[3962],prefix hijacking,8,,32,0,0,0,0,True,False,,[],0,False,,0,12.0,False,False,A not visible,False
+X021,21,2009-01-12 11:30:00,[12083],prefix hijacking,1,,362,0,0,0,0,True,False,,[],1,False,,0,12.0,False,False,A not visible,False
+X022,22,2009-01-12 11:56:00,[3130],prefix hijacking,1,,397,0,397,0,35,True,False,,[],1,False,,0,12.0,True,True,"B visible, attacker already present",False
+X023,23,2009-01-12 12:57:00,[3130],prefix hijacking,1,,394,0,394,0,35,True,False,,[],1,False,,0,12.0,True,True,"B visible, attacker already present",False
+X024,24,2009-01-12 17:42:00,[7369],prefix hijacking,1,,416,0,0,0,0,True,False,,[],0,False,,0,12.0,False,False,A not visible,False
+X026,26,2009-03-27 22:00:00,[7018],prefix hijacking,3,,434,48,54,0,0,True,False,,[],0,False,,2,12.0,True,False,C visible and new,False
+X027,27,2009-05-08 21:15:00,[11492],prefix hijacking,1,,0,0,0,435,0,True,False,,[],0,False,,0,12.0,False,True,A not visible,False
+X028,28,2009-06-26 22:00:00,"[5713, 36981, 22351, 26452]",prefix hijacking,4,,55,55,0,158,0,True,False,,[],2,False,,0,12.0,True,True,"B visible, attacker already present",False
+X029,29,2009-08-28 22:00:00,[36377],prefix hijacking,1,,21,21,0,40,0,True,False,,[],0,False,,0,12.0,True,True,"B visible, attacker already present",False
+X030,30,2010-01-11 18:25:00,[28716],prefix hijacking,2,,0,0,0,0,0,True,False,,[],3,False,,0,12.0,False,False,A not visible,False
+X031,31,2010-01-12 05:21:00,[1214],prefix hijacking,2,,16,0,0,0,0,True,False,,[],3,False,,0,12.0,False,False,A not visible,False
+X032,32,2010-04-08 15:58:00,[23724],prefix hijacking,6,,0,0,0,0,0,True,True,-225.0,['NO'],0,False,,20515,12.0,False,False,A not visible,False
+X033,33,2010-04-08 15:58:00,[4134],prefix hijacking,6,,6,0,0,0,0,True,False,,[],4,False,,0,12.0,False,False,A not visible,False
+X034,34,2010-04-08 18:33:00,[414],prefix hijacking,6,,0,0,0,0,0,True,False,,[],4,False,,0,12.0,False,False,A not visible,False
+X035,35,2010-04-08 15:58:00,[23724],prefix hijacking,1,,1,0,0,0,0,True,True,-225.0,['NO'],0,False,,20515,12.0,False,False,A not visible,False
+X036,36,2010-04-08 15:58:00,[3491],prefix hijacking,1,,3,0,3,0,45,True,False,,[],4,False,,0,12.0,True,True,"B visible, attacker already present",False
+X037,37,2010-04-08 22:33:00,[4134],path hijacking,1,,1,0,0,0,0,True,False,,[],0,False,,0,12.0,False,False,A not visible,False
+X038,38,2010-10-06 20:36:00,[6517],route leak,3,,441,441,0,102,0,True,False,,[],0,False,,0,12.0,True,True,"B visible, attacker already present",False
+X039,39,2010-10-12 02:01:00,[22558],route leak,18,,174,162,0,272,0,True,False,,[],5,False,,0,12.0,True,True,"B visible, attacker already present",False
+X040,40,2010-10-31 10:24:00,"[3561, 1299, 1239, 12025]",path hijacking,2,,0,0,0,53,0,True,False,,[],0,False,,17,12.0,False,True,A not visible,False
+X041,41,2011-02-24 22:05:00,[6453],route leak,1,,1284,0,397,0,1,True,False,,[],1,False,,21852,12.0,True,True,"B visible, attacker already present",False
+X042,42,2011-03-18 22:00:00,[5769],prefix hijacking,1,,2395,0,0,99,0,True,False,,[],0,False,,0,12.0,False,True,A not visible,False
+X043,43,2011-03-30 13:58:00,[5136],route leak,1,,23,0,0,0,0,True,False,,[],0,False,,0,12.0,False,False,A not visible,False
+X044,44,2011-03-30 17:52:00,[3351],route leak,1,,651,0,0,0,0,True,False,,[],0,False,,0,12.0,False,False,A not visible,False
+X045,45,2011-04-14 04:22:00,"[8143, 29987, 11756, 47024, 27906]",route leak,8,,65,65,0,165,0,True,False,,[],0,False,,0,12.0,True,True,"B visible, attacker already present",False
+X046,46,2011-04-22 15:08:00,[35909],prefix hijacking,1,,29,14,0,20,0,True,False,,[],0,False,,0,12.0,True,True,"B visible, attacker already present",False
+X047,47,2011-05-05 09:36:00,"[9584, 20144, 42909]",route leak,1,,0,0,0,0,0,True,False,,[],0,False,,0,12.0,False,False,A not visible,False
+X048,48,2011-08-21 04:05:00,[12182],prefix hijacking,6,,0,0,0,0,135,True,False,,[],0,False,,0,12.0,False,True,A not visible,False
+X049,49,2011-08-21 00:19:00,[12182],prefix hijacking,5,,4,0,4,0,135,True,False,,[],0,False,,0,12.0,True,True,"B visible, attacker already present",False
+X050,50,2011-08-21 05:28:00,[31733],prefix hijacking,5,,8,8,0,135,0,True,False,,[],0,False,,0,12.0,True,True,"B visible, attacker already present",False
+X051,51,2012-01-21 12:30:00,[14080],prefix hijacking,1,,4,0,0,0,0,True,False,,[],0,False,,0,12.0,False,False,A not visible,False
+X052,52,2012-03-22 16:29:00,[7018],prefix hijacking,1,,103,0,0,0,0,True,False,,[],0,False,,7,12.0,False,False,A not visible,False
+X053,53,2012-04-27 22:00:00,[41733],prefix hijacking,2,,0,0,0,0,0,True,False,,[],0,False,,0,12.0,False,False,A not visible,False
+X054,54,2012-07-13 21:10:00,[5487],prefix hijacking,7,,0,0,0,0,0,True,False,,[],0,False,,0,12.0,False,False,A not visible,False
+X056,56,2012-08-31 11:38:00,[2775],route leak,1,,16,0,0,0,0,True,False,,[],0,False,,0,12.0,False,False,A not visible,False
+X057,57,2012-10-29 10:54:00,[66697],path hijacking,1,,26,0,0,0,0,True,False,,[],1,False,,0,12.0,False,False,A not visible,False
+X058,58,2012-11-06 21:07:00,[8967],path hijacking,3,,0,0,0,0,0,True,False,,[],0,False,,0,12.0,False,False,A not visible,False
+X059,59,2012-11-06 21:35:00,[4436],path hijacking,3,,0,0,0,0,0,True,False,,[],0,False,,1,12.0,False,False,A not visible,False
+X061,61,2013-01-11 14:14:00,[26347],prefix hijacking,1,,2,2,0,0,0,True,True,16.0,['NO'],0,True,29.0,138,12.0,True,False,C visible and new,False
+X063,63,2013-02-03 11:40:00,[23456],route leak,8,,0,0,0,0,0,True,False,,[],0,False,,0,12.0,False,False,A not visible,False
+X065,65,2013-03-04 21:43:00,[3329],path hijacking,1,,0,0,0,0,0,True,False,,[],2,False,,0,12.0,False,False,A not visible,False
+X066,66,2013-03-06 08:33:00,[26347],prefix hijacking,1,,14,14,0,0,0,True,True,-2033.0,['NO'],0,True,-2033.0,195,12.0,True,False,C visible and new,False
+X067,67,2013-03-29 19:14:00,[34109],path hijacking,1,,0,0,0,0,0,True,False,,[],0,False,,1,12.0,False,False,A not visible,False
+X068,68,2013-08-07 16:22:00,[3549],prefix hijacking,1,,0,0,0,0,0,True,False,,[],1,False,,2,12.0,False,False,A not visible,False
+X069,69,2013-08-23 22:00:00,[15830],prefix hijacking,1,,1,1,0,30,0,True,False,,[],0,False,,0,12.0,True,True,"B visible, attacker already present",False
+X070,70,2013-09-27 22:00:00,[42981],prefix hijacking,2,,51,0,0,3,0,True,False,,[],0,False,,0,12.0,False,True,A not visible,False
+X072,72,2014-04-02 18:40:00,[4761],prefix hijacking,2,,12,0,0,0,0,True,True,-561.0,['NO'],1,False,,8094,12.0,False,False,A not visible,True
+X073,73,2014-04-02 18:40:00,[4761],prefix hijacking,2,,12,0,0,0,0,True,True,-561.0,['NO'],1,False,,8094,12.0,False,False,A not visible,True
+X074,74,2014-04-02 19:26:00,[4761],prefix hijacking,5,,65,0,0,0,0,True,True,-3321.0,['NO'],1,False,,8094,12.0,False,False,A not visible,True
+X075,75,2014-04-02 20:11:00,[4761],prefix hijacking,1,,0,0,0,0,0,True,True,-6021.0,['NO'],1,False,,8094,12.0,False,False,A not visible,True
+X076,76,2014-06-10 11:00:00,[7018],prefix hijacking,1,,5,5,0,31,0,True,False,,[],0,False,,0,12.0,True,True,"B visible, attacker already present",False
+X077,77,2014-03-23 18:32:00,[6939],path hijacking,1,,6,0,6,0,0,True,False,,[],2,False,,2,12.0,True,False,C visible and new,False
+X078,78,2014-08-28 22:25:00,[1818],prefix hijacking,1,,1,0,0,0,0,True,False,,[],0,False,,0,12.0,False,False,A not visible,False
+X079,79,2014-09-01 21:34:00,[13740],prefix hijacking,1,,5,0,0,0,0,True,False,,[],0,False,,0,12.0,False,False,A not visible,False
+X080,80,2014-09-02 15:08:00,[4713],prefix hijacking,1,,0,0,0,0,0,True,False,,[],0,False,,0,12.0,False,False,A not visible,False
+X081,81,2014-09-02 17:25:00,[6601],prefix hijacking,1,,0,0,0,0,0,True,False,,[],0,False,,0,12.0,False,False,A not visible,False
+X082,82,2014-09-02 14:44:00,[181],prefix hijacking,1,,3,0,0,0,0,True,False,,[],0,False,,0,12.0,False,False,A not visible,False
+X083,83,2015-03-11 15:18:00,[6453],route leak,1,,381,0,381,0,0,True,False,,[],0,False,,1635,12.0,True,False,C visible and new,False
+X084,84,2015-03-26 12:18:00,[9058],prefix hijacking,2,,0,0,0,0,0,True,False,,[],1,False,,0,12.0,False,False,A not visible,False
+X085,85,2015-03-26 12:18:00,"[4795, 4761]",prefix hijacking,4,,0,0,0,0,0,True,False,,[],1,False,,0,12.0,False,False,A not visible,False
+X086,86,2015-03-26 10:44:00,[8240],prefix hijacking,1,,0,0,0,0,0,True,False,,[],1,False,,0,12.0,False,False,A not visible,False
+X087,87,2015-03-26 15:08:00,[18978],prefix hijacking,1,,93,0,93,0,0,True,False,,[],2,True,-13628.0,14133,12.0,True,False,C visible and new,False
+X088,88,2015-03-26 10:08:00,[533],prefix hijacking,4,,0,0,0,0,0,True,False,,[],1,False,,0,12.0,False,False,A not visible,False
+X089,89,2015-03-26 15:46:00,[18978],route leak,1,,0,0,0,0,0,True,False,,[],2,False,,14133,12.0,False,False,A not visible,False
+X090,90,2015-03-26 11:27:00,[18978],prefix hijacking,1,,22,0,22,0,0,True,False,,[],1,True,65.0,14133,12.0,True,False,C visible and new,False
+X091,91,2015-03-26 11:27:00,[18978],prefix hijacking,1,,22,0,22,0,0,True,False,,[],1,True,65.0,14133,12.0,True,False,C visible and new,False
+X092,92,2015-06-12 00:20:00,[4788],route leak,1,,1,0,0,0,0,True,False,,[],0,False,,0,12.0,False,False,A not visible,True
+X093,93,2015-06-12 08:47:00,"[3356, 3549]",route leak,1,,33,0,18,0,3,True,False,,[],5,False,,2406,12.0,True,True,"B visible, attacker already present",True
+X094,94,2015-06-30 07:39:00,[58587],route leak,1,,0,0,0,0,0,True,False,,[],2,False,,10,12.0,False,False,A not visible,False
+X095,95,2015-07-31 22:00:00,[20421],prefix hijacking,2,,0,0,0,0,0,True,False,,[],0,False,,0,12.0,False,False,A not visible,False
+X096,96,2015-09-28 23:08:00,[20115],prefix hijacking,1,,1,0,1,0,26,True,False,,[],0,False,,1,12.0,True,True,"B visible, attacker already present",False
+X097,97,2015-09-28 20:24:00,[1845],prefix hijacking,1,,1,0,0,0,0,True,False,,[],0,False,,0,12.0,False,False,A not visible,False
+X098,98,2015-11-06 05:52:00,[9498],route leak,2,,227,78,0,0,0,True,True,4.0,['NO'],0,True,19.0,22886,12.0,True,False,C visible and new,False
+X099,99,2015-11-06 10:19:00,[9498],route leak,1,,188270,84802,0,0,0,True,True,-16016.0,['NO'],0,True,-16004.0,22915,12.0,True,False,C visible and new,False
+X100,100,2016-09-12 11:55:00,[203959],path hijacking,1,,0,0,0,0,0,True,False,,[],1,False,,0,12.0,False,False,A not visible,False
+X101,101,2016-09-13 20:08:00,[203959],prefix hijacking,2,,6,6,0,94,0,True,False,,[],0,False,,0,12.0,True,True,"B visible, attacker already present",False
+X102,102,2016-03-10 00:00:00,[1234],path hijacking,1,,0,0,0,0,0,True,False,,[],0,False,,0,12.0,False,False,A not visible,False
+X104,104,2016-09-27 19:57:00,[3152],prefix hijacking,1,,1,0,0,0,0,True,False,,[],3,False,,0,12.0,False,False,A not visible,False
+X105,105,2016-10-05 16:55:00,[47860],prefix hijacking,1,,8,8,0,47,0,True,False,,[],0,False,,0,12.0,True,True,"B visible, attacker already present",False
+X106,106,2016-10-06 16:38:00,[8254],prefix hijacking,1,,0,0,0,0,0,True,False,,[],0,False,,0,12.0,False,False,A not visible,False
+X107,107,2016-10-12 13:26:00,[45899],route leak,4,,926,926,0,0,0,True,False,,[],0,False,,3,12.0,True,False,C visible and new,False
+X109,109,2017-06-05 16:28:00,[34991],path hijacking,2,,1105,538,0,278,0,True,False,,[],0,False,,0,12.0,True,True,"B visible, attacker already present",False
+X110,110,2017-08-02 00:36:00,[202746],prefix hijacking,4,,4,4,0,184,0,True,False,,[],2,False,,0,12.0,True,True,"B visible, attacker already present",False
+X111,111,2017-01-06 00:00:00,[35916],prefix hijacking,1,,0,0,0,0,0,True,False,,[],0,False,,0,12.0,False,False,A not visible,False
+X112,112,2017-08-03 06:24:00,[35916],prefix hijacking,1,,0,0,0,46,0,True,False,,[],1,False,,0,12.0,False,True,A not visible,False
+X113,113,2017-08-14 13:50:00,[29073],path hijacking,1,,762,2,0,47,0,True,False,,[],0,False,,0,12.0,True,True,"B visible, attacker already present",False
+X114,114,2017-10-03 12:30:00,[133955],path hijacking,1,,2,2,0,50,0,True,False,,[],1,False,,0,12.0,True,True,"B visible, attacker already present",False
+X115,115,2017-10-03 10:30:00,[133955],path hijacking,3,,6,6,0,150,0,True,False,,[],1,False,,0,12.0,True,True,"B visible, attacker already present",False
+X116,116,2017-11-16 14:34:00,[701],path hijacking,4,,7,7,0,0,1,True,False,,[],0,False,,67,12.0,True,True,"B visible, attacker already present",False
+X117,117,2018-01-02 20:50:00,[58511],prefix hijacking,4,,1119,0,41,0,40,True,False,,[],3,False,,0,12.0,True,True,"B visible, attacker already present",False
+X118,118,2018-01-23 20:19:00,[335],prefix hijacking,2,,0,0,0,0,0,True,False,,[],1,False,,0,12.0,False,False,A not visible,False
+X119,119,2018-04-13 14:17:00,[6],path hijacking,1,,0,0,0,0,0,True,False,,[],1,False,,0,12.0,False,False,A not visible,False
+X120,120,2018-04-14 13:26:00,[133711],path hijacking,1,,10,0,10,0,45,True,False,,[],0,False,,0,12.0,True,True,"B visible, attacker already present",False
+X121,121,2018-05-25 11:47:00,[4637],path hijacking,1,,0,0,0,0,0,True,False,,[],0,False,,280,12.0,False,False,A not visible,False
+X122,122,2018-05-25 18:59:00,[3257],path hijacking,1,,0,0,0,0,0,True,False,,[],0,False,,2,12.0,False,False,A not visible,False
+X123,123,2018-05-25 19:05:00,[16532],path hijacking,1,,0,0,0,0,0,True,False,,[],0,False,,0,12.0,False,False,A not visible,False
+X124,124,2018-05-31 18:36:00,[4637],path hijacking,1,,0,0,0,0,0,True,False,,[],2,False,,42,12.0,False,False,A not visible,False
+X125,125,2018-07-24 12:01:00,[6939],path hijacking,11,,1766,0,1706,0,35,True,False,,[],0,False,,387,12.0,True,True,"B visible, attacker already present",False
+X126,126,2019-01-28 13:25:00,[24203],path hijacking,10,,50,0,0,0,0,True,False,,[],2,False,,0,12.0,False,False,A not visible,False
+X127,127,2019-05-15 11:39:00,[3316],prefix hijacking,2,,0,0,0,0,0,True,False,,[],1,False,,0,12.0,False,False,A not visible,False
+X128,128,2019-05-15 11:39:00,[2246],prefix hijacking,2,,0,0,0,0,0,True,False,,[],1,False,,0,12.0,False,False,A not visible,False
+X129,129,2019-07-16 15:45:00,[65075],route leak,1,,0,0,0,0,0,True,False,,[],0,False,,0,12.0,False,False,A not visible,False
+X130,130,2019-07-19 22:28:00,[3549],path hijacking,1,,92,92,0,0,0,True,False,,[],0,True,-18650.0,6,12.0,True,False,C visible and new,False
+X132,132,2019-12-27 16:06:00,[46844],route leak,0,,0,0,0,0,0,True,False,,[],0,False,,0,12.0,False,False,A not visible,False
+X133,133,2020-07-29 19:15:00,[10990],path hijacking,6,,19,0,0,0,0,True,False,,[],0,False,,2,12.0,False,False,A not visible,False
+X134,134,2020-07-30 15:50:00,[8794],path hijacking,1,,126,0,0,0,0,True,False,,[],0,False,,0,12.0,False,False,A not visible,False
+X136,136,2020-11-16 02:58:00,[7905],route leak,0,,0,0,0,0,0,True,False,,[],0,False,,0,12.0,False,False,A not visible,False
+X137,137,2020-11-15 22:44:00,[195],route leak,0,,0,0,0,0,0,True,False,,[],0,False,,0,12.0,False,False,A not visible,False
+X139,139,2021-05-13 15:24:00,[4750],path hijacking,1,,3,0,0,0,0,True,False,,[],0,False,,0,12.0,False,False,A not visible,False
+X140,140,2021-08-12 21:54:00,[8459],prefix hijacking,1,,0,0,0,0,0,True,False,,[],0,False,,0,12.0,False,False,A not visible,False
+X143,143,2021-11-09 18:03:00,[25478],path hijacking,4,,89,0,0,0,0,True,False,,[],0,False,,49,12.0,False,False,A not visible,False
+X144,144,2022-02-11 10:58:00,[6461],path hijacking,1,,0,0,0,0,0,True,False,,[],0,False,,0,12.0,False,False,A not visible,False
+X145,145,2022-08-17 19:39:00,[209243],path hijacking,1,,447,0,391,0,0,True,False,,[],0,True,49.71345901489258,2,12.0,True,False,C visible and new,False
+X146,146,2022-08-22 19:03:00,[2319],path hijacking,1,,1,0,0,0,0,True,False,,[],0,False,,0,12.0,False,False,A not visible,False
+X147,147,2022-08-24 19:00:00,[6072],path hijacking,1,,3,0,0,0,0,True,False,,[],0,False,,0,12.0,False,False,A not visible,False
+X148,148,2023-01-12 07:02:00,[6453],path hijacking,1,,102,0,1,0,0,True,False,,[],0,False,,19,12.0,True,False,C visible and new,False
+X149,149,2023-01-16 21:42:00,[7198],prefix hijacking,1,,0,0,0,0,0,True,False,,[],0,False,,0,12.0,False,False,A not visible,False
+X150,150,2023-10-21 10:03:00,[407],prefix hijacking,3,,0,0,0,0,0,True,False,,[],1,False,,0,12.0,False,False,A not visible,False
+X151,151,2023-10-21 16:52:00,[1704],prefix hijacking,1,,9,0,0,0,0,True,False,,[],0,False,,0,12.0,False,False,A not visible,False
+X152,152,2024-09-02 12:26:00,[54994],route leak,1,,1,1,0,25,0,True,False,,[],0,False,,0,12.0,True,True,"B visible, attacker already present",False
+X153,153,2024-09-14 10:49:00,[9252],route leak,2,,0,0,0,0,0,True,False,,[],0,False,,0,12.0,False,False,A not visible,False
+X184,184,2002-01-17 00:00:00,[5446],route leak,1,,39,0,0,0,0,True,False,,[],2,False,,0,12.0,False,False,A not visible,False
+X185,185,2002-02-08 23:00:00,[3549],prefix hijacking,1,,24,24,0,17,0,True,False,,[],2,False,,4,12.0,True,True,"B visible, attacker already present",False
+X186,186,2002-03-08 23:00:00,[65301],prefix hijacking,1,,0,0,0,0,0,True,False,,[],0,False,,0,12.0,False,False,A not visible,False
+X187,187,2002-05-17 23:00:00,[857],prefix hijacking,1,,0,0,0,0,0,True,False,,[],0,False,,0,12.0,False,False,A not visible,False
+X188,188,2002-05-24 23:00:00,[65302],prefix hijacking,1,,0,0,0,0,0,True,False,,[],0,False,,0,12.0,False,False,A not visible,False
+X189,189,2002-05-31 23:00:00,[17676],prefix hijacking,3,,54,54,0,21,0,True,False,,[],0,False,,0,12.0,True,True,"B visible, attacker already present",False
+X190,190,2002-07-19 23:00:00,[9116],prefix hijacking,4,,104,104,0,88,0,True,False,,[],0,False,,0,12.0,True,True,"B visible, attacker already present",False
+X191,191,2002-09-27 20:32:00,[12357],prefix hijacking,1,,0,0,0,0,0,True,False,,[],0,False,,0,12.0,False,False,A not visible,False
+X192,192,2002-10-11 21:45:00,[3215],prefix hijacking,1,,0,0,0,0,0,True,False,,[],9,False,,0,12.0,False,False,A not visible,False
+X193,193,2003-02-21 21:46:00,[4637],prefix hijacking,2,,0,0,0,0,0,True,False,,[],0,False,,0,12.0,False,False,A not visible,False
+X194,194,2003-02-26 00:00:00,"[65303, 5462, 4134, 17676, 17506, 4685, 10013]",prefix hijacking,8,,45,15,0,156,0,True,False,,[],0,False,,202,12.0,True,True,"B visible, attacker already present",False
+X195,195,2003-03-10 11:17:00,[6553],prefix hijacking,1,,0,0,0,0,0,True,False,,[],0,False,,0,12.0,False,False,A not visible,False
+X196,196,2003-04-29 10:22:00,[7451],route leak,1,,0,0,0,0,0,True,False,,[],0,False,,0,12.0,False,False,A not visible,False
+X198,198,2003-05-23 22:00:00,[6478],prefix hijacking,24,,56,46,0,625,0,True,False,,[],0,False,,0,12.0,True,True,"B visible, attacker already present",False
+X199,199,2003-06-06 22:00:00,[568],prefix hijacking,4,,110,18,6,170,14,True,False,,[],0,False,,0,12.0,True,True,"B visible, attacker already present",False
+X200,200,2003-06-21 17:19:00,[11305],prefix hijacking,15,,71,0,0,0,0,True,False,,[],0,False,,0,12.0,False,False,A not visible,False
+X201,201,2003-06-28 10:51:00,[29766],prefix hijacking,1,,99,59,0,0,0,True,False,,[],4,False,,0,12.0,True,False,C visible and new,False
+X202,202,2003-10-11 02:16:00,[64702],route leak,0,,0,0,0,0,0,True,False,,[],0,False,,0,12.0,False,False,A not visible,False
+X203,203,2003-10-10 17:37:00,[5408],route leak,1,,701,0,0,0,0,True,False,,[],1,False,,0,12.0,False,False,A not visible,False
+X204,204,2003-10-10 20:16:00,[9889],route leak,0,,0,0,0,0,0,True,False,,[],1,False,,0,12.0,False,False,A not visible,False
+X205,205,2003-10-10 20:16:00,[7745],route leak,0,,0,0,0,0,0,True,False,,[],1,False,,0,12.0,False,False,A not visible,False
+X206,206,2003-10-24 02:12:00,[237],route leak,2,,0,0,0,0,0,True,False,,[],0,False,,0,12.0,False,False,A not visible,False
+X207,207,2003-11-07 22:00:00,[25186],prefix hijacking,3,,0,0,0,0,0,True,False,,[],0,False,,0,12.0,False,False,A not visible,False
+X208,208,2003-12-12 22:00:00,[3549],prefix hijacking,1,,0,0,0,33,0,True,False,,[],0,False,,1,12.0,False,True,A not visible,False
+X209,209,2004-01-10 05:42:00,[20473],route leak,1,,2,0,0,84,0,True,False,,[],2,False,,0,12.0,False,True,A not visible,False
+X210,210,2004-02-24 21:07:00,[504],route leak,1,,24930,0,0,0,0,True,False,,[],0,False,,0,12.0,False,False,A not visible,False
+X212,212,2004-11-01 11:40:00,[5583],route leak,0,,0,0,0,0,0,True,False,,[],0,False,,0,12.0,False,False,A not visible,False
+X213,213,2005-03-24 17:06:00,[6282],prefix hijacking,1,,0,0,0,0,0,True,False,,[],0,False,,0,12.0,False,False,A not visible,False
+X214,214,2005-03-24 17:06:00,[1239],prefix hijacking,2,,0,0,0,0,0,True,False,,[],0,False,,21,12.0,False,False,A not visible,False
+X215,215,2005-06-04 04:45:00,[3792],route leak,1,,44,0,0,0,0,True,False,,[],0,False,,0,12.0,False,False,A not visible,False
+X216,216,2005-08-16 21:24:00,[4788],prefix hijacking,1,,2,0,0,0,2,True,False,,[],0,False,,4,12.0,False,True,A not visible,False
+X217,217,2005-09-11 04:11:00,[5086],prefix hijacking,1,,25304,0,0,0,0,True,False,,[],0,False,,0,12.0,False,False,A not visible,False
+X219,219,2005-11-15 23:46:00,"[13768, 7271, 21548]",route leak,1,,3380,1713,0,40,0,True,False,,[],0,False,,0,12.0,True,True,"B visible, attacker already present",False
+X220,220,2005-12-23 22:00:00,[721],prefix hijacking,6,,353,126,0,1386,4700,True,False,,[],0,False,,0,12.0,True,True,"B visible, attacker already present",False
+X221,221,2006-01-13 21:46:00,[19654],prefix hijacking,2,,10,0,0,0,0,True,False,,[],1,False,,0,12.0,False,False,A not visible,False
+X223,223,2006-06-06 00:00:00,[5059],path hijacking,3,,486131,0,0,0,0,True,False,,[],0,False,,0,12.0,False,False,A not visible,False
+X224,224,2006-07-11 09:48:00,[3563],prefix hijacking,4,,5261607,0,0,0,0,True,False,,[],0,False,,0,12.0,False,False,A not visible,False
+X225,225,2006-11-09 17:46:00,[763],prefix hijacking,86,,3486660,4,0,40,0,True,False,,[],1,False,,0,12.0,True,True,"B visible, attacker already present",False
+X226,226,2006-12-08 22:00:00,[15276],prefix hijacking,5,,40,40,0,220,0,True,False,,[],1,False,,0,12.0,True,True,"B visible, attacker already present",False
+X227,227,2007-01-12 04:59:00,[23456],path hijacking,2,,0,0,0,0,0,True,False,,[],1,False,,0,12.0,False,False,A not visible,False
