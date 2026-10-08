@@ -141,3 +141,59 @@ admits a seed into H_a only after T_adm, one window later than the attacker's mo
 know D1. Variant Q: the persistent attacker (P) paces with its own windows entering H only 13 windows later instead of
 12; seeding still ends at onset-75 min. Run under D1 for all 10 attacked incidents; success defined as before. Every
 result is reported next to the pre-registered T and P results, not instead of them.
+
+# Addendum: external benchmark (fixed 2026-10-07, before any external case was downloaded or run)
+Source: RouteLLM benchmark (Liu et al., arXiv:2608.22812, Apache-2.0), github.com/vvcode1/RouteLLM,
+event_collector/events/event.csv at commit 1781c24: 232 expert-validated incidents mined from operator mailing lists,
+with time, attacker AS, victim AS, prefixes and category. An independent team selected these incidents, and it reports
+BEAM's official implementation at 57.67% event-level accuracy on the full benchmark (Table II of that paper).
+
+Cases: every event with time on or after 2002-01-01 (route-views2 coverage) - 178 events, all three categories
+(prefix hijacking, route leak, path hijacking), no other exclusion. Events that coincide with our 16 incidents are
+flagged and reported both with and without them.
+Replay: route-views2, RIB at least 24 h before the test window, test window [T-6h, T+6h] around the listed time T
+(the benchmark's times are partly approximate, some fall back to e-mail timestamps; the 12-h window is fixed for that
+reason). CAIDA serial-1 relationships of the latest available month not after T. Frozen PRISM (D0), Quiet point.
+Metrics (fixed now):
+- Observatory detection: some Quiet-point alert names an attacker AS with first flag in the test window.
+- Owner detection: some NO or NX flag names an attacker AS on a listed prefix or a more-specific of one, in the window.
+- False alerts: Quiet-point alerts not naming an attacker AS, per day of test-window exposure.
+- Reported per category and per period, with Wilson intervals; compared with the published BEAM figure, noting the
+  differences in setup (BEAM: all RouteViews collectors, +-12 h, its own event-level definition, all 232 events).
+No threshold, window or rule is changed after the first external result. Failures to download or parse are reported.
+
+# Addendum: multi-scale defense, multi-collector replay, live deployment (fixed 2026-10-07, before any of them was run)
+
+## D2: multi-scale offender score (on top of D1)
+- Slow scale L = 6 h, evaluated at every 5-min window w: c6(a,w) = distinct prefixes flagged for AS a (per family) in
+  the 72 windows ending at w. H6(a,w) = max of c6 computed from later-admitted flags only (D1 convention), over windows
+  ending at least 72 + 12 windows before w, entering no earlier than the admissions involved.
+  s6 = c6 / (1 + H6); same thresholds tau_f as the 5-min score (Quiet: 50 / 2000).
+- An s6 episode is a maximal run of consecutive windows with s6 >= tau_f for the same (family, AS); it counts once, at
+  the first window of the run. D2 alerts = D1 5-min alerts plus s6 episodes.
+- Detection and false alerts exactly as before (an s6 episode naming a culprit counts as a culprit alert, any other
+  episode as one false alert). Reported at the Quiet point on all 16 incidents and 16 controls, and for the existing
+  T, P and Q attack runs.
+- D2-aware attacker (Q2): persistent; paces so that, for every (family, AS) it touches, the 5-min count stays
+  <= 0.8 tau (1 + H5) with its windows entering H5 13 windows later, AND its trailing 72-window count stays
+  <= 0.8 tau (1 + H6) with its windows entering H6 72 + 13 windows later. Seeding ends at onset - 75 min. Run under D2
+  on the 10 attacked incidents; report detection and the lead time it needs. If the lead exceeds the warm-up available
+  in the replay, the attack is reported as not representable.
+
+## Multi-collector replay (kit for a larger machine; results reported only when run)
+- Collectors: every RouteViews collector that has a RIB at or before (test window start - 24 h) and UPDATE files
+  covering the window, as listed by the BGPKIT broker (the BEAM benchmark run used all RouteViews collectors).
+- One merged, time-ordered stream; history is the union over collectors; sessions are (collector, peer IP); vantage
+  points are (collector, peer AS).
+- Frozen PRISM (D0) at the Quiet point, no retuning; also the four frozen operating points.
+- Cases: the 178 RouteLLM events (protocol of the external-benchmark addendum) and our 16 incidents + 16 controls.
+- Same metrics and visibility diagnostics as the single-collector runs.
+
+## Live deployment (kit; results reported only when run)
+- Input: RIPE RIS Live (all RIS collectors), IPv4 announcements and withdrawals. Bootstrap: latest RIS rrc00 bview and
+  the CAIDA serial-1 snapshot of the latest available month; 24 h of live warm-up with no alerting.
+- Detector: D2 (D1 + multi-scale) at the Quiet point, plus owner-mode flags for a user-supplied prefix list.
+- Duration: at least 21 days of alerting. Every alert is logged with its evidence (prefixes, paths, vantage points).
+- Verification: each alert is matched (same AS within +-2 h) against Cloudflare Radar's BGP hijack and route-leak event
+  feeds; unmatched alerts are classified by hand from the evidence and public reports into confirmed / benign /
+  unknown. Radar events with confidence >= 8 that PRISM did not alert on are listed as misses. All alerts are reported.
