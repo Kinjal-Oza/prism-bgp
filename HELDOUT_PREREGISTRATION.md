@@ -226,3 +226,13 @@ that definition, the full multi-collector run also records, per benchmark event,
 The pre-registered metrics (attacker-attributed detection and owner detection) stay the headline. The new fields are
 reported next to them with Wilson intervals, as descriptive. The 15 interim-sample events are re-run so that they carry
 the fields; the earlier sample results stay as reported.
+
+# Addendum: final execution venues (fixed 2026-10-08, before the GitHub Actions run and before the live VM exists)
+The authors' workspace stops a few minutes after it goes idle: the live process started there at 19:24 UTC died at about
+19:40 UTC, still in warm-up (no alerting window), and the multi-collector driver had finished 3 cases. Both attempts are
+discarded. The runs go back to the venues of the first venue addendum, with the protocol, the attribution-free fields
+and the retry rule unchanged:
+- Full multi-collector run: GitHub Actions on the public repository, all 210 cases (the 3 workspace cases are re-run).
+  The workflow also starts on the push that adds it. Only transient network failures are retried (inside a job); a
+  case that still fails is reported as failed.
+- Live deployment: Oracle Cloud Always Free VM, as pre-registered. Verification with a Cloudflare API token.

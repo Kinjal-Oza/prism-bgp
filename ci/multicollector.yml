@@ -4,6 +4,9 @@
 # replays them merged, uploads its result JSON, and deletes the raw data. A final job aggregates.
 name: multicollector
 on:
+  push:
+    branches: [main]
+    paths: [".github/workflows/multicollector.yml"]
   workflow_dispatch:
     inputs:
       cases:
