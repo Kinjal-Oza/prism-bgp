@@ -197,3 +197,19 @@ No threshold, window or rule is changed after the first external result. Failure
 - Verification: each alert is matched (same AS within +-2 h) against Cloudflare Radar's BGP hijack and route-leak event
   feeds; unmatched alerts are classified by hand from the evidence and public reports into confirmed / benign /
   unknown. Radar events with confidence >= 8 that PRISM did not alert on are listed as misses. All alerts are reported.
+  failed, not dropped.
+- Interim sample, run in the authors' 2-CPU workspace while the full run is pending: 15 benchmark events drawn with
+  Python random.Random(20261008).sample over the 178 event ids (code/mc_sample15.txt). Reported as a sample, next to the
+  single-collector result for the same 15 events, and superseded by the full run when it exists.
+- Live deployment: an Oracle Cloud "Always Free" Ampere A1 VM (personal account), otherwise as pre-registered.
+
+# Addendum: execution venue change (fixed 2026-10-08, before any case of the full multi-collector run and before the live run)
+Pushing to GitHub is not possible from the authors' workspace, so the two long jobs run there instead. No protocol,
+threshold or metric changes.
+- Full multi-collector run: all 210 cases in the authors' 2-CPU workspace with the same code (code/mc_driver.sh,
+  idempotent). The 15 interim-sample cases already run with the identical code and protocol are reused, not re-run.
+  A case that fails (download error, out of memory or disk) is reported as failed, not dropped. The GitHub Actions
+  workflow remains an equivalent alternative.
+- Live deployment: runs in the same workspace from the time it starts. Any interruption (workspace restart, network
+  loss) restarts the process with a fresh 24 h warm-up; every gap is reported, and the >=21 days of alerting are
+  counted excluding warm-ups and gaps. Verification as pre-registered (Cloudflare Radar, +-2 h, same AS).
