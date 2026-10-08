@@ -141,23 +141,3 @@ admits a seed into H_a only after T_adm, one window later than the attacker's mo
 know D1. Variant Q: the persistent attacker (P) paces with its own windows entering H only 13 windows later instead of
 12; seeding still ends at onset-75 min. Run under D1 for all 10 attacked incidents; success defined as before. Every
 result is reported next to the pre-registered T and P results, not instead of them.
-
-# Addendum: external benchmark (fixed 2026-10-07, before any external case was downloaded or run)
-Source: RouteLLM benchmark (Liu et al., arXiv:2608.22812, Apache-2.0), github.com/vvcode1/RouteLLM,
-event_collector/events/event.csv at commit 1781c24: 232 expert-validated incidents mined from operator mailing lists,
-with time, attacker AS, victim AS, prefixes and category. An independent team selected these incidents, and it reports
-BEAM's official implementation at 57.67% event-level accuracy on the full benchmark (Table II of that paper).
-
-Cases: every event with time on or after 2002-01-01 (route-views2 coverage) - 178 events, all three categories
-(prefix hijacking, route leak, path hijacking), no other exclusion. Events that coincide with our 16 incidents are
-flagged and reported both with and without them.
-Replay: route-views2, RIB at least 24 h before the test window, test window [T-6h, T+6h] around the listed time T
-(the benchmark's times are partly approximate, some fall back to e-mail timestamps; the 12-h window is fixed for that
-reason). CAIDA serial-1 relationships of the latest available month not after T. Frozen PRISM (D0), Quiet point.
-Metrics (fixed now):
-- Observatory detection: some Quiet-point alert names an attacker AS with first flag in the test window.
-- Owner detection: some NO or NX flag names an attacker AS on a listed prefix or a more-specific of one, in the window.
-- False alerts: Quiet-point alerts not naming an attacker AS, per day of test-window exposure.
-- Reported per category and per period, with Wilson intervals; compared with the published BEAM figure, noting the
-  differences in setup (BEAM: all RouteViews collectors, +-12 h, its own event-level definition, all 232 events).
-No threshold, window or rule is changed after the first external result. Failures to download or parse are reported.
