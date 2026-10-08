@@ -222,4 +222,40 @@ if __name__ == "__main__":
         ca = pd.DataFrame(atk); ca.to_csv(f"{OUT}/cap_sweep_attack.csv", index=False)
         print(cs[["cap_ratio", "detected", "fa_per_day"]].to_string())
         print(ca.pivot_table(index="cap_ratio", columns="view", values="detected", aggfunc="sum").to_string())
+    if "d2" in parts:
+        import d2
+        def eps(k, view):
+            c = C[k]; f = flags(k, view); adm = pd.read_parquet(f"out2/{k}.{view}.adm.parquet"); out = []
+            for ty, det in (("NO", "PRISM-origin"), ("NX", "PRISM-export")):
+                e = d2.episodes(f, ty, adm, TAU[ty]); e["det"] = det; e["case"] = k; e["peers"] = 1; e["score"] = np.inf; out.append(e)
+            return pd.concat(out, ignore_index=True)
+        # clean cost
+        U = pd.concat([case_units(k, "D1", "adm") for k in done], ignore_index=True)
+        EP = pd.concat([eps(k, "D1") for k in done], ignore_index=True)
+        EPw = EP[[ (E.TS(C[k]["t0"]) <= w * W < E.TS(C[k]["t1"])) for k, w in zip(EP.case, EP.w)]]
+        res = []
+        for sname, ks in (("development", [k for k in done if k in DEV]), ("held-out", [k for k in done if k in HO]), ("all", done)):
+            o = ops(U, ks, extra=EPw); o = o[o.point == "Quiet"]; o.insert(0, "set", sname); o.insert(0, "variant", "D2 (D1 + 6-h scale)"); res.append(o)
+        d2c = pd.concat(res, ignore_index=True); d2c.to_csv(f"{OUT}/d2_clean.csv", index=False); print(d2c.to_string())
+        EPw.to_csv(f"{OUT}/d2_clean_episodes.csv", index=False)
+        # attacks
+        rows = []
+        for k in [k for k in ALL if os.path.exists(f"out2/{k}.A1Q.adm.parquet")]:
+            c = C[k]; on = on_(c); cul = set(c["culprits"])
+            for view, var in (("A1T", "T"), ("A1P", "P"), ("A1Q", "Q"), ("A2Q", "Q2")):
+                if not os.path.exists(f"out2/{k}.{view}.adm.parquet"): continue
+                info = (json.load(open(f"out2/{k}.attackq2.json")) if var == "Q2" else json.load(open(f"out2/{k}.attackq.json")) if var == "Q"
+                        else json.load(open(f"out2/{k}.attack.json"))[var])
+                s0 = info["seed_start"]; f = flags(k, view); adm = pd.read_parquet(f"out2/{k}.{view}.adm.parquet")
+                hits5 = []
+                for ty in ("NO", "NX"):
+                    g = units(f, ty, "adm", adm); a = g[(g.s >= TAU[ty]) & g.off.isin(cul)]
+                    hits5 += list(a[(a["first"] >= s0) & (a["first"] <= on + E.DET_POST)]["first"])
+                e = eps(k, view); e = e[e.off.isin(cul) & (e["first"] >= s0) & (e["first"] <= on + E.DET_POST)]
+                rows.append(dict(case=k, attack=var, d1_detected=bool(hits5), d2_detected=bool(hits5) or len(e) > 0,
+                                 d2_first_s=float(min(hits5 + list(e["first"])) - on) if (hits5 or len(e)) else None,
+                                 lead_h=info["lead_s"] / 3600))
+        d2a = pd.DataFrame(rows); d2a.to_csv(f"{OUT}/d2_attack.csv", index=False)
+        print(d2a.pivot_table(index="case", columns="attack", values="d2_detected", aggfunc="first").to_string())
+        print(d2a.groupby("attack")[["d1_detected", "d2_detected"]].sum())
     json.dump(R, open(f"{OUT}/poison_{'_'.join(parts)}.json", "w"), indent=1, default=str)

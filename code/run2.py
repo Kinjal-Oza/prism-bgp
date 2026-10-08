@@ -25,7 +25,7 @@ def clean(k):
         on = onset(c); spec[0]["record"] = (set(c["culprits"]), on - 600, on + 3600)
     engine2.run(f"data/{k}", asrel_for(c), TS(c["t1"]), f"{OUT}/{k}", spec)
 
-def schedule(k, variant, rel, lag=GUARD):
+def schedule(k, variant, rel, lag=GUARD, slow=None):
     """Pre-registered greedy seeding schedule. Returns (messages, info)."""
     c = C[k]; cul = set(c["culprits"]); on = onset(c)
     seeds = json.load(open(f"{OUT}/{k}.D0.seeds.json"))           # [type, prefix, off, ts, path]
@@ -54,27 +54,43 @@ def schedule(k, variant, rel, lag=GUARD):
             cov = covers(path, p) or {it}
             left -= cov; anns.append((p, path, touches(path)))
     # greedy windows (attacker's own model of Eq. 2)
-    hist = {}; counts = []; plan = []; i = 0
+    hist = {}; counts = []; plan = []; i = 0; T6 = []
     while i < len(anns):
         k_ = len(counts)
         H = {}
         for j in range(0, k_ - lag + 1):
             for key, v in counts[j].items(): H[key] = max(H.get(key, 0), v)
         cnt = {}; batch = []
+        if slow:   # D2-aware: trailing-L sums and their own lagged maxima (post: pre-registered Q2)
+            L, lag6 = slow
+            trail = {}
+            for j in range(max(0, k_ - L + 1), k_):
+                for key, v in counts[j].items(): trail[key] = trail.get(key, 0) + v
+            H6 = {}
+            for j in range(0, k_ - lag6 + 1):
+                for key, v in T6[j].items(): H6[key] = max(H6.get(key, 0), v)
         while i < len(anns):
             tch = anns[i][2]
-            if all(cnt.get(key, 0) + 1 <= math.floor(MARGIN * TAU[key[0]] * (1 + H.get(key, 0))) for key in tch):
+            ok = all(cnt.get(key, 0) + 1 <= math.floor(MARGIN * TAU[key[0]] * (1 + H.get(key, 0))) for key in tch)
+            if ok and slow:
+                ok = all(trail.get(key, 0) + cnt.get(key, 0) + 1 <= math.floor(MARGIN * TAU[key[0]] * (1 + H6.get(key, 0))) for key in tch)
+            if ok:
                 for key in tch: cnt[key] = cnt.get(key, 0) + 1
                 batch.append(anns[i]); i += 1
             else: break
-        if not batch and i < len(anns): raise RuntimeError("cannot place seed")
+        if not batch and i < len(anns) and not slow: raise RuntimeError("cannot place seed")
+        if slow:
+            t6 = dict(trail)
+            for key, v in cnt.items(): t6[key] = t6.get(key, 0) + v
+            T6.append(t6)
+            if len(counts) > 5000: raise RuntimeError("no progress")
         counts.append(cnt); plan.append(batch)
     K = len(plan)
     end = on - (900 if variant == "T" else 4500)   # Q: persistent, D1-aware (lag 13 windows)
     start = math.floor((end - K * W) / W) * W
     msgs = []
     for kk, batch in enumerate(plan):
-        m = len(batch)
+        m = max(1, len(batch))
         for j, (p, path, _) in enumerate(batch):
             t = start + kk * W + (j + 0.5) * W / m
             msgs.append((t, "A", p, path))
@@ -102,9 +118,21 @@ def attackq(k):
     json.dump(iQ, open(f"{OUT}/{k}.attackq.json", "w"))
     engine2.run(f"data/{k}", asrel_for(c), TS(c["t1"]), f"{OUT}/{k}", [dict(name="A1Q", mode="D1", inject=mQ)])
 
+def attackq2(k):
+    """Pre-registered 2026-10-07: persistent attacker pacing against D2 (5-min with lag 13, 6-h trailing with lag 85)."""
+    c = C[k]; rel = ASRel(asrel_for(c))
+    m, i = schedule(k, "P", rel, lag=GUARD + 1, slow=(72, 72 + GUARD + 1)); i["variant"] = "Q2"
+    first = min(int(f.split("upd.")[1][:8] + f.split("upd.")[1][9:13]) for f in os.listdir(f"data/{k}") if f.startswith("upd."))
+    from datetime import datetime as _dt
+    fs = _dt.strptime(str(first), "%Y%m%d%H%M").replace(tzinfo=timezone.utc).timestamp()
+    i["first_update_ts"] = fs; i["representable"] = bool(i["seed_start"] >= fs)
+    json.dump(i, open(f"{OUT}/{k}.attackq2.json", "w"))
+    if not i["representable"]: print("not representable", k, i["lead_s"] / 3600, flush=True); return
+    engine2.run(f"data/{k}", asrel_for(c), TS(c["t1"]), f"{OUT}/{k}", [dict(name="A2Q", mode="D1", inject=m)])
+
 if __name__ == "__main__":
     os.makedirs(OUT, exist_ok=True)
     mode, ks = sys.argv[1], sys.argv[2:]
     for k in ks:
         print("CASE", mode, k, flush=True)
-        {"clean": clean, "attack": attack, "attackq": attackq}[mode](k)
+        {"clean": clean, "attack": attack, "attackq": attackq, "attackq2": attackq2}[mode](k)

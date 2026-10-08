@@ -105,6 +105,17 @@ Pre-registered before any case was downloaded. Frozen quiet point, route-views2,
 - 121/178 events are not visible at route-views2 (no announcement of a listed prefix carried the attacker); 41 had the attacker already present a day earlier; of the 16 visible and new, owner mode flags 10 and observatory mode 4.
 - False alerts over 2,136 benchmark hours: 1.2/day.
 
+## Multi-scale defense (D2), multi-collector kit, live kit (2026-10-07)
+
+- `code/d2.py`, `code/d2cap.py`, `run2.py attackq2`: 6-h offender scale on top of D1. Clean: 10/16 at 5.8 false alerts/day
+  (2.5 with the exploratory cap). Detects the transient, persistent and D1-aware attackers in 10/10; a D2-aware attacker
+  evades but needs 7.4-15.6 h of live seeding. Results: `results/poison/d2_*.csv`, `d2cap_*.csv`.
+- `code/engine_multi.py`, `code/mc_run.py`, `code/mc_driver.sh`, `code/mc_eval.py`: all RouteViews collectors merged
+  (pre-registered). Needs a large VM - see `RUN_ON_A_VM.md`. Not yet run.
+- `code/live_prism.py`, `code/live_verify.py`: D2 on RIPE RIS Live, verified against Cloudflare Radar. Needs an
+  always-on VM for 22+ days - see `RUN_ON_A_VM.md`. Not yet run (a 45-min pilot confirmed it keeps up with the full
+  RIS Live firehose, about 5,000 messages per second).
+
 ## Honest scope notes
 
 - 16 incidents (8 development, 8 held out) and two collectors (route-views2; RIPE RIS rrc00 as a replication) are used. The results describe these cases; they are not population estimates.

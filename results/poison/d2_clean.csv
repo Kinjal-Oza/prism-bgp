@@ -1,0 +1,4 @@
+variant,set,point,detected,n,which,false_alerts,fa_per_day,median_first_flag_delay_s,hours
+D2 (D1 + 6-h scale),development,Quiet,5,8,"TM2015,RT2017,DV2017,DQ2019,RT2020",14,2.625,29.0,128.0
+D2 (D1 + 6-h scale),held-out,Quiet,5,8,"ID2011,ID2014,GO2017,SH2019,VI2021",48,9.0,58.8638379573822,128.0
+D2 (D1 + 6-h scale),all,Quiet,10,16,"TM2015,RT2017,DV2017,DQ2019,RT2020,ID2011,ID2014,GO2017,SH2019,VI2021",62,5.8125,34.0,256.0

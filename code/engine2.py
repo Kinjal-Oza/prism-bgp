@@ -52,7 +52,7 @@ class View:
         # D1 state
         self.pend = {}                  # item -> [since or None, set(sessions), episode]
         self.carry = {}                 # (session, prefix) -> tuple(items carried that were pending at the time)
-        self.heap = []; self.adm = []   # admissions: (fam, prefix, off, since, admit_ts)
+        self.heap = []; self.adm = []; self.epc = 0   # admissions: (fam, prefix, off, since, admit_ts)
     # ---------- history lookups (shared RIB + own additions)
     def has_origin(self, p, o):
         h = self.S.hist.get(p)
@@ -128,7 +128,7 @@ class View:
             e = self.pend.get(it)
             if e is None: e = self.pend[it] = [None, set(), 0]
             if e[0] is None:                       # new presence episode
-                e[0] = ts; e[2] += 1
+                e[0] = ts; self.epc += 1; e[2] = self.epc   # globally unique episode id
                 heapq.heappush(self.heap, (ts + T_ADM, e[2], it))
                 if it[0] == "NO":
                     if self.no_test(p, o): self.emit(ts, "NO", o, p, peer, path)
