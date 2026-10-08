@@ -108,14 +108,19 @@ def owner_matcher(path):
         return any(n.subnet_of(x) for x in nets)
     return m
 
+try:
+    import orjson; _loads = orjson.loads
+except ImportError:
+    _loads = json.loads
+
 def messages(client="prism-live"):
     import websocket
     while True:
         try:
-            ws = websocket.create_connection(f"wss://ris-live.ripe.net/v1/ws/?client={client}", timeout=60)
+            ws = websocket.create_connection(f"wss://ris-live.ripe.net/v1/ws/?client={client}", timeout=60, skip_utf8_validation=True)
             ws.send(json.dumps({"type": "ris_subscribe", "data": {"type": "UPDATE"}}))
             while True:
-                m = json.loads(ws.recv())
+                m = _loads(ws.recv())
                 if m.get("type") == "ris_message": yield m["data"]
         except Exception as e:
             print("reconnect after", repr(e), file=sys.stderr, flush=True); time.sleep(5)

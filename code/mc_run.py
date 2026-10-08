@@ -16,6 +16,13 @@ W = 300; TAU = {"NO": 50, "NX": 2000}
 OURS = {c["case"]: c for c in all_cases() if not c["case"].endswith("_wk")}
 EXT = {c["id"]: c for c in X.cases()}
 B = bgpkit.Broker()
+import time as _t
+def bq(**kw):   # retry transient broker/network errors (implementation only; protocol unchanged)
+    for i in range(6):
+        try: return B.query(**kw)
+        except Exception:
+            if i == 5: raise
+            _t.sleep(20 * (i + 1))
 iso = lambda d: d.strftime("%Y-%m-%dT%H:%M:%S")
 
 def case(cid):
@@ -25,14 +32,14 @@ def case(cid):
 
 def plan(k):
     start = k["t0"] - timedelta(hours=24)
-    ribs = B.query(ts_start=iso(start - timedelta(days=3)), ts_end=iso(start), project="route-views", data_type="rib")
+    ribs = bq(ts_start=iso(start - timedelta(days=3)), ts_end=iso(start), project="route-views", data_type="rib")
     best = {}
     for r in ribs:
         t = datetime.fromisoformat(r.ts_start)
         if t <= start and (r.collector_id not in best or t > best[r.collector_id][0]): best[r.collector_id] = (t, r.url)
     J = {}
     for col, (t, url) in sorted(best.items()):
-        ups = B.query(ts_start=iso(t), ts_end=iso(k["t1"]), collector_id=col, data_type="updates")
+        ups = bq(ts_start=iso(t), ts_end=iso(k["t1"]), collector_id=col, data_type="updates")
         ups = [u for u in ups if datetime.fromisoformat(u.ts_start) < k["t1"]]
         if not ups: continue
         J[col] = [(url, "rib.bz2" if url.endswith("bz2") else "rib.gz")] + \
@@ -90,6 +97,14 @@ def run(cid):
             own = f[(f.ts >= t0) & (f.ts < t1) & f.off.isin(att)]
             own = own[[X.covers(c["prefixes"], p) for p in own.prefix]] if len(own) and c["prefixes"] else own.iloc[0:0]
             T = c["T"].replace(tzinfo=timezone.utc).timestamp()
+            # lenient, attribution-free fields (addendum 2026-10-08, BEAM-style "incident detected"); descriptive only
+            fw = f[(f.ts >= t0) & (f.ts < t1)]
+            cov = {p for p in fw.prefix.unique() if c["prefixes"] and X.covers(c["prefixes"], p)}
+            fl = fw[fw.prefix.isin(cov)]
+            keys = {(a["fam"], a["off"], int(a["first"] // W)) for a in alerts}
+            fk = {(t, int(o), int(ts // W)) for t, o, ts in fl[["type", "off", "ts"]].itertuples(index=False)}
+            res.update(pfx_detected=bool(keys & fk), pfx_owner=bool(len(fl)), any_alert=bool(alerts),
+                       pfx_flag_ases=int(fl.off.nunique()))
             res.update(D.v, ok=True, time=str(c["T"]), attackers=c["attackers"], category=c["category"], detected=bool(hit),
                        first_alert_s=(min(a["first"] for a in hit) - T) if hit else None, false_alerts=len(alerts) - len(hit),
                        owner_detected=bool(len(own)), hours=12.0)
