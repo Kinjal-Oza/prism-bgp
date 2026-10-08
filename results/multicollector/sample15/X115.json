@@ -1,0 +1,39 @@
+{
+ "id": "X115",
+ "kind": "ext",
+ "collectors": [
+  "ix-br.gru",
+  "route-views.eqix",
+  "route-views.jinx",
+  "route-views.kixp",
+  "route-views.linx",
+  "route-views.nwax",
+  "route-views.perth",
+  "route-views.saopaulo",
+  "route-views.sfmix",
+  "route-views.soxrs",
+  "route-views.sydney",
+  "route-views.wide",
+  "route-views2",
+  "route-views3"
+ ],
+ "n_collectors": 14,
+ "files": 2058,
+ "failed_files": 0,
+ "listed_ann": 114,
+ "att_origin_ann": 114,
+ "att_inpath_ann": 0,
+ "rib_att_origin": 456,
+ "rib_att_inpath": 0,
+ "ok": true,
+ "time": "2017-10-03 10:30:00",
+ "attackers": [
+  133955
+ ],
+ "category": "path hijacking",
+ "detected": false,
+ "first_alert_s": null,
+ "false_alerts": 1,
+ "owner_detected": false,
+ "hours": 12.0
+}

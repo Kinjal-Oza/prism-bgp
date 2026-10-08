@@ -1,0 +1,26 @@
+{
+ "id": "X191",
+ "kind": "ext",
+ "collectors": [
+  "route-views2"
+ ],
+ "n_collectors": 1,
+ "files": 147,
+ "failed_files": 0,
+ "listed_ann": 0,
+ "att_origin_ann": 0,
+ "att_inpath_ann": 0,
+ "rib_att_origin": 0,
+ "rib_att_inpath": 0,
+ "ok": true,
+ "time": "2002-09-27 20:32:00",
+ "attackers": [
+  12357
+ ],
+ "category": "prefix hijacking",
+ "detected": false,
+ "first_alert_s": null,
+ "false_alerts": 0,
+ "owner_detected": false,
+ "hours": 12.0
+}

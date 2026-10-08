@@ -1,0 +1,36 @@
+{
+ "id": "X059",
+ "kind": "ext",
+ "collectors": [
+  "ix-br.gru",
+  "route-views.eqix",
+  "route-views.jinx",
+  "route-views.kixp",
+  "route-views.linx",
+  "route-views.saopaulo",
+  "route-views.sydney",
+  "route-views.telxatl",
+  "route-views.wide",
+  "route-views2",
+  "route-views6"
+ ],
+ "n_collectors": 11,
+ "files": 1673,
+ "failed_files": 0,
+ "listed_ann": 18,
+ "att_origin_ann": 0,
+ "att_inpath_ann": 2,
+ "rib_att_origin": 0,
+ "rib_att_inpath": 2,
+ "ok": true,
+ "time": "2012-11-06 21:35:00",
+ "attackers": [
+  4436
+ ],
+ "category": "path hijacking",
+ "detected": false,
+ "first_alert_s": null,
+ "false_alerts": 0,
+ "owner_detected": false,
+ "hours": 12.0
+}

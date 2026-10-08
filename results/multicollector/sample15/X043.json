@@ -1,0 +1,34 @@
+{
+ "id": "X043",
+ "kind": "ext",
+ "collectors": [
+  "ix-br.gru",
+  "route-views.eqix",
+  "route-views.kixp",
+  "route-views.linx",
+  "route-views.saopaulo",
+  "route-views.sydney",
+  "route-views.wide",
+  "route-views2",
+  "route-views6"
+ ],
+ "n_collectors": 9,
+ "files": 1370,
+ "failed_files": 0,
+ "listed_ann": 75,
+ "att_origin_ann": 0,
+ "att_inpath_ann": 0,
+ "rib_att_origin": 0,
+ "rib_att_inpath": 0,
+ "ok": true,
+ "time": "2011-03-30 13:58:00",
+ "attackers": [
+  5136
+ ],
+ "category": "route leak",
+ "detected": false,
+ "first_alert_s": null,
+ "false_alerts": 0,
+ "owner_detected": false,
+ "hours": 12.0
+}

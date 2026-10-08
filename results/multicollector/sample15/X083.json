@@ -1,0 +1,38 @@
+{
+ "id": "X083",
+ "kind": "ext",
+ "collectors": [
+  "ix-br.gru",
+  "route-views.eqix",
+  "route-views.jinx",
+  "route-views.kixp",
+  "route-views.linx",
+  "route-views.nwax",
+  "route-views.perth",
+  "route-views.saopaulo",
+  "route-views.soxrs",
+  "route-views.sydney",
+  "route-views.wide",
+  "route-views2",
+  "route-views3"
+ ],
+ "n_collectors": 13,
+ "files": 1963,
+ "failed_files": 0,
+ "listed_ann": 1254,
+ "att_origin_ann": 0,
+ "att_inpath_ann": 1254,
+ "rib_att_origin": 0,
+ "rib_att_inpath": 0,
+ "ok": true,
+ "time": "2015-03-11 15:18:00",
+ "attackers": [
+  6453
+ ],
+ "category": "route leak",
+ "detected": false,
+ "first_alert_s": null,
+ "false_alerts": 0,
+ "owner_detected": false,
+ "hours": 12.0
+}

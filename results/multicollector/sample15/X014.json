@@ -1,0 +1,31 @@
+{
+ "id": "X014",
+ "kind": "ext",
+ "collectors": [
+  "route-views.eqix",
+  "route-views.kixp",
+  "route-views.linx",
+  "route-views.wide",
+  "route-views2",
+  "route-views6"
+ ],
+ "n_collectors": 6,
+ "files": 888,
+ "failed_files": 0,
+ "listed_ann": 382,
+ "att_origin_ann": 0,
+ "att_inpath_ann": 0,
+ "rib_att_origin": 0,
+ "rib_att_inpath": 0,
+ "ok": true,
+ "time": "2008-09-22 22:13:00",
+ "attackers": [
+  8997
+ ],
+ "category": "prefix hijacking",
+ "detected": false,
+ "first_alert_s": null,
+ "false_alerts": 0,
+ "owner_detected": false,
+ "hours": 12.0
+}

@@ -1,0 +1,16 @@
+id,time,cat,ncol,s_cls,m_cls,s_det,m_det,s_own,m_own,s_vis_ann,m_vis_ann,s_fa,m_fa
+X014,2008-09-22 22:13:00,prefix hijacking,6,not visible,not visible,False,False,False,False,0,0,0,0
+X026,2009-03-27 22:00:00,prefix hijacking,6,new,present,False,False,False,False,102,102,0,0
+X035,2010-04-08 15:58:00,prefix hijacking,4,not visible,not visible,True,True,False,False,0,0,0,0
+X043,2011-03-30 13:58:00,route leak,9,not visible,not visible,False,False,False,False,0,0,0,0
+X059,2012-11-06 21:35:00,path hijacking,11,not visible,present,False,False,False,False,0,2,0,0
+X061,2013-01-11 14:14:00,prefix hijacking,12,new,new,True,True,True,True,2,15,0,0
+X069,2013-08-23 22:00:00,prefix hijacking,12,present,present,False,False,False,False,1,12,0,0
+X080,2014-09-02 15:08:00,prefix hijacking,13,not visible,not visible,False,False,False,False,0,0,0,0
+X083,2015-03-11 15:18:00,route leak,13,new,new,False,False,False,False,381,1254,0,0
+X088,2015-03-26 10:08:00,prefix hijacking,13,not visible,not visible,False,False,False,False,0,0,1,1
+X115,2017-10-03 10:30:00,path hijacking,14,present,present,False,False,False,False,6,114,1,1
+X123,2018-05-25 19:05:00,path hijacking,18,not visible,not visible,False,False,False,False,0,0,0,0
+X130,2019-07-19 22:28:00,path hijacking,24,new,new,False,False,True,True,92,431,0,0
+X191,2002-09-27 20:32:00,prefix hijacking,1,not visible,not visible,False,False,False,False,0,0,0,0
+X221,2006-01-13 21:46:00,prefix hijacking,6,not visible,not visible,False,False,False,False,0,0,1,0

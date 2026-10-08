@@ -1,0 +1,31 @@
+{
+ "id": "X026",
+ "kind": "ext",
+ "collectors": [
+  "route-views.eqix",
+  "route-views.kixp",
+  "route-views.linx",
+  "route-views.wide",
+  "route-views2",
+  "route-views6"
+ ],
+ "n_collectors": 6,
+ "files": 897,
+ "failed_files": 0,
+ "listed_ann": 434,
+ "att_origin_ann": 48,
+ "att_inpath_ann": 54,
+ "rib_att_origin": 62,
+ "rib_att_inpath": 17,
+ "ok": true,
+ "time": "2009-03-27 22:00:00",
+ "attackers": [
+  7018
+ ],
+ "category": "prefix hijacking",
+ "detected": false,
+ "first_alert_s": null,
+ "false_alerts": 0,
+ "owner_detected": false,
+ "hours": 12.0
+}

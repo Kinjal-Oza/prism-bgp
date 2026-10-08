@@ -1,0 +1,37 @@
+{
+ "id": "X061",
+ "kind": "ext",
+ "collectors": [
+  "ix-br.gru",
+  "route-views.eqix",
+  "route-views.jinx",
+  "route-views.kixp",
+  "route-views.linx",
+  "route-views.perth",
+  "route-views.saopaulo",
+  "route-views.sydney",
+  "route-views.telxatl",
+  "route-views.wide",
+  "route-views2",
+  "route-views6"
+ ],
+ "n_collectors": 12,
+ "files": 1753,
+ "failed_files": 0,
+ "listed_ann": 15,
+ "att_origin_ann": 15,
+ "att_inpath_ann": 0,
+ "rib_att_origin": 0,
+ "rib_att_inpath": 0,
+ "ok": true,
+ "time": "2013-01-11 14:14:00",
+ "attackers": [
+  26347
+ ],
+ "category": "prefix hijacking",
+ "detected": true,
+ "first_alert_s": 15.0,
+ "false_alerts": 0,
+ "owner_detected": true,
+ "hours": 12.0
+}
