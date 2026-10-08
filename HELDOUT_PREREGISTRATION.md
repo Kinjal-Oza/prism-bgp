@@ -213,3 +213,16 @@ threshold or metric changes.
 - Live deployment: runs in the same workspace from the time it starts. Any interruption (workspace restart, network
   loss) restarts the process with a fresh 24 h warm-up; every gap is reported, and the >=21 days of alerting are
   counted excluding warm-ups and gaps. Verification as pre-registered (Cloudflare Radar, +-2 h, same AS).
+
+# Addendum: attribution-free fields for the BEAM comparison (fixed 2026-10-08, before any benchmark case of the full multi-collector run)
+RouteLLM (Sec. IV-A) defines event-level accuracy only as "whether an incident is detected", with BEAM retrained on
+data from the evaluation period and run on +-12 h; it does not require naming the attacker. To give a number closer to
+that definition, the full multi-collector run also records, per benchmark event, in the same pre-registered +-6 h window:
+- pfx_detected: some Quiet-point alert (any AS) whose flags in its alerting window include a listed prefix or a
+  more-specific of one.
+- pfx_owner: some NO or NX flag (any AS) on a listed prefix or a more-specific of one.
+- any_alert: some Quiet-point alert at all in the window (reported only as the chance reference: it says nothing about
+  the event).
+The pre-registered metrics (attacker-attributed detection and owner detection) stay the headline. The new fields are
+reported next to them with Wilson intervals, as descriptive. The 15 interim-sample events are re-run so that they carry
+the fields; the earlier sample results stay as reported.
