@@ -3,7 +3,11 @@
 import json, glob, os, pandas as pd
 import eval_poison as P
 from cases import cases, heldout_cases
-from ext_eval import wilson
+import math
+def wilson(k, n, z=1.96):
+    if n == 0: return (None, None)
+    p = k / n; d = 1 + z * z / n; c = (p + z * z / (2 * n)) / d; h = z * math.sqrt(p * (1 - p) / n + z * z / (4 * n * n)) / d
+    return (round(100 * (c - h), 1), round(100 * (c + h), 1))
 os.makedirs("../results/multicollector", exist_ok=True)
 R = pd.DataFrame([json.load(open(f)) for f in sorted(glob.glob("mc_out/*.json"))])
 print("cases", len(R), "ok", int((R.ok == True).sum()))

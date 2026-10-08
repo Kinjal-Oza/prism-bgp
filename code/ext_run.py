@@ -55,7 +55,7 @@ def download(c, d):
 def asrel(T):
     files = listing(CAIDA, r"\d{8}\.as-rel\.txt\.bz2")
     f = [x for x in files if x[:8] <= T.strftime("%Y%m%d")][-1]
-    p = f"asrel/{f}"
+    p = f"asrel/{f}"; os.makedirs("asrel", exist_ok=True)
     if not os.path.exists(p): subprocess.run(["curl", "-sSf", "-o", p, CAIDA + f], check=True)
     return p
 

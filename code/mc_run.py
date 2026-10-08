@@ -95,7 +95,11 @@ def run(cid):
                        owner_detected=bool(len(own)), hours=12.0)
         else:
             c = k["c"]
-            engine_multi.run(dirs, asrel_for(c), t1, out, [dict(name="D0", mode="D0")])
+            ap = asrel_for(c)
+            if not os.path.exists(ap):
+                os.makedirs("asrel", exist_ok=True)
+                subprocess.run(["curl", "-sSf", "--retry", "5", "-o", ap, X.CAIDA + os.path.basename(ap)], check=True)
+            engine_multi.run(dirs, ap, t1, out, [dict(name="D0", mode="D0")])
             f = pd.read_parquet(f"{out}.D0.flags.parquet"); parts = []
             for ty, det in (("NO", "PRISM-origin"), ("NX", "PRISM-export")):
                 g = P.units(f, ty, "all"); g = g[(g.w * W >= t0) & (g.w * W < t1)].copy()

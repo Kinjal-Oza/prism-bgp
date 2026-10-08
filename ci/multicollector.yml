@@ -1,0 +1,79 @@
+# Multi-collector replay (pre-registered 2026-10-07/08). Free on public repositories.
+# Start it from the repository's "Actions" tab -> "multicollector" -> "Run workflow".
+# One job per case (210), at most 20 at a time; each job downloads every RouteViews collector for its case,
+# replays them merged, uploads its result JSON, and deletes the raw data. A final job aggregates.
+name: multicollector
+on:
+  workflow_dispatch:
+    inputs:
+      cases:
+        description: "space-separated case ids (empty = all 210)"
+        required: false
+        default: ""
+jobs:
+  plan:
+    runs-on: ubuntu-latest
+    outputs:
+      cases: ${{ steps.p.outputs.cases }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - run: pip install pybgpkit pandas pyarrow
+      - id: p
+        working-directory: code
+        run: |
+          if [ -n "${{ github.event.inputs.cases }}" ]; then L="${{ github.event.inputs.cases }}"; else L=$(python3 mc_run.py list); fi
+          echo "cases=$(python3 -c 'import json,sys; print(json.dumps(sys.argv[1].split()))' "$L")" >> "$GITHUB_OUTPUT"
+  replay:
+    needs: plan
+    runs-on: ubuntu-latest
+    timeout-minutes: 355
+    strategy:
+      fail-fast: false
+      max-parallel: 20
+      matrix:
+        case: ${{ fromJSON(needs.plan.outputs.cases) }}
+    steps:
+      - name: free disk (removes preinstalled toolchains we do not use)
+        run: sudo rm -rf /usr/share/dotnet /usr/local/lib/android /opt/ghc /opt/hostedtoolcache/CodeQL /usr/local/share/boost && df -h /
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - run: pip install pybgpkit pandas pyarrow
+      - name: replay ${{ matrix.case }}
+        working-directory: code
+        env: {MC_DL_THREADS: "16"}
+        run: python3 mc_run.py ${{ matrix.case }} 2>&1 | tee mc_log_${{ matrix.case }}.txt
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: mc-${{ matrix.case }}
+          path: |
+            code/mc_out/${{ matrix.case }}.json
+            code/mc_out/${{ matrix.case }}.units.parquet
+            code/mc_log_${{ matrix.case }}.txt
+          if-no-files-found: warn
+  aggregate:
+    needs: replay
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - run: pip install pybgpkit pandas pyarrow
+      - uses: actions/download-artifact@v4
+        with: {pattern: "mc-*", path: art, merge-multiple: true}
+      - working-directory: code
+        run: |
+          mkdir -p mc_out && cp ../art/*.json ../art/*.parquet mc_out/ 2>/dev/null || true
+          cp ../art/*.txt . 2>/dev/null || true
+          python3 mc_eval.py | tee mc_summary.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          name: multicollector-results
+          path: |
+            results/multicollector/
+            code/mc_summary.txt
+            code/mc_out/*.json

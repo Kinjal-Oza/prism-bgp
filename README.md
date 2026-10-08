@@ -111,9 +111,9 @@ Pre-registered before any case was downloaded. Frozen quiet point, route-views2,
   (2.5 with the exploratory cap). Detects the transient, persistent and D1-aware attackers in 10/10; a D2-aware attacker
   evades but needs 7.4-15.6 h of live seeding. Results: `results/poison/d2_*.csv`, `d2cap_*.csv`.
 - `code/engine_multi.py`, `code/mc_run.py`, `code/mc_driver.sh`, `code/mc_eval.py`: all RouteViews collectors merged
-  (pre-registered). Needs a large VM - see `RUN_ON_A_VM.md`. Not yet run.
+  (pre-registered). Runs free on GitHub Actions (`.github/workflows/multicollector.yml`) - see `RUN_FREE.md`. A pre-registered 15-event sample is run separately.
 - `code/live_prism.py`, `code/live_verify.py`: D2 on RIPE RIS Live, verified against Cloudflare Radar. Needs an
-  always-on VM for 22+ days - see `RUN_ON_A_VM.md`. Not yet run (a 45-min pilot confirmed it keeps up with the full
+  always-on VM for 22+ days - free Oracle Cloud Always Free VM, see `RUN_FREE.md` and `live/prism-live.service`. Not yet run (a 45-min pilot confirmed it keeps up with the full
   RIS Live firehose, about 5,000 messages per second).
 
 ## Honest scope notes
