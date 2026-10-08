@@ -236,3 +236,9 @@ and the retry rule unchanged:
   The workflow also starts on the push that adds it. Only transient network failures are retried (inside a job); a
   case that still fails is reported as failed.
 - Live deployment: Oracle Cloud Always Free VM, as pre-registered. Verification with a Cloudflare API token.
+
+# Addendum: live VM shape (fixed 2026-10-08, before the live run's warm-up ended)
+The Always Free Arm shape (VM.Standard.A1.Flex) was out of capacity in the home region (us-sanjose-1, one availability
+domain) for over an hour of automatic retries. The live run therefore uses an Oracle VM.Standard.E5.Flex (x86, 2 OCPU,
+12 GB) paid from the account's free-trial credit, with no other change. The service started 2026-10-08 22:40 UTC
+(bootstrap done 22:45 UTC); alerting begins after the 24 h warm-up, and restarts are logged in live_out/restarts.log.
