@@ -22,7 +22,14 @@ if len(x):
     x["cls"] = x.apply(lambda r: "not visible" if not r.vis else ("visible, attacker already present" if r.pre else "visible and new"), axis=1)
     n = len(x); d = int(x.detected.sum()); w = int(x.owner_detected.sum())
     S = dict(n=n, observatory=d, obs_ci=wilson(d, n), owner=w, owner_ci=wilson(w, n),
-             fa_per_day=float(x.false_alerts.sum() / x.hours.sum() * 24), median_collectors=float(x.n_collectors.median()))
-    print(S); print(x.groupby("cls").agg(n=("id", "size"), obs=("detected", "sum"), own=("owner_detected", "sum")))
+             fa_per_day=float(x.false_alerts.sum() / x.hours.sum() * 24), median_collectors=float(x.n_collectors.median()),
+             failed=int(((R.kind == "ext") & (R.ok != True)).sum()))
+    for col in ("pfx_detected", "pfx_owner", "any_alert"):   # attribution-free fields (addendum 2026-10-08)
+        if col in x:
+            k = int(x[col].fillna(False).astype(bool).sum()); S[col] = k; S[col + "_ci"] = wilson(k, n)
+    if "overlap" not in x: x["overlap"] = False
+    print(S); agg = dict(n=("id", "size"), obs=("detected", "sum"), own=("owner_detected", "sum"))
+    if "pfx_detected" in x: agg.update(pfx=("pfx_detected", "sum"), pfx_own=("pfx_owner", "sum"), anyal=("any_alert", "sum"))
+    print(x.groupby("cls").agg(**agg))
     x.to_csv("../results/multicollector/benchmark_cases.csv", index=False)
     json.dump(S, open("../results/multicollector/benchmark_summary.json", "w"), indent=1, default=str)

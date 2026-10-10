@@ -1,0 +1,52 @@
+# Re-aggregates the multicollector run 37835445874 (its own aggregate step looked in the wrong folder).
+# Downloads every per-case artifact of that run, marks cases with no result as failed, runs mc_eval.py.
+name: aggregate-multicollector
+on:
+  push:
+    branches: [main]
+    paths: [".github/workflows/aggregate.yml"]
+  workflow_dispatch:
+permissions:
+  actions: read
+  contents: read
+jobs:
+  aggregate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - run: pip install pybgpkit pandas pyarrow
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: "mc-*"
+          path: art
+          merge-multiple: true
+          run-id: 37835445874
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - working-directory: code
+        run: |
+          mkdir -p mc_out
+          find ../art -name '*.json' -exec cp {} mc_out/ \;
+          find ../art -name '*.parquet' -exec cp {} mc_out/ \;
+          find ../art -name 'mc_log_*.txt' -exec cp {} . \;
+          echo "result files: $(ls mc_out/*.json | wc -l)"
+          python3 - <<'PY'
+          import json, os, subprocess
+          ids = subprocess.run(["python3", "mc_run.py", "list"], capture_output=True, text=True).stdout.split()
+          for i in ids:
+              if not os.path.exists(f"mc_out/{i}.json"):
+                  json.dump({"id": i, "kind": "ext" if i.startswith("X") else "ours", "ok": False,
+                             "error": "no result: job exceeded the 6-hour limit or failed"}, open(f"mc_out/{i}.json", "w"))
+          print("cases listed:", len(ids))
+          PY
+          python3 mc_eval.py | tee mc_summary.txt
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: multicollector-results-v2
+          path: |
+            results/multicollector/
+            code/mc_summary.txt
+            code/mc_out/
+            code/mc_log_*.txt
