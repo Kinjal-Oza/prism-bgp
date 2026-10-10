@@ -1,0 +1,31 @@
+{
+ "n": 173,
+ "observatory": 12,
+ "obs_ci": [
+  4.0,
+  11.7
+ ],
+ "owner": 11,
+ "owner_ci": [
+  3.6,
+  11.0
+ ],
+ "fa_per_day": 1.5144508670520231,
+ "median_collectors": 9.0,
+ "failed": 5,
+ "pfx_detected": 10,
+ "pfx_detected_ci": [
+  3.2,
+  10.3
+ ],
+ "pfx_owner": 48,
+ "pfx_owner_ci": [
+  21.6,
+  34.8
+ ],
+ "any_alert": 75,
+ "any_alert_ci": [
+  36.2,
+  50.8
+ ]
+}
