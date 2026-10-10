@@ -17,13 +17,13 @@ jobs:
       - uses: actions/setup-python@v5
         with: {python-version: "3.12"}
       - run: pip install pybgpkit pandas pyarrow
-      - uses: actions/download-artifact@v4
-        with:
-          pattern: "mc-*"
-          path: art
-          merge-multiple: true
-          run-id: 37835445874
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: download every per-case artifact of run 37835445874 (gh paginates; download-artifact stopped at 200)
+        env: {GH_TOKEN: "${{ github.token }}"}
+        run: |
+          mkdir -p art
+          gh api --paginate "repos/${{ github.repository }}/actions/runs/37835445874/artifacts?per_page=100" --jq '.artifacts[].name' | grep '^mc-' > names.txt
+          echo "artifacts: $(wc -l < names.txt)"
+          while read n; do gh run download 37835445874 -R "${{ github.repository }}" -n "$n" -D "art/$n" || echo "failed $n"; done < names.txt
       - working-directory: code
         run: |
           mkdir -p mc_out
