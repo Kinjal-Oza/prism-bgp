@@ -260,3 +260,19 @@ VI2021_wk, CF2024_wk; 672 h), replayed on route-views2 with persistence-gated le
 false alerts per day at the Quiet point for D1, D1 + cap, D2 and D2 + cap, pooled over the 672 h, with Poisson
 intervals; every alert in these windows counts as false. Nothing is re-tuned after the result. A window that fails
 (download error or the 6-hour runner limit) is reported as failed.
+
+# Addendum: BEAM head-to-head on three held-out incidents (fixed 2026-10-11, before any BEAM detection was run)
+Free GPUs (Kaggle) allow about three BEAM models in the time left, so the comparison is limited to three held-out
+incidents chosen now for being the largest of their kind and in different years: GO2017 (leak, AS15169), SH2019 (leak,
+AS21217) and VI2021 (origin hijack, AS55410), with their 12-hour controls. A 50-epoch training run on the 2021-04
+snapshot was made first only to time the training; it produces no detection result.
+- Code: BEAM's official repository (github.com/yhchen-tsinghua/routing-anomaly-detection), unchanged except paths.
+- Model: trained per incident month on CAIDA serial-2 relationships of that month (BEAM's default), 1,000 epochs,
+  Q = 10, d = 128, as in its README.
+- Data: route-views2 updates through BEAM's own routing monitor, anomaly detector and alarm post-processing, for the
+  whole month containing the incident (BEAM's unit). If a whole month exceeds the free compute limits, the days from
+  7 days before the control window through the end of the test window are processed, and this is reported.
+- Metrics, as for PRISM: detected if a BEAM alarm whose associated ASes include a culprit falls in [onset-10 min,
+  onset+60 min]; attribution-free detection if an alarm in that window contains a culprit-announced prefix; false
+  alarms = alarms in the 12-h control window plus alarms in the 4-h test window that name no culprit, per day.
+- Reported next to PRISM's numbers for the same three incidents and windows. Failures are reported.
