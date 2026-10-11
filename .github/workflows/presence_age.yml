@@ -1,0 +1,51 @@
+# Real-data analysis: how long before each event the attacker's routes were already present (41 events).
+name: presence-age
+on:
+  push:
+    branches: [main]
+    paths: [".github/workflows/presence_age.yml"]
+  workflow_dispatch:
+jobs:
+  plan:
+    runs-on: ubuntu-latest
+    outputs:
+      ids: ${{ steps.p.outputs.ids }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - run: pip install pybgpkit pandas pyarrow
+      - id: p
+        working-directory: code
+        run: echo "ids=$(python3 presence_age.py list | python3 -c 'import json,sys; print(json.dumps(sys.stdin.read().split()))')" >> "$GITHUB_OUTPUT"
+  age:
+    needs: plan
+    runs-on: ubuntu-latest
+    timeout-minutes: 300
+    strategy:
+      fail-fast: false
+      max-parallel: 20
+      matrix:
+        id: ${{ fromJSON(needs.plan.outputs.ids) }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - run: pip install pybgpkit pandas pyarrow
+      - working-directory: code
+        run: python3 presence_age.py ${{ matrix.id }}
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: age-${{ matrix.id }}
+          path: code/age_out/
+  collect:
+    needs: age
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with: {pattern: "age-*", path: all, merge-multiple: true}
+      - run: ls all | wc -l
+      - uses: actions/upload-artifact@v4
+        with: {name: presence-age-results, path: all/}

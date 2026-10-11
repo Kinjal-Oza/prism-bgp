@@ -242,3 +242,13 @@ The Always Free Arm shape (VM.Standard.A1.Flex) was out of capacity in the home 
 domain) for over an hour of automatic retries. The live run therefore uses an Oracle VM.Standard.E5.Flex (x86, 2 OCPU,
 12 GB) paid from the account's free-trial credit, with no other change. The service started 2026-10-08 22:40 UTC
 (bootstrap done 22:45 UTC); alerting begins after the 24 h warm-up, and restarts are logged in live_out/restarts.log.
+
+# Addendum: age of already-present attacker routes (fixed 2026-10-11, before any of these RIBs was examined beyond one test case)
+Real data only. For the 41 RouteLLM benchmark events in class "visible, attacker already present" (route-views2), take
+the latest route-views2 RIB at or before 1, 7, 30 and 90 days before the listed time, and record the number of routes
+to a listed prefix (or a more-specific) whose AS path contains a listed attacker AS (code/presence_age.py). One event
+(X008) was run as a test of the code before this addendum was written; its result is kept. Reported: for each event,
+the oldest look-back at which the attacker's routes were already present, grouped as < 7 days, 7-30 days, 30-90
+days, >= 90 days, and failures. Interpretation fixed now: routes that appeared within days before an event are what a
+history-poisoning attacker would produce, and only they could be recovered by a longer admission delay; long-standing
+routes cannot be told apart from normal routing by any history-based detector. No detector threshold is involved.
