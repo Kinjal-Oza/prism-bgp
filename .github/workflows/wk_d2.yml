@@ -1,0 +1,41 @@
+# Held-back validation of the capped D2 defense on the four 7-day control windows (real data).
+name: wk-d2
+on:
+  push:
+    branches: [main]
+    paths: [".github/workflows/wk_d2.yml"]
+  workflow_dispatch:
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 355
+    strategy:
+      fail-fast: false
+      matrix:
+        case: [TM2015_wk, DQ2019_wk, VI2021_wk, CF2024_wk]
+    steps:
+      - name: free disk
+        run: sudo rm -rf /usr/share/dotnet /usr/local/lib/android /opt/ghc /opt/hostedtoolcache/CodeQL /usr/local/share/boost && df -h /
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - run: pip install pybgpkit pandas pyarrow
+      - working-directory: code
+        run: python3 wk_d2.py ${{ matrix.case }} 2>&1 | tee wkd2_log_${{ matrix.case }}.txt
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: wkd2-${{ matrix.case }}
+          path: |
+            code/wkd2_out/
+            code/wkd2_log_${{ matrix.case }}.txt
+  collect:
+    needs: run
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with: {pattern: "wkd2-*", path: all, merge-multiple: true}
+      - run: find all -name '*.json' -exec cat {} \;
+      - uses: actions/upload-artifact@v4
+        with: {name: wk-d2-results, path: all/}

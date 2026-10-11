@@ -252,3 +252,11 @@ the oldest look-back at which the attacker's routes were already present, groupe
 days, >= 90 days, and failures. Interpretation fixed now: routes that appeared within days before an event are what a
 history-poisoning attacker would produce, and only they could be recovered by a longer admission delay; long-standing
 routes cannot be told apart from normal routing by any history-based detector. No detector threshold is involved.
+
+# Addendum: held-back validation of the capped defense (fixed 2026-10-11, before any of these runs)
+The history cap r = 0.02 was chosen in an exploratory sweep on the 32 incident and control cases. It is now frozen and
+validated on real data it was never tuned on: the four 7-day week-long control windows (TM2015_wk, DQ2019_wk,
+VI2021_wk, CF2024_wk; 672 h), replayed on route-views2 with persistence-gated learning (code/wk_d2.py). Reported:
+false alerts per day at the Quiet point for D1, D1 + cap, D2 and D2 + cap, pooled over the 672 h, with Poisson
+intervals; every alert in these windows counts as false. Nothing is re-tuned after the result. A window that fails
+(download error or the 6-hour runner limit) is reported as failed.
