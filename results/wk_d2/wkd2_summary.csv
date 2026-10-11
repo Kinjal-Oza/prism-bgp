@@ -1,0 +1,5 @@
+detector,false_alerts,hours,per_day,poisson95_lo,poisson95_hi
+D1,35,672,1.25,0.87,1.74
+D1cap,30,672,1.07,0.72,1.53
+D2,41,672,1.46,1.05,1.99
+D2cap,40,672,1.43,1.02,1.95
