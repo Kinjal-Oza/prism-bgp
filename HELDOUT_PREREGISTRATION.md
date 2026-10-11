@@ -276,3 +276,41 @@ snapshot was made first only to time the training; it produces no detection resu
   onset+60 min]; attribution-free detection if an alarm in that window contains a culprit-announced prefix; false
   alarms = alarms in the 12-h control window plus alarms in the 4-h test window that name no culprit, per day.
 - Reported next to PRISM's numbers for the same three incidents and windows. Failures are reported.
+
+# Addendum: BEAM detection execution and BEAM poisoning stress test (fixed 2026-10-11, before any BEAM detection was run and before any poisoned model was trained)
+## Detection execution (applies to the head-to-head above)
+- Window. A 2-hour pilot of BEAM's routing monitor on route-views2 (2017-08-24 00:00-02:00) gave 2.6 M updates and
+  1.2 M route changes, so a month of route-change files would be about 60 GB, beyond Kaggle's free disk, and SH2019's
+  control window lies in the month before its incident month. The pre-registered fallback is therefore used for all
+  three incidents: BEAM's monitor consumes every route-views2 update file from 7 days before the control window's start
+  to the end of the test window, starting from an empty state as BEAM's code does.
+- Disk. Route-change files are kept, scored by BEAM_diff_evaluator and passed to report_anomaly only for the hours the
+  alarm step needs for the scored windows: each hour overlapping the 12-h control window or the 4-h test window, plus
+  the hour before each (report_anomaly's reference bulk). report_anomaly compares each hourly bulk only with the
+  previous one, so the alarms in these hours are identical to those of a full run. Update files are deleted after
+  being consumed. The driver calls BEAM's own Monitor, evaluator and alarm functions; their code is not changed.
+- bgpdump is built from RIPE NCC's repository, as BEAM's README says. Runs on Kaggle CPU sessions.
+
+## BEAM poisoning stress test
+- Question: can the attacker of PRISM's poisoning study also teach BEAM a false normal? BEAM learns from the monthly
+  CAIDA relationship inference, not from announcements directly, so the poison is the relationship that the inference
+  would record.
+- Threat model: the leaker L makes the month's inference record each leaked adjacency as a customer link (L provider of
+  X), as relationship inference does when it repeatedly sees L transit X's routes to its providers or peers, e.g. by
+  carrying the leak persistently at low visibility in the weeks before the incident. We modify the inference output
+  instead of simulating the inference: a stronger, white-box assumption, stated as such. This is a stress test; the
+  modified relationship file is its only synthetic input.
+- Cases: the two held-out leaks, GO2017 (L = AS15169) and SH2019 (L = AS21217). VI2021 (origin hijack) is excluded:
+  its poison would need forged adjacencies to every victim origin, and the free GPU budget allows two extra models.
+- Construction: X = every AS that directly follows L in a path of the incident's route-views2 seed set
+  (code/out2/<case>.D0.seeds.json, the paths of PRISM's stress test): 2,904 ASes for GO2017 and 4 for SH2019. In the
+  CAIDA serial-2 file of the incident month each L-X line is replaced by "L|X|-1" (added if absent); nothing else
+  changes. The number of changed lines is reported as the attacker's cost.
+- Training and detection: identical code, settings and windows to the clean model (1,000 epochs, Q = 10, d = 128,
+  same resumable runner); one poisoned model per case.
+- Metrics: (1) the head-to-head metrics with the poisoned model; BEAM is evaded in a case if the clean model detects it
+  and the poisoned model does not. (2) Continuous: for route changes in [onset-10 min, onset+60 min] whose new path
+  contains L, the median of diff_balance (BEAM's alarm metric) and its percentile among all route changes of the same
+  hour, clean vs poisoned. (3) False alarms per day with the poisoned model, same windows.
+- Caveat fixed now: BEAM's training is not seeded, so part of any difference may be training noise; the budget allows
+  no repeat. Metric (2) shows the size of the shift. Results are reported whichever way they come out.
