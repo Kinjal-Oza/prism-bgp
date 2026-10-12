@@ -1,0 +1,21 @@
+{
+ "case": "VI2021",
+ "tag": "clean",
+ "detected": true,
+ "attr_free": true,
+ "ctl_alarms": 403,
+ "test_alarms_noculprit": 182,
+ "test_alarms": 184,
+ "false_alarms_per_day": 877.5,
+ "n_culprit_route_changes": 680760,
+ "median_diff_balance": 0.32363146630923545,
+ "median_percentile": 62.36455876014103,
+ "after_postprocess": {
+  "detected": true,
+  "attr_free": true,
+  "ctl_alarms": 83,
+  "test_alarms": 21,
+  "test_alarms_noculprit": 19,
+  "false_alarms_per_day": 153.0
+ }
+}

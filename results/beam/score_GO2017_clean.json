@@ -1,0 +1,21 @@
+{
+ "case": "GO2017",
+ "tag": "clean",
+ "detected": true,
+ "attr_free": true,
+ "ctl_alarms": 406,
+ "test_alarms_noculprit": 138,
+ "test_alarms": 139,
+ "false_alarms_per_day": 816.0,
+ "n_culprit_route_changes": 295639,
+ "median_diff_balance": 0.2757540410702047,
+ "median_percentile": 75.72350135276179,
+ "after_postprocess": {
+  "detected": true,
+  "attr_free": true,
+  "ctl_alarms": 115,
+  "test_alarms": 40,
+  "test_alarms_noculprit": 39,
+  "false_alarms_per_day": 231.0
+ }
+}

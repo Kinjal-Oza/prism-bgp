@@ -1,0 +1,13 @@
+{
+ "case": "GO2017",
+ "tag": "poison",
+ "detected": false,
+ "attr_free": true,
+ "ctl_alarms": 221,
+ "test_alarms_noculprit": 96,
+ "test_alarms": 96,
+ "false_alarms_per_day": 475.5,
+ "n_culprit_route_changes": 300148,
+ "median_diff_balance": 0.2714821280006354,
+ "median_percentile": 74.95916059708281
+}
