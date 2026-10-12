@@ -1,0 +1,11 @@
+{
+ "fallbacks": [
+  "rpki missing: https://ftp.ripe.net/rpki/apnic.tal/2017/08/14/roas.csv.xz",
+  "rpki 20170814: 367 ROAs without maxLength set to prefix length",
+  "rpki missing: https://ftp.ripe.net/rpki/apnic.tal/2017/08/21/roas.csv.xz",
+  "rpki 20170821: 367 ROAs without maxLength set to prefix length"
+ ],
+ "months": [
+  "201708"
+ ]
+}
