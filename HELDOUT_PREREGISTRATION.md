@@ -314,3 +314,18 @@ snapshot was made first only to time the training; it produces no detection resu
   hour, clean vs poisoned. (3) False alarms per day with the poisoned model, same windows.
 - Caveat fixed now: BEAM's training is not seeded, so part of any difference may be training noise; the budget allows
   no repeat. Metric (2) shows the size of the shift. Results are reported whichever way they come out.
+
+# Addendum: BEAM training-variance check on GO2017 (fixed 2026-10-12, after the GO2017 clean and poisoned results, before this run)
+The GO2017 poisoned model did not name AS15169 while the clean model did, but the clean detection rested on one alarm
+of nine route changes and the culprit percentile moved only from 75.7 to 75.0. Because BEAM's training is not seeded,
+the clean model's run-to-run variance is measured with one more run. No metric or threshold changes.
+- Run: a second clean GO2017 model, identical code and settings (CAIDA serial-2 2017-08, 1,000 epochs, Q = 10,
+  d = 128, one Kaggle GPU session), then identical detection (code/beam_detect.py) and post-processing
+  (code/beam_postprocess.py), scored with code/beam_score.py.
+- Order: after the pre-registered SH2019 runs (clean and poisoned), which keep priority for the free GPU quota.
+- Reported: the same metrics as the head-to-head, raw and after post-processing, for both clean runs and the poisoned
+  run; the spread of the continuous metric between the two clean runs is reported as the noise reference for the
+  poisoned shift.
+- Interpretation fixed now: if the second clean model also names AS15169 in the window, the poisoned miss is reported
+  as consistent with the poison (2 of 2 clean runs detect, 0 of 1 poisoned); if it does not, BEAM's detection of GO2017
+  is reported as unstable across training runs and the poisoned miss is not attributed to the poison.

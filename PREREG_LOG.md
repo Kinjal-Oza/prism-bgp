@@ -22,7 +22,8 @@ Commit times are as recorded by git (UTC); the public GitHub history shows when 
 | Age of already-present attacker routes | 6ce774c | 2026-10-11 01:05 |
 | Held-back validation of the capped defense | e566099 | 2026-10-11 01:57 |
 | BEAM head-to-head on three held-out incidents | 1eba976 | 2026-10-11 02:02 |
-| BEAM detection execution and BEAM poisoning stress test | (this commit) | 2026-10-11 |
+| BEAM detection execution and BEAM poisoning stress test | f8a6bfd | 2026-10-11 16:43 |
+| BEAM training-variance check on GO2017 | (this commit) | 2026-10-12 |
 
 Implementation fixes that do not change any protocol (re-aggregation of the multi-collector run after the first
 aggregation missed files; broker retries; faster live client) are in the ordinary commit history.
