@@ -94,9 +94,9 @@ json.dump(res, open(f"{D}/score_{CASE}_{TAG}.json", "w"), indent=1)
 # after BEAM's own post-processing (alarm_postprocess + summary), if available
 pp = sorted(glob.glob(f"{D}/pp_{CASE}_{TAG}_*.csv"))
 if pp:
-    a = pd.concat([pd.read_csv(f) for f in pp], ignore_index=True)
+    a = pd.concat([pd.read_csv(f).assign(_src=i) for i, f in enumerate(pp)], ignore_index=True)   # group ids restart per month file
     r2 = dict(detected=False, attr_free=False, ctl_alarms=0, test_alarms=0, test_alarms_noculprit=0)
-    for g, ev in a.groupby("group_id"):
+    for g, ev in a.groupby(["_src", "group_id"]):
         ts = ev["timestamp"].astype(float); t0 = datetime.fromtimestamp(ts.min(), timezone.utc).replace(minute=0, second=0, microsecond=0)
         ases = set().union(*[culprit_ases(c) for c in ev["culprit"].unique()])
         names = bool(ases & {str(c) for c in CULP}); inwin = ((ts >= W0) & (ts <= W1)).any()
@@ -108,3 +108,5 @@ if pp:
     r2["false_alarms_per_day"] = round((r2["ctl_alarms"] + r2["test_alarms_noculprit"]) / hrs * 24, 2)
     res["after_postprocess"] = r2
     print(json.dumps(r2, indent=1)); json.dump(res, open(f"{D}/score_{CASE}_{TAG}.json", "w"), indent=1)
+
+import shutil as _sh; _sh.rmtree(os.path.dirname(x), ignore_errors=True)   # keep disk small; the .tgz stays

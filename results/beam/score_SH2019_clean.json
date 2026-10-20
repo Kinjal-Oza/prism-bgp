@@ -1,0 +1,21 @@
+{
+ "case": "SH2019",
+ "tag": "clean",
+ "detected": true,
+ "attr_free": true,
+ "ctl_alarms": 288,
+ "test_alarms_noculprit": 108,
+ "test_alarms": 110,
+ "false_alarms_per_day": 594.0,
+ "n_culprit_route_changes": 74865,
+ "median_diff_balance": 0.23079370095683213,
+ "median_percentile": 75.20323296829396,
+ "after_postprocess": {
+  "detected": true,
+  "attr_free": true,
+  "ctl_alarms": 140,
+  "test_alarms": 41,
+  "test_alarms_noculprit": 39,
+  "false_alarms_per_day": 268.5
+ }
+}

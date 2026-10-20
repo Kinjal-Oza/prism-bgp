@@ -1,0 +1,288 @@
+{
+ "case": "SH2019",
+ "tag": "clean",
+ "model": "20190601.as-rel2.1000.10.128",
+ "onset": "2019-06-06 09:44:00",
+ "test": [
+  "2019-06-06 07:44:00",
+  "2019-06-06 11:44:00"
+ ],
+ "ctl": [
+  "2019-05-30 03:44:00",
+  "2019-05-30 15:44:00"
+ ],
+ "start": "2019-05-23 03:44:00",
+ "end": "2019-06-06 11:44:00",
+ "infos": [
+  {
+   "d0": "2019053002",
+   "d1": "2019053003",
+   "metric": "diff_balance",
+   "event_key": [
+    "prefix1",
+    "prefix2"
+   ],
+   "metric_th": 0.6503877158449457,
+   "forwarder_th": 6,
+   "n_raw_events": 17,
+   "n_alarms": 10,
+   "save_path": "/kaggle/working/beam/routing_monitor/detection_result/route-views2/reported_alarms/201905/2019053002_2019053003.alarms.csv",
+   "kept": true
+  },
+  {
+   "d0": "2019053003",
+   "d1": "2019053004",
+   "metric": "diff_balance",
+   "event_key": [
+    "prefix1",
+    "prefix2"
+   ],
+   "metric_th": 0.595082956264919,
+   "forwarder_th": 5,
+   "n_raw_events": 23,
+   "n_alarms": 10,
+   "save_path": "/kaggle/working/beam/routing_monitor/detection_result/route-views2/reported_alarms/201905/2019053003_2019053004.alarms.csv",
+   "kept": true
+  },
+  {
+   "d0": "2019053004",
+   "d1": "2019053005",
+   "metric": "diff_balance",
+   "event_key": [
+    "prefix1",
+    "prefix2"
+   ],
+   "metric_th": 0.6054366218827134,
+   "forwarder_th": 5,
+   "n_raw_events": 49,
+   "n_alarms": 11,
+   "save_path": "/kaggle/working/beam/routing_monitor/detection_result/route-views2/reported_alarms/201905/2019053004_2019053005.alarms.csv",
+   "kept": true
+  },
+  {
+   "d0": "2019053005",
+   "d1": "2019053006",
+   "metric": "diff_balance",
+   "event_key": [
+    "prefix1",
+    "prefix2"
+   ],
+   "metric_th": 0.6330416198682476,
+   "forwarder_th": 4,
+   "n_raw_events": 47,
+   "n_alarms": 11,
+   "save_path": "/kaggle/working/beam/routing_monitor/detection_result/route-views2/reported_alarms/201905/2019053005_2019053006.alarms.csv",
+   "kept": true
+  },
+  {
+   "d0": "2019053006",
+   "d1": "2019053007",
+   "metric": "diff_balance",
+   "event_key": [
+    "prefix1",
+    "prefix2"
+   ],
+   "metric_th": 0.5844497433303177,
+   "forwarder_th": 2,
+   "n_raw_events": 225,
+   "n_alarms": 20,
+   "save_path": "/kaggle/working/beam/routing_monitor/detection_result/route-views2/reported_alarms/201905/2019053006_2019053007.alarms.csv",
+   "kept": true
+  },
+  {
+   "d0": "2019053007",
+   "d1": "2019053008",
+   "metric": "diff_balance",
+   "event_key": [
+    "prefix1",
+    "prefix2"
+   ],
+   "metric_th": 0.6521682936567407,
+   "forwarder_th": 3,
+   "n_raw_events": 98,
+   "n_alarms": 22,
+   "save_path": "/kaggle/working/beam/routing_monitor/detection_result/route-views2/reported_alarms/201905/2019053007_2019053008.alarms.csv",
+   "kept": true
+  },
+  {
+   "d0": "2019053008",
+   "d1": "2019053009",
+   "metric": "diff_balance",
+   "event_key": [
+    "prefix1",
+    "prefix2"
+   ],
+   "metric_th": 0.6058452174154993,
+   "forwarder_th": 2,
+   "n_raw_events": 180,
+   "n_alarms": 29,
+   "save_path": "/kaggle/working/beam/routing_monitor/detection_result/route-views2/reported_alarms/201905/2019053008_2019053009.alarms.csv",
+   "kept": true
+  },
+  {
+   "d0": "2019053009",
+   "d1": "2019053010",
+   "metric": "diff_balance",
+   "event_key": [
+    "prefix1",
+    "prefix2"
+   ],
+   "metric_th": 0.6075930231942404,
+   "forwarder_th": 3,
+   "n_raw_events": 112,
+   "n_alarms": 29,
+   "save_path": "/kaggle/working/beam/routing_monitor/detection_result/route-views2/reported_alarms/201905/2019053009_2019053010.alarms.csv",
+   "kept": true
+  },
+  {
+   "d0": "2019053010",
+   "d1": "2019053011",
+   "metric": "diff_balance",
+   "event_key": [
+    "prefix1",
+    "prefix2"
+   ],
+   "metric_th": 0.581239380130185,
+   "forwarder_th": 2,
+   "n_raw_events": 219,
+   "n_alarms": 31,
+   "save_path": "/kaggle/working/beam/routing_monitor/detection_result/route-views2/reported_alarms/201905/2019053010_2019053011.alarms.csv",
+   "kept": true
+  },
+  {
+   "d0": "2019053011",
+   "d1": "2019053012",
+   "metric": "diff_balance",
+   "event_key": [
+    "prefix1",
+    "prefix2"
+   ],
+   "metric_th": 0.5833672895257889,
+   "forwarder_th": 2,
+   "n_raw_events": 149,
+   "n_alarms": 24,
+   "save_path": "/kaggle/working/beam/routing_monitor/detection_result/route-views2/reported_alarms/201905/2019053011_2019053012.alarms.csv",
+   "kept": true
+  },
+  {
+   "d0": "2019053012",
+   "d1": "2019053013",
+   "metric": "diff_balance",
+   "event_key": [
+    "prefix1",
+    "prefix2"
+   ],
+   "metric_th": 0.6142623534195707,
+   "forwarder_th": 2,
+   "n_raw_events": 124,
+   "n_alarms": 30,
+   "save_path": "/kaggle/working/beam/routing_monitor/detection_result/route-views2/reported_alarms/201905/2019053012_2019053013.alarms.csv",
+   "kept": true
+  },
+  {
+   "d0": "2019053013",
+   "d1": "2019053014",
+   "metric": "diff_balance",
+   "event_key": [
+    "prefix1",
+    "prefix2"
+   ],
+   "metric_th": 0.548528544303124,
+   "forwarder_th": 3,
+   "n_raw_events": 203,
+   "n_alarms": 37,
+   "save_path": "/kaggle/working/beam/routing_monitor/detection_result/route-views2/reported_alarms/201905/2019053013_2019053014.alarms.csv",
+   "kept": true
+  },
+  {
+   "d0": "2019053014",
+   "d1": "2019053015",
+   "metric": "diff_balance",
+   "event_key": [
+    "prefix1",
+    "prefix2"
+   ],
+   "metric_th": 0.6006753805704176,
+   "forwarder_th": 2,
+   "n_raw_events": 134,
+   "n_alarms": 34,
+   "save_path": "/kaggle/working/beam/routing_monitor/detection_result/route-views2/reported_alarms/201905/2019053014_2019053015.alarms.csv",
+   "kept": true
+  },
+  {
+   "d0": "2019060606",
+   "d1": "2019060607",
+   "metric": "diff_balance",
+   "event_key": [
+    "prefix1",
+    "prefix2"
+   ],
+   "metric_th": 0.6053034047794071,
+   "forwarder_th": 2,
+   "n_raw_events": 227,
+   "n_alarms": 32,
+   "save_path": "/kaggle/working/beam/routing_monitor/detection_result/route-views2/reported_alarms/201906/2019060606_2019060607.alarms.csv",
+   "kept": true
+  },
+  {
+   "d0": "2019060607",
+   "d1": "2019060608",
+   "metric": "diff_balance",
+   "event_key": [
+    "prefix1",
+    "prefix2"
+   ],
+   "metric_th": 0.6185934868343169,
+   "forwarder_th": 3,
+   "n_raw_events": 80,
+   "n_alarms": 25,
+   "save_path": "/kaggle/working/beam/routing_monitor/detection_result/route-views2/reported_alarms/201906/2019060607_2019060608.alarms.csv",
+   "kept": true
+  },
+  {
+   "d0": "2019060608",
+   "d1": "2019060609",
+   "metric": "diff_balance",
+   "event_key": [
+    "prefix1",
+    "prefix2"
+   ],
+   "metric_th": 0.610348687203564,
+   "forwarder_th": 2,
+   "n_raw_events": 175,
+   "n_alarms": 32,
+   "save_path": "/kaggle/working/beam/routing_monitor/detection_result/route-views2/reported_alarms/201906/2019060608_2019060609.alarms.csv",
+   "kept": true
+  },
+  {
+   "d0": "2019060609",
+   "d1": "2019060610",
+   "metric": "diff_balance",
+   "event_key": [
+    "prefix1",
+    "prefix2"
+   ],
+   "metric_th": 0.6317254339757858,
+   "forwarder_th": 2,
+   "n_raw_events": 328,
+   "n_alarms": 23,
+   "save_path": "/kaggle/working/beam/routing_monitor/detection_result/route-views2/reported_alarms/201906/2019060609_2019060610.alarms.csv",
+   "kept": true
+  },
+  {
+   "d0": "2019060610",
+   "d1": "2019060611",
+   "metric": "diff_balance",
+   "event_key": [
+    "prefix1",
+    "prefix2"
+   ],
+   "metric_th": 0.6545110832282426,
+   "forwarder_th": 4,
+   "n_raw_events": 63,
+   "n_alarms": 30,
+   "save_path": "/kaggle/working/beam/routing_monitor/detection_result/route-views2/reported_alarms/201906/2019060610_2019060611.alarms.csv",
+   "kept": true
+  }
+ ]
+}
