@@ -1,0 +1,10 @@
+{
+ "fallbacks": [
+  "rpki 20190527: 2135 ROAs without maxLength set to prefix length",
+  "rpki 20190603: 2168 ROAs without maxLength set to prefix length"
+ ],
+ "months": [
+  "201905",
+  "201906"
+ ]
+}
